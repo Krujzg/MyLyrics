@@ -25,6 +25,7 @@
         <activity android:name="com.oe.nik.krujzgergely.ui.lyrics.LyricsesActivity"/>
         <activity android:name="com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActiviy" />
         <activity android:name="com.oe.nik.krujzgergely.ui.createlyricsitem.CreateLyricsActivity" />
+        <activity android:name="com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity" />
     </application>
 
 </manifest>

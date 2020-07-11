@@ -10,6 +10,11 @@
     <string name="CreateButtonText">Create new lyrics</string>
     <string name="AllLyricsText">All Lyricses</string>
     <string name="FavoriteLyricsText">Favorite Lyricses</string>
+    <string name="update_lyrics">Update lyrics</string>
+    <string name="delete_lyrics">Delete lyrics</string>
+    <string name="create_lyrics">Create lyrics</string>
+    <string name="save_lyrics">Save</string>
+    <string name="cancel_update">Cancel</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>

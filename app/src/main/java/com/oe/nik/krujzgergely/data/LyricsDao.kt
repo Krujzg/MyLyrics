@@ -21,4 +21,7 @@ interface LyricsDao
 
     @Delete
     suspend fun deleteLyrics(lyricsModel: LyricsModel)
+
+    @Update
+    suspend fun updateLyrics(lyricsModel: LyricsModel)
 }

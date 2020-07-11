@@ -2,6 +2,8 @@ package com.oe.nik.krujzgergely.ui.lyrics
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -28,8 +30,6 @@ class LyricsesActivity : AppCompatActivity(), IonLyricsSelected {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lyricses)
 
-        setOnClickListenerForFloatingActionButton()
-
         allLyricsActivityAdapter = LyricsesActivityAdapter(this, mutableListOf())
         favoritelyricsActivityAdapter = LyricsesActivityAdapter(this, mutableListOf())
 
@@ -39,13 +39,21 @@ class LyricsesActivity : AppCompatActivity(), IonLyricsSelected {
         loadLyricsMultiSnapRecyclerView("Favorite")
     }
 
-    private fun setOnClickListenerForFloatingActionButton()
-    {
-        floatingActionButton = findViewById<FloatingActionButton>(R.id.floating_action_button_create)
-        floatingActionButton.setOnClickListener{
-            startActivity(Intent(this,CreateLyricsActivity::class.java))
-        }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.lyrics_activity_menu_options, menu)
+        return true
     }
+
+    override fun onOptionsItemSelected(item: MenuItem) =
+        when (item.itemId)
+        {
+            R.id.CreateNewLyrics -> {
+                startActivity(Intent(this,CreateLyricsActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
 
     private fun loadLyricsMultiSnapRecyclerView(typeOfTheRecycler: String)
     {

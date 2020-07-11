@@ -11,16 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_action_button_create"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:backgroundTint="@color/transparent"
-            android:src="@drawable/fb"
-            app:borderWidth="0dp"
-            app:fabSize="normal" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

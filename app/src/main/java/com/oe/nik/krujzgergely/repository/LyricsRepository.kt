@@ -10,6 +10,8 @@ class LyricsRepository(private val lyricsDao: LyricsDao)
 
     suspend fun deleteFromDb(lyricsModel: LyricsModel) { lyricsDao.deleteLyrics(lyricsModel) }
 
+    suspend fun updateInDb(lyricsModel: LyricsModel) { lyricsDao.updateLyrics(lyricsModel) }
+
     fun getAllLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsDao.getAll() }
 
     fun getFavouriteLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsDao.getAllFavourites() }
