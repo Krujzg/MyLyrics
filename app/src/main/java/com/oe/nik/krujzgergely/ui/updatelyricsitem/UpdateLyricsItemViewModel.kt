@@ -41,6 +41,9 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
     @Bindable
     var displayedyoutubelink = MutableLiveData<String>()
 
+    @Bindable
+    var toggleButtonFavorite = MutableLiveData<Boolean>()
+
 
     init
     {
@@ -58,6 +61,7 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
         onDisplaySongTitleContent()
         onDisplayLyricsContent()
         onDisplayYoutubeLinkContent()
+        onDisplayFavoriteContent()
     }
 
     private fun updateLyricsModelLocally()
@@ -67,6 +71,7 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
             title = displayedTitle.value!!
             lyrics_text = displayedLyrics_Text.value!!
             youtubeLink = displayedyoutubelink.value!!
+            favourite = toggleButtonFavorite.value!!
         }
     }
 
@@ -79,6 +84,7 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
     fun onDisplaySongTitleContent() {displayedTitle.value = lyricsModel.title }
     fun onDisplayLyricsContent() {displayedLyrics_Text.value = lyricsModel.lyrics_text }
     fun onDisplayYoutubeLinkContent() {displayedyoutubelink.value = lyricsModel.youtubeLink }
+    fun onDisplayFavoriteContent() {toggleButtonFavorite.value = lyricsModel.favourite }
 
     fun updateLyricsFromLocalDb()
     {
@@ -86,6 +92,11 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
         viewModelScope.launch { repository.updateInDb(lyricsModel) }
         sendNotification("You have updated a Lyrics!",
             "Your updated lyrics was: \n${displayedPerformer.value} - ${displayedTitle.value}")
+    }
+
+    fun onSelectedFormOfToggleFavoriteButton()
+    {
+
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.add(callback) }

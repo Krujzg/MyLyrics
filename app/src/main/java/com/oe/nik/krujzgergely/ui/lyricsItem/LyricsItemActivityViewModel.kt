@@ -71,16 +71,13 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
 
     fun deleteLyricsFromLocalDb()
     {
-
         val performer = displayedPerformer.value
         val title = displayedTitle.value
         //AlertDialogBeforeDeletion(title!!,performer!!)
-
         viewModelScope.launch { repository.deleteFromDb(lyricsModel) }
 
         sendNotification("You have deleted a Lyrics!",
             "Your lyrics was: \n${performer} - ${title}")
-
     }
 
     /*
@@ -95,8 +92,5 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
         val alertDialog = builder.create()
         alertDialog.show()
     }
-
      */
-
-
 }
