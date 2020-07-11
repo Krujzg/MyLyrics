@@ -1,6 +1,10 @@
 package com.oe.nik.krujzgergely.ui.lyricsItem
 
+import android.app.AlertDialog
 import android.app.Application
+import android.app.NotificationManager
+import android.content.DialogInterface
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import com.oe.nik.krujzgergely.data.LyricsDatabase
 import com.oe.nik.krujzgergely.models.LyricsModel
@@ -8,9 +12,14 @@ import com.oe.nik.krujzgergely.repository.LyricsRepository
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsesActivityAdapter
 import kotlinx.coroutines.launch
 import androidx.lifecycle.viewModelScope
+import com.oe.nik.krujzgergely.models.CrudType
+import com.oe.nik.krujzgergely.util.sendNotification
 
 class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(application)
 {
+    val notificationManager = ContextCompat.getSystemService(application,
+        NotificationManager::class.java) as NotificationManager
+
     private var repository: LyricsRepository
 
     private var lyricsModel : LyricsModel = LyricsesActivityAdapter.currentLyrics
@@ -49,10 +58,45 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
         onDisplayLyricsContent()
         onDisplayYoutubeLinkContent()
     }
+
+    private fun sendNotification(title :String,message : String)
+    {
+        notificationManager.sendNotification(title, message, CrudType.DELETE, getApplication())
+    }
+
     fun onDisplayPerformerContent() {_displayedPerformer.value = lyricsModel.performer }
     fun onDisplaySongTitleContent() {_displayedTitle.value = lyricsModel.title }
     fun onDisplayLyricsContent() {_displayedLyrics_Text.value = lyricsModel.lyrics_text }
     fun onDisplayYoutubeLinkContent() {_displayedyoutubelink.value = lyricsModel.youtubeLink }
 
-    fun deleteLyricsFromLocalDb() { viewModelScope.launch { repository.deleteFromDb(lyricsModel) } }
+    fun deleteLyricsFromLocalDb()
+    {
+
+        val performer = displayedPerformer.value
+        val title = displayedTitle.value
+        //AlertDialogBeforeDeletion(title!!,performer!!)
+
+        viewModelScope.launch { repository.deleteFromDb(lyricsModel) }
+
+        sendNotification("You have deleted a Lyrics!",
+            "Your lyrics was: \n${performer} - ${title}")
+
+    }
+
+    /*
+    fun AlertDialogBeforeDeletion(performer: String,title: String )
+    {
+        val builder = AlertDialog.Builder(getApplication()).apply {
+            setTitle("Delete Lyrics")
+            setMessage("Do you want to delete to following lyrics:\n$performer - $title")
+            setPositiveButton("Yes",null)
+            setNegativeButton("No",null)
+        }
+        val alertDialog = builder.create()
+        alertDialog.show()
+    }
+
+     */
+
+
 }

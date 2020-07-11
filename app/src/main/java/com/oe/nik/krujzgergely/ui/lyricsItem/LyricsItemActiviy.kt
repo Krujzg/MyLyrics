@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.databinding.ActivityLyricsItemBinding
+import com.oe.nik.krujzgergely.ui.lyrics.LyricsesActivity
 import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity
 
 class LyricsItemActiviy : AppCompatActivity()
@@ -42,6 +43,7 @@ class LyricsItemActiviy : AppCompatActivity()
             }
             R.id.DeleteLyrics -> {
                 lyricsItemViewModel.deleteLyricsFromLocalDb()
+                startActivity(Intent(this, LyricsesActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

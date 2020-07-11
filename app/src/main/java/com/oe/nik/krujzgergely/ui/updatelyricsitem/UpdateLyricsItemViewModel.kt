@@ -1,6 +1,8 @@
 package com.oe.nik.krujzgergely.ui.updatelyricsitem
 
 import android.app.Application
+import android.app.NotificationManager
+import androidx.core.content.ContextCompat
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
@@ -9,13 +11,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.oe.nik.krujzgergely.data.LyricsDatabase
+import com.oe.nik.krujzgergely.models.CrudType
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.repository.LyricsRepository
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsesActivityAdapter
+import com.oe.nik.krujzgergely.util.sendNotification
 import kotlinx.coroutines.launch
 
 class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(application), Observable
 {
+    val notificationManager = ContextCompat.getSystemService(application,
+        NotificationManager::class.java) as NotificationManager
+
     private var repository: LyricsRepository
 
     private var lyricsModel : LyricsModel = LyricsesActivityAdapter.currentLyrics
@@ -53,7 +60,7 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
         onDisplayYoutubeLinkContent()
     }
 
-    fun updateLyricsModelLocally()
+    private fun updateLyricsModelLocally()
     {
         lyricsModel.apply {
             performer = displayedPerformer.value!!
@@ -62,6 +69,12 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
             youtubeLink = displayedyoutubelink.value!!
         }
     }
+
+    private fun sendNotification(title :String,message : String)
+    {
+        notificationManager.sendNotification(title, message,CrudType.UPDATE,getApplication())
+    }
+
     fun onDisplayPerformerContent() {displayedPerformer.value = lyricsModel.performer }
     fun onDisplaySongTitleContent() {displayedTitle.value = lyricsModel.title }
     fun onDisplayLyricsContent() {displayedLyrics_Text.value = lyricsModel.lyrics_text }
@@ -71,6 +84,8 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
     {
         updateLyricsModelLocally()
         viewModelScope.launch { repository.updateInDb(lyricsModel) }
+        sendNotification("You have updated a Lyrics!",
+            "Your updated lyrics was: \n${displayedPerformer.value} - ${displayedTitle.value}")
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.add(callback) }

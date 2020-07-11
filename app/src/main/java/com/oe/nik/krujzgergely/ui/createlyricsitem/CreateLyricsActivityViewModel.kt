@@ -1,8 +1,10 @@
 package com.oe.nik.krujzgergely.ui.createlyricsitem
 
 import android.app.Application
+import android.app.NotificationManager
 import android.view.View
 import android.widget.AdapterView
+import androidx.core.content.ContextCompat
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
@@ -10,13 +12,17 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.oe.nik.krujzgergely.data.LyricsDatabase
+import com.oe.nik.krujzgergely.models.CrudType
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.repository.LyricsRepository
+import com.oe.nik.krujzgergely.util.sendNotification
 import kotlinx.coroutines.launch
 
 
 class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel(application), Observable
 {
+    val notificationManager = ContextCompat.getSystemService(application,
+        NotificationManager::class.java) as NotificationManager
     private var repository: LyricsRepository
 
     private val callbacks: PropertyChangeRegistry by lazy { PropertyChangeRegistry()}
@@ -60,6 +66,13 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
                 )
             )
         }
+        sendNotification("You have created a new Lyrics!",
+            "Your new lyrics is: \n${displayedPerformer.value} - ${displayedTitle.value}")
+    }
+
+    private fun sendNotification(title :String,message : String)
+    {
+        notificationManager.sendNotification(title, message,CrudType.INSERT, getApplication())
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.add(callback) }

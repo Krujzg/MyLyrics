@@ -1,5 +1,9 @@
 package com.oe.nik.krujzgergely.ui.createlyricsitem
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -20,5 +24,6 @@ class CreateLyricsActivity : AppCompatActivity()
             this.lifecycleOwner = this@CreateLyricsActivity
             this.createLyricsModel = createLyricsActivityViewModel
         }
+
     }
 }

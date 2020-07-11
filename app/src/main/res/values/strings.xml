@@ -15,6 +15,10 @@
     <string name="create_lyrics">Create lyrics</string>
     <string name="save_lyrics">Save</string>
     <string name="cancel_update">Cancel</string>
+    <string name="mylyrics_notification_channel_id">mylyrics_channel</string>
+    <string name="mylyrics_notification_channel_name">mylyrics</string>
+    <string name="notification_title">MyLyrics</string>
+    <string name="mylyrics_notification_channel_description">MyLyrics</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>
