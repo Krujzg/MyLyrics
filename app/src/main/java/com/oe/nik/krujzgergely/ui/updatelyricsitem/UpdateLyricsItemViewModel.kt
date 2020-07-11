@@ -44,7 +44,6 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
     @Bindable
     var toggleButtonFavorite = MutableLiveData<Boolean>()
 
-
     init
     {
         val lyricsDao= LyricsDatabase
@@ -53,8 +52,7 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
         this.repository = LyricsRepository(lyricsDao)
         onDisplayContents()
     }
-
-
+    
     private fun onDisplayContents()
     {
         onDisplayPerformerContent()
@@ -94,13 +92,7 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
             "Your updated lyrics was: \n${displayedPerformer.value} - ${displayedTitle.value}")
     }
 
-    fun onSelectedFormOfToggleFavoriteButton()
-    {
-
-    }
-
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.add(callback) }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.remove(callback) }
-
 }
