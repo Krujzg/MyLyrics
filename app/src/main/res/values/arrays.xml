@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="images">
+        <item>@drawable/jazz</item>
+        <item>@drawable/hiphop</item>
+        <item>@drawable/rock</item>
+        <item>@drawable/metal</item>
+        <item>@drawable/punk</item>
+        <item>@drawable/pop</item>
+        <item>@drawable/country</item>
+        <item>@drawable/opera</item>
+    </array>
+
+    <string-array name="SongTypes">
+        <item>JAZZ</item>
+        <item>HIPHOP</item>
+        <item>ROCK</item>
+        <item>METAL</item>
+        <item>PUNK</item>
+        <item>POP</item>
+        <item>COUNTRY</item>
+        <item>OPERA</item>
+    </string-array>
+</resources>

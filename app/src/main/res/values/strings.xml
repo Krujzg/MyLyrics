@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MyLyrics</string>
+    <string name="welcome_button_text">Start</string>
+
+    <string name="selected_item">Selected item:</string>
+    <string name="NewPerformer">Add new Performer</string>
+    <string name="NewTitleHint">Add new Title</string>
+    <string name="YoutubeLinkHint">Add new Youtubelink</string>
+    <string name="NewLyricsTextHint">Add new lyrics</string>
+    <string name="CreateButtonText">Create new lyrics</string>
+    <string name="AllLyricsText">All Lyricses</string>
+    <string name="FavoriteLyricsText">Favorite Lyricses</string>
+    <string-array name="songTypes">
+        <item>JAZZ</item>
+        <item>HIPHOP</item>
+        <item>ROCK</item>
+        <item>METAL</item>
+        <item>PUNK</item>
+        <item>POP</item>
+        <item>COUNTRY</item>
+        <item>OPERA</item>
+    </string-array>
+</resources>

@@ -1,0 +1,68 @@
+package com.oe.nik.krujzgergely.ui.createlyricsitem
+
+import android.app.Application
+import android.view.View
+import android.widget.AdapterView
+import androidx.databinding.Bindable
+import androidx.databinding.Observable
+import androidx.databinding.PropertyChangeRegistry
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.oe.nik.krujzgergely.data.LyricsDatabase
+import com.oe.nik.krujzgergely.models.LyricsModel
+import com.oe.nik.krujzgergely.repository.LyricsRepository
+import kotlinx.coroutines.launch
+
+
+class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel(application), Observable
+{
+    private var repository: LyricsRepository
+
+    private val callbacks: PropertyChangeRegistry by lazy { PropertyChangeRegistry()}
+
+    @Bindable
+    var displayedPerformer = MutableLiveData<String>()
+
+    @Bindable
+    var displayedTitle = MutableLiveData<String>()
+
+    @Bindable
+    var displayedLyrics_Text = MutableLiveData<String>()
+
+    @Bindable
+    var displayedyoutubelink = MutableLiveData<String>()
+
+    var songtype  : String = "JAZZ"
+
+    init
+    {
+        val lyricsDao= LyricsDatabase
+            .getDatabase(application,viewModelScope,application.resources)
+            .lyricsDao()
+        this.repository = LyricsRepository(lyricsDao)
+    }
+
+    fun onSelectItem(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) { songtype = parent!!.selectedItem.toString() }
+
+    fun saveNewLyricsIntoLocalDb()
+    {
+        viewModelScope.launch {
+            repository.saveNewLyricsIntoDb(
+                LyricsModel(
+                    performer = displayedPerformer.value!!,
+                    title = displayedTitle.value!!,
+                    song_type = songtype,
+                    times_watched = 0,
+                    favourite = true,
+                    lyrics_text = displayedLyrics_Text.value!!,
+                    youtubeLink = displayedyoutubelink.value!!
+                )
+            )
+        }
+    }
+
+    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.add(callback) }
+
+    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.remove(callback) }
+}
