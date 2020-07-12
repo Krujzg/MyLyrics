@@ -20,6 +20,10 @@
     <string name="notification_title">MyLyrics</string>
     <string name="mylyrics_notification_channel_description">MyLyrics</string>
     <string name="searchoption">Search</string>
+    <string name="MenuLabel">Menu</string>
+    <string name="LyricsLabel">Lyrics</string>
+    <string name="CreateLabel">Create</string>
+    <string name="UpdateLabel">Update</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>

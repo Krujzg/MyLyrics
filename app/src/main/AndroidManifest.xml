@@ -14,18 +14,14 @@
         android:theme="@style/generalnotitle">
         <activity android:name="com.oe.nik.krujzgergely.ui.main.MainActivity"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity"/>
-        <activity android:name="com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActiviy" />
-        <activity android:name="com.oe.nik.krujzgergely.ui.createlyricsitem.CreateLyricsActivity" />
-        <activity android:name="com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity" />
+        <activity android:name="com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity" android:label="@string/MenuLabel"/>
+        <activity android:name="com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActiviy" android:label="@string/LyricsLabel" />
+        <activity android:name="com.oe.nik.krujzgergely.ui.createlyricsitem.CreateLyricsActivity" android:label="@string/CreateLabel"/>
+        <activity android:name="com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity" android:label="@string/UpdateLabel"/>
     </application>
-
 </manifest>

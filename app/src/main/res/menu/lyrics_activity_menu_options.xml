@@ -4,8 +4,9 @@
     <item
         android:id="@+id/SearchField"
         android:title="@string/searchoption"
-        android:icon="ic_ac"
-        app:showAsAction="never" />
+        android:icon="@drawable/baseline_search_white__18dp"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.widget.SearchView"/>
 
     <item
         android:id="@+id/CreateNewLyrics"

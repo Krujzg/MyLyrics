@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -23,8 +24,6 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
     private lateinit var favoritelyricsActivityAdapter : LyricsActivityAdapter
 
     private lateinit var linearLayoutManager: LinearLayoutManager
-
-    private lateinit var floatingActionButton: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +49,30 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
         {
             R.id.CreateNewLyrics -> {
                 startActivity(Intent(this,CreateLyricsActivity::class.java))
+                true
+            }
+            R.id.SearchField ->
+            {
+                val searchView = item.actionView as SearchView
+
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener
+                {
+                    override fun onQueryTextSubmit(query: String?): Boolean { return true }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+
+                        if(newText!!.isNotEmpty())
+                        {
+                            allLyricsActivityAdapter.getSearchedDataFromTheList(newText)
+                        }
+                        else
+                        {
+                            allLyricsActivityAdapter.noItemFoundInLyricsListWhenSearched()
+                        }
+                        return true
+                    }
+                })
+
                 true
             }
             else -> super.onOptionsItemSelected(item)

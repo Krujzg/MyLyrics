@@ -10,10 +10,13 @@ import com.bumptech.glide.Glide
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.databinding.RecyclerItemLyricsModelBinding
 import com.oe.nik.krujzgergely.models.LyricsModel
+import java.util.*
 
 class LyricsActivityAdapter(private var context: Context, private var LyricsList : MutableList<LyricsModel>)
     : RecyclerView.Adapter<LyricsActivityAdapter.ViewHolder>()
 {
+    private var backUpListForTheSearchField = mutableListOf<LyricsModel>()
+
     private val layoutinflater : LayoutInflater = LayoutInflater.from(context)
 
     private lateinit var listener: IonLyricsSelected
@@ -43,7 +46,38 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
     fun swapData(lyricsList: List<LyricsModel>)
     {
         this.LyricsList.clear()
+        this.backUpListForTheSearchField.clear()
         this.LyricsList.addAll(lyricsList)
+        this.backUpListForTheSearchField.addAll(lyricsList)
+        notifyDataSetChanged()
+    }
+
+    fun getSearchedDataFromTheList(searchedData : String)
+    {
+        LyricsList.clear()
+        backUpListForTheSearchField.forEach {LyricsModel ->
+            val lowerCaseLyricsTitle = lowerCaseStringData(LyricsModel.title)
+            val lowerCaseLyricsPerformer = lowerCaseStringData(LyricsModel.performer)
+            val lowerCaseSearchData = lowerCaseStringData(searchedData)
+            if (checkIfPerformerOrTitleContainsSearchedText(lowerCaseLyricsPerformer,lowerCaseLyricsTitle,lowerCaseSearchData))
+            {
+                LyricsList.add(LyricsModel)
+                notifyDataSetChanged()
+            }
+        }
+    }
+
+    private fun lowerCaseStringData(data : String) : String { return data.toLowerCase(Locale.getDefault()) }
+
+    private fun checkIfPerformerOrTitleContainsSearchedText(performer : String, title : String, searchedData: String) : Boolean
+    {
+        return (performer.contains(searchedData) || title.contains(searchedData))
+    }
+
+    fun noItemFoundInLyricsListWhenSearched()
+    {
+        LyricsList.clear()
+        LyricsList.addAll(backUpListForTheSearchField)
         notifyDataSetChanged()
     }
 
