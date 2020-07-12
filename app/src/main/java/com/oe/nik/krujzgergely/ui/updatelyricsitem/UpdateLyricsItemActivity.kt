@@ -36,15 +36,21 @@ class UpdateLyricsItemActivity : AppCompatActivity()
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId)
         {
-            R.id.Save -> {
-                updateLyricsItemViewModel.updateLyricsFromLocalDb()
-                startActivity(Intent(this, LyricsActivity::class.java))
-                true
-            }
-            R.id.Cancel -> {
-                startActivity(Intent(this, LyricsActivity::class.java))
-                true
-            }
+            R.id.Save -> updateLyricsInLocalDB()
+            R.id.Cancel -> startLyricsActivity()
             else -> super.onOptionsItemSelected(item)
         }
+
+    private fun updateLyricsInLocalDB() : Boolean
+    {
+        updateLyricsItemViewModel.updateLyricsFromLocalDb()
+        return startLyricsActivity()
+    }
+
+    //This returns a Boolean because the when expression looks nicer that way
+    private fun startLyricsActivity() : Boolean
+    {
+        startActivity(Intent(this, LyricsActivity::class.java))
+        return true
+    }
 }
