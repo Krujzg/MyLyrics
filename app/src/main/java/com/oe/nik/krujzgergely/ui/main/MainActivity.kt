@@ -21,42 +21,36 @@ class MainActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_main)
 
-        val button = findViewById<Button>(R.id.btn_Start)
+        val startButton = findViewById<Button>(R.id.btn_Start)
+        listenerForStartButtonClickToStartLyricsActivity(startButton)
 
-        button.setOnClickListener{startActivity( Intent(this, LyricsActivity::class.java)) }
+        startButton.setOnClickListener{startActivity( Intent(this, LyricsActivity::class.java)) }
+
         createNotificationChannel(getString(R.string.mylyrics_notification_channel_id),getString(R.string.mylyrics_notification_channel_name))
     }
 
+    private fun listenerForStartButtonClickToStartLyricsActivity(startButton : Button)
+    {
+        startButton.setOnClickListener{startActivity( Intent(this, LyricsActivity::class.java)) }
+    }
 
     private fun createNotificationChannel(channelId: String, channelName: String)
     {
-        // TODO: Step 1.6 START create a channel
-        // A notificationök API 26 tól működnek, így lekell ellenőrizni, hogy adott készülék verziója eléri-e ezt!
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)//SDK_INT -> adott készülék API LEVEL // O = API 26
+        if (checkIfCurrentVersionOfAPIIsGreaterThenOrEqualsWithAPI26())
         {
-            // TODO: Step 2.4 change importance
-            // Bekell állítani a channel nek az ID-ját , Nevét és hogy milyen fontossági szinten legyen.
-            // A Channelname lesz az amit a felhasználó látni fog
-            // A NotificationManager.Importance_High fogja beállítani a priority- jét a notification nek
-            val notificationChannel = NotificationChannel(channelId,channelName,
-                NotificationManager.IMPORTANCE_HIGH)
-                // TODO: Step 2.6 disable badges for this channel
-                .apply {setShowBadge(true)} // Ez arra kell, hogy az asztalon levő ikonnon ne látszódjon az értesítés pont, hogy ha értesítést kaptunk
+            val notificationChannel = NotificationChannel(channelId,channelName, NotificationManager.IMPORTANCE_HIGH)
+            notificationChannel.apply {
+                setShowBadge(true)
+                enableLights(true)
+                lightColor = Color.RED
+                enableVibration(true)
+                enableVibration(true)
+                description = getString(R.string.mylyrics_notification_channel_description) }
 
-            // Ez fogja a kis ledet villogtatni, hogy ha van notification ünk
-            notificationChannel.enableLights(true)
-            // Pirosan fog villogni a LED
-            notificationChannel.lightColor = Color.RED
-            // Rezegni fog értesítés esetén
-            notificationChannel.enableVibration(true)
-            // Ez lesz a leírása a notification-nek
-            notificationChannel.description = getString(R.string.mylyrics_notification_channel_description)
-
-            // Kell egy instance a notification managerről
             val notificationManager = getSystemService(NotificationManager::class.java)
-            // A notification channel létrehozását a notification manager fogja megoldani
             notificationManager.createNotificationChannel(notificationChannel)
         }
-        // TODO: Step 1.6 END create a channel
     }
+
+    private fun checkIfCurrentVersionOfAPIIsGreaterThenOrEqualsWithAPI26() : Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
 }
