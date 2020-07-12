@@ -29,10 +29,8 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lyricses)
 
-        allLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
-        favoritelyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
-
-        lyricsViewModel = ViewModelProvider(this).get(LyricsActivityViewModel::class.java)
+        setAdapters()
+        setLyricsActivityViewModel()
 
         loadLyricsMultiSnapRecyclerView("All")
         loadLyricsMultiSnapRecyclerView("Favorite")
@@ -47,34 +45,8 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId)
         {
-            R.id.CreateNewLyrics -> {
-                startActivity(Intent(this,CreateLyricsActivity::class.java))
-                true
-            }
-            R.id.SearchField ->
-            {
-                val searchView = item.actionView as SearchView
-
-                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener
-                {
-                    override fun onQueryTextSubmit(query: String?): Boolean { return true }
-
-                    override fun onQueryTextChange(newText: String?): Boolean {
-
-                        if(newText!!.isNotEmpty())
-                        {
-                            allLyricsActivityAdapter.getSearchedDataFromTheList(newText)
-                        }
-                        else
-                        {
-                            allLyricsActivityAdapter.noItemFoundInLyricsListWhenSearched()
-                        }
-                        return true
-                    }
-                })
-
-                true
-            }
+            R.id.CreateNewLyrics -> startCreateLyricsActivity()
+            R.id.SearchField -> searchBetweenAllLyrics(item)
             else -> super.onOptionsItemSelected(item)
         }
 
@@ -101,8 +73,7 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
     {
         currentRecyclerView.apply {
             layoutManager = linearLayoutManager
-            adapter = lyricsActivityAdapter
-        }
+            adapter = lyricsActivityAdapter }
 
         getDataFromTheViewModel(typeOfTheRecycler)
     }
@@ -111,18 +82,63 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
     {
         when(typeOfTheRecycler)
         {
-            "All" ->
+            "All" -> getAllLyricsFromDb()
+            "Favorite" -> getFavoriteLyricsFromDb()
+        }
+    }
+
+    private fun setAdapters()
+    {
+        allLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        favoritelyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+    }
+
+    private fun searchBetweenAllLyrics(item: MenuItem) : Boolean
+    {
+        val searchView = item.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener
+        {
+            override fun onQueryTextSubmit(query: String?): Boolean { return true }
+
+            override fun onQueryTextChange(searchText: String?): Boolean
             {
-                lyricsViewModel.getAllLyricsFromLocalDB().observe(this, Observer {allLyricsList ->
-                    allLyricsActivityAdapter.swapData(allLyricsList)
-                })
+                searchIfTheSearchFieldIsNotEmpty(searchText!!)
+                return true
             }
-            "Favorite" ->
-            {
-               lyricsViewModel.getFavoriteLyricsFromLocalDB().observe(this, Observer {favoritelyricsList ->
-                   favoritelyricsActivityAdapter.swapData(favoritelyricsList)
-                })
-            }
+        })
+        return true
+    }
+
+    private fun startCreateLyricsActivity() : Boolean
+    {
+        startActivity(Intent(this,CreateLyricsActivity::class.java))
+        return true
+    }
+
+    private fun setLyricsActivityViewModel()
+    {
+        lyricsViewModel = ViewModelProvider(this).get(LyricsActivityViewModel::class.java)
+    }
+
+    private fun getAllLyricsFromDb()
+    {
+        lyricsViewModel.getAllLyricsFromLocalDB().observe(this, Observer {allLyricsList ->
+            allLyricsActivityAdapter.swapData(allLyricsList) })
+    }
+
+    private fun getFavoriteLyricsFromDb()
+    {
+        lyricsViewModel.getFavoriteLyricsFromLocalDB().observe(this, Observer {favoritelyricsList ->
+            favoritelyricsActivityAdapter.swapData(favoritelyricsList) })
+    }
+
+    private fun searchIfTheSearchFieldIsNotEmpty(searchText : String)
+    {
+        when(searchText.isNotEmpty())
+        {
+            true -> allLyricsActivityAdapter.getSearchedDataFromTheList(searchText)
+            false -> allLyricsActivityAdapter.noItemFoundInLyricsListWhenSearched()
         }
     }
 
