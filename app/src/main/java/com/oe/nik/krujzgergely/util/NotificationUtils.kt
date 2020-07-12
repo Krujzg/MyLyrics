@@ -14,6 +14,7 @@ private const val NOTIFICATION_ID = 0
 
 
 fun NotificationManager.sendNotification(title: String, messageBody: String, crudType: CrudType, applicationContext: Context) {
+
     val contentIntent = selectNavigationDirection(crudType,applicationContext)
     val contentPendingIntent = PendingIntent.getActivity(applicationContext, NOTIFICATION_ID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT)
     val myLyricsLogo = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.myliricslogo)
@@ -31,6 +32,7 @@ fun NotificationManager.sendNotification(title: String, messageBody: String, cru
         .setStyle(bigPicStyle)
         .setLargeIcon(myLyricsLogo)
         .setPriority(NotificationCompat.PRIORITY_HIGH)
+
     notify(NOTIFICATION_ID, builder.build())
 }
 
