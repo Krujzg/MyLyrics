@@ -7,13 +7,13 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.core.app.NotificationCompat
 import com.oe.nik.krujzgergely.R
-import com.oe.nik.krujzgergely.models.CrudType
+import com.oe.nik.krujzgergely.models.enums.CrudType
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 
 private const val NOTIFICATION_ID = 0
 
 
-fun NotificationManager.sendNotification(title: String, messageBody: String,crudType: CrudType, applicationContext: Context) {
+fun NotificationManager.sendNotification(title: String, messageBody: String, crudType: CrudType, applicationContext: Context) {
     val contentIntent = selectNavigationDirection(crudType,applicationContext)
     val contentPendingIntent = PendingIntent.getActivity(applicationContext, NOTIFICATION_ID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT)
     val myLyricsLogo = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.myliricslogo)
@@ -35,7 +35,7 @@ fun NotificationManager.sendNotification(title: String, messageBody: String,crud
 }
 
 //In case of refactor
-private fun selectNavigationDirection(crudType: CrudType,applicationContext: Context) : Intent
+private fun selectNavigationDirection(crudType: CrudType, applicationContext: Context) : Intent
 {
     return when(crudType)
     {

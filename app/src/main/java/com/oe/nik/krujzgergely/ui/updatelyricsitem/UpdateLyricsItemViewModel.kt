@@ -10,7 +10,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.oe.nik.krujzgergely.data.LyricsDatabase
-import com.oe.nik.krujzgergely.models.CrudType
+import com.oe.nik.krujzgergely.models.enums.CrudType
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.repository.LyricsRepository
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivityAdapter
@@ -74,7 +74,8 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
 
     private fun sendNotification(title :String,message : String)
     {
-        notificationManager.sendNotification(title, message,CrudType.UPDATE,getApplication())
+        notificationManager.sendNotification(title, message,
+            CrudType.UPDATE,getApplication())
     }
 
     private fun onDisplayPerformerContent() {displayedPerformer.value = lyricsModel.performer }

@@ -17,33 +17,6 @@ abstract class LyricsDatabase : RoomDatabase()
 {
     abstract fun lyricsDao(): LyricsDao
 
-    private class LyricsDatabaseCallback(private val scope: CoroutineScope, private val resources: Resources) : RoomDatabase.Callback()
-    {
-        override fun onCreate(db: SupportSQLiteDatabase)
-        {
-            super.onCreate(db)
-
-            INSTANCE?.let {database ->
-                scope.launch {
-                    val lyricsDao = database.lyricsDao()
-                    setPrePopulationDataIntoLocalDB(lyricsDao)
-                }
-            }
-        }
-
-        private suspend fun setPrePopulationDataIntoLocalDB(lyricsDao: LyricsDao)
-        {
-            val lyricsList = getPrePopulationDataFromJson()
-            lyricsDao.insertAllLyrics(lyricsList)
-        }
-        private fun getPrePopulationDataFromJson() : List<LyricsModel>
-        {
-            val jsonString = resources.openRawResource(R.raw.lyrics).bufferedReader().use { it.readText() }
-            val typeToken = object : TypeToken<List<LyricsModel>>() {}.type
-            return Gson().fromJson(jsonString, typeToken)
-        }
-    }
-
     companion object
     {
         @Volatile
@@ -52,10 +25,7 @@ abstract class LyricsDatabase : RoomDatabase()
         fun getDatabase(context: Context, coroutineScope: CoroutineScope, resources: Resources): LyricsDatabase
         {
             val tempInstance = INSTANCE
-            if(tempInstance != null)
-            {
-                return tempInstance
-            }
+            if(tempInstance != null) { return tempInstance }
 
             synchronized(this)
             {

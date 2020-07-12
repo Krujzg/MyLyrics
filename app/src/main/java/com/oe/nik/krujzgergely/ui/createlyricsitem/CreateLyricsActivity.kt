@@ -24,6 +24,5 @@ class CreateLyricsActivity : AppCompatActivity()
             this.lifecycleOwner = this@CreateLyricsActivity
             this.createLyricsModel = createLyricsActivityViewModel
         }
-
     }
 }

@@ -10,7 +10,7 @@ import com.oe.nik.krujzgergely.repository.LyricsRepository
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivityAdapter
 import kotlinx.coroutines.launch
 import androidx.lifecycle.viewModelScope
-import com.oe.nik.krujzgergely.models.CrudType
+import com.oe.nik.krujzgergely.models.enums.CrudType
 import com.oe.nik.krujzgergely.util.sendNotification
 
 class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(application)

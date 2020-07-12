@@ -11,9 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.oe.nik.krujzgergely.R
+import com.oe.nik.krujzgergely.models.enums.TypeOfTheRecycler
 import com.oe.nik.krujzgergely.ui.createlyricsitem.CreateLyricsActivity
 import com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActiviy
 import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+import java.lang.reflect.Type
 
 
 class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
@@ -32,8 +34,8 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
         setAdapters()
         setLyricsActivityViewModel()
 
-        loadLyricsMultiSnapRecyclerView("All")
-        loadLyricsMultiSnapRecyclerView("Favorite")
+        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.ALL)
+        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.FAVORITE)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -50,17 +52,17 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
             else -> super.onOptionsItemSelected(item)
         }
 
-    private fun loadLyricsMultiSnapRecyclerView(typeOfTheRecycler: String)
+    private fun loadLyricsMultiSnapRecyclerView(typeOfTheRecycler: TypeOfTheRecycler)
     {
         linearLayoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
         when(typeOfTheRecycler)
         {
-            "All" ->
+            TypeOfTheRecycler.ALL ->
             {
                 val allLyricsRecyclerView = findViewById<MultiSnapRecyclerView>(R.id.all_recycler_view)
                 setRecyclerViewComponents(allLyricsRecyclerView,typeOfTheRecycler,allLyricsActivityAdapter)
             }
-            "Favorite" ->
+            TypeOfTheRecycler.FAVORITE ->
             {
                 val favouriteLyricsRecyclerView = findViewById<MultiSnapRecyclerView>(R.id.favourite_recycler_view)
                 setRecyclerViewComponents(favouriteLyricsRecyclerView,typeOfTheRecycler,favoritelyricsActivityAdapter)
@@ -68,8 +70,9 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
         }
     }
 
-    private fun setRecyclerViewComponents(currentRecyclerView: MultiSnapRecyclerView,typeOfTheRecycler: String,
-                                  lyricsActivityAdapter : LyricsActivityAdapter)
+    private fun setRecyclerViewComponents(currentRecyclerView: MultiSnapRecyclerView,
+                                          typeOfTheRecycler: TypeOfTheRecycler,
+                                          lyricsActivityAdapter : LyricsActivityAdapter)
     {
         currentRecyclerView.apply {
             layoutManager = linearLayoutManager
@@ -78,12 +81,12 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
         getDataFromTheViewModel(typeOfTheRecycler)
     }
 
-    private fun getDataFromTheViewModel(typeOfTheRecycler : String)
+    private fun getDataFromTheViewModel(typeOfTheRecycler : TypeOfTheRecycler)
     {
         when(typeOfTheRecycler)
         {
-            "All" -> getAllLyricsFromDb()
-            "Favorite" -> getFavoriteLyricsFromDb()
+            TypeOfTheRecycler.ALL -> getAllLyricsFromDb()
+            TypeOfTheRecycler.FAVORITE -> getFavoriteLyricsFromDb()
         }
     }
 

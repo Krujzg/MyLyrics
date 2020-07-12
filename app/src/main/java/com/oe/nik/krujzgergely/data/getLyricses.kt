@@ -1,7 +1,7 @@
 package com.oe.nik.krujzgergely.data
 
 import com.oe.nik.krujzgergely.models.LyricsModel
-import com.oe.nik.krujzgergely.models.SongTypes
+import com.oe.nik.krujzgergely.models.enums.SongTypes
 
 /*
 JAZZ -> 0, HIPHOP -> 1, ROCK -> 2, METAL -> 3, PUNK -> 4, POP -> 5, COUNTRY -> 6, CLASSICAL -> 7

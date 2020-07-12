@@ -12,7 +12,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.oe.nik.krujzgergely.data.LyricsDatabase
-import com.oe.nik.krujzgergely.models.CrudType
+import com.oe.nik.krujzgergely.models.enums.CrudType
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.repository.LyricsRepository
 import com.oe.nik.krujzgergely.util.sendNotification
@@ -72,7 +72,8 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
 
     private fun sendNotification(title :String,message : String)
     {
-        notificationManager.sendNotification(title, message,CrudType.INSERT, getApplication())
+        notificationManager.sendNotification(title, message,
+            CrudType.INSERT, getApplication())
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.add(callback) }
