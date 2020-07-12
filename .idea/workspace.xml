@@ -10,7 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12065b66-1df3-4759-9840-132cbbcf47f8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyrics/LyricsActivityAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyrics/LyricsActivityAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyricsItem/LyricsItemActiviy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyricsItem/LyricsItemActiviy.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
