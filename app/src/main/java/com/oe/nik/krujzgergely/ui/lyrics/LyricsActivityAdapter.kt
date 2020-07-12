@@ -15,23 +15,17 @@ import java.util.*
 class LyricsActivityAdapter(private var context: Context, private var LyricsList : MutableList<LyricsModel>)
     : RecyclerView.Adapter<LyricsActivityAdapter.ViewHolder>()
 {
+    companion object { lateinit var currentLyrics : LyricsModel }
+
     private var backUpListForTheSearchField = mutableListOf<LyricsModel>()
 
     private val layoutinflater : LayoutInflater = LayoutInflater.from(context)
 
     private lateinit var listener: IonLyricsSelected
 
-    companion object
-    {
-        lateinit var currentLyrics : LyricsModel
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): ViewHolder
     {
-        when(context)
-        {
-            is IonLyricsSelected -> listener = context as IonLyricsSelected
-        }
+        when(context) {is IonLyricsSelected -> listener = context as IonLyricsSelected }
 
         val recyclerItemLyricsModelBinding =
             RecyclerItemLyricsModelBinding.inflate(layoutinflater, parent, false)
@@ -45,11 +39,21 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
 
     fun swapData(lyricsList: List<LyricsModel>)
     {
+        clearDataFromTheLists()
+        addDataToTheLists(lyricsList)
+        notifyDataSetChanged()
+    }
+
+    private fun clearDataFromTheLists()
+    {
         this.LyricsList.clear()
         this.backUpListForTheSearchField.clear()
+    }
+
+    private fun addDataToTheLists(lyricsList: List<LyricsModel>)
+    {
         this.LyricsList.addAll(lyricsList)
         this.backUpListForTheSearchField.addAll(lyricsList)
-        notifyDataSetChanged()
     }
 
     fun getSearchedDataFromTheList(searchedData : String)
