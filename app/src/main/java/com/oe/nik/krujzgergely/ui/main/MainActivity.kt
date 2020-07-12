@@ -11,7 +11,7 @@ import android.view.WindowManager
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.oe.nik.krujzgergely.R
-import com.oe.nik.krujzgergely.ui.lyrics.LyricsesActivity
+import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.btn_Start)
 
-        button.setOnClickListener{startActivity( Intent(this, LyricsesActivity::class.java)) }
+        button.setOnClickListener{startActivity( Intent(this, LyricsActivity::class.java)) }
         createNotificationChannel(getString(R.string.mylyrics_notification_channel_id),getString(R.string.mylyrics_notification_channel_name))
     }
 

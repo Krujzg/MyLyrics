@@ -11,8 +11,8 @@ import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.databinding.RecyclerItemLyricsModelBinding
 import com.oe.nik.krujzgergely.models.LyricsModel
 
-class LyricsesActivityAdapter(private var context: Context, private var LyricsList : MutableList<LyricsModel>)
-    : RecyclerView.Adapter<LyricsesActivityAdapter.ViewHolder>()
+class LyricsActivityAdapter(private var context: Context, private var LyricsList : MutableList<LyricsModel>)
+    : RecyclerView.Adapter<LyricsActivityAdapter.ViewHolder>()
 {
     private val layoutinflater : LayoutInflater = LayoutInflater.from(context)
 

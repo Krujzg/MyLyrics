@@ -8,9 +8,9 @@ import android.graphics.BitmapFactory
 import androidx.core.app.NotificationCompat
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.models.CrudType
-import com.oe.nik.krujzgergely.ui.lyrics.LyricsesActivity
+import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 
-private val NOTIFICATION_ID = 0
+private const val NOTIFICATION_ID = 0
 
 
 fun NotificationManager.sendNotification(title: String, messageBody: String,crudType: CrudType, applicationContext: Context) {
@@ -34,14 +34,15 @@ fun NotificationManager.sendNotification(title: String, messageBody: String,crud
     notify(NOTIFICATION_ID, builder.build())
 }
 
+//In case of refactor
 private fun selectNavigationDirection(crudType: CrudType,applicationContext: Context) : Intent
 {
     return when(crudType)
     {
-        CrudType.SELECT -> Intent(applicationContext, LyricsesActivity::class.java)
-        CrudType.UPDATE -> Intent(applicationContext, LyricsesActivity::class.java)
-        CrudType.DELETE -> Intent(applicationContext, LyricsesActivity::class.java)
-        CrudType.INSERT -> Intent(applicationContext, LyricsesActivity::class.java)
+        CrudType.SELECT -> Intent(applicationContext, LyricsActivity::class.java)
+        CrudType.UPDATE -> Intent(applicationContext, LyricsActivity::class.java)
+        CrudType.DELETE -> Intent(applicationContext, LyricsActivity::class.java)
+        CrudType.INSERT -> Intent(applicationContext, LyricsActivity::class.java)
     }
 }
 

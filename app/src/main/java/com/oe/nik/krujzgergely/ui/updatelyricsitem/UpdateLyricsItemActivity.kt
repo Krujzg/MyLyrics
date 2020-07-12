@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.databinding.ActivityUpdateLyricsitemBindingImpl
-import com.oe.nik.krujzgergely.ui.lyrics.LyricsesActivity
+import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 
 class UpdateLyricsItemActivity : AppCompatActivity()
 {
@@ -38,11 +38,11 @@ class UpdateLyricsItemActivity : AppCompatActivity()
         {
             R.id.Save -> {
                 updateLyricsItemViewModel.updateLyricsFromLocalDb()
-                startActivity(Intent(this, LyricsesActivity::class.java))
+                startActivity(Intent(this, LyricsActivity::class.java))
                 true
             }
             R.id.Cancel -> {
-                startActivity(Intent(this, LyricsesActivity::class.java))
+                startActivity(Intent(this, LyricsActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

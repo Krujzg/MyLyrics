@@ -5,4 +5,6 @@
     <dimen name="ActivityLyricsLyricsTextSize">20sp</dimen>
     <dimen name="RecyclerItemTextSize">15sp</dimen>
     <dimen name="youtubeLinkTextSize">15sp</dimen>
+    <dimen name="displayedTitleTextSize">25sp</dimen>
+    <dimen name="lyricsTextSize">18sp</dimen>
 </resources>

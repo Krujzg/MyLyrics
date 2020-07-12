@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/SearchField"
+        android:title="@string/searchoption"
+        android:icon="ic_ac"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/CreateNewLyrics"
         android:title="@string/create_lyrics"
         app:showAsAction="never" />

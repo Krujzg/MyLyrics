@@ -1,15 +1,13 @@
 package com.oe.nik.krujzgergely.ui.lyricsItem
 
-import android.app.AlertDialog
 import android.app.Application
 import android.app.NotificationManager
-import android.content.DialogInterface
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import com.oe.nik.krujzgergely.data.LyricsDatabase
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.repository.LyricsRepository
-import com.oe.nik.krujzgergely.ui.lyrics.LyricsesActivityAdapter
+import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivityAdapter
 import kotlinx.coroutines.launch
 import androidx.lifecycle.viewModelScope
 import com.oe.nik.krujzgergely.models.CrudType
@@ -22,7 +20,7 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
 
     private var repository: LyricsRepository
 
-    private var lyricsModel : LyricsModel = LyricsesActivityAdapter.currentLyrics
+    private var lyricsModel : LyricsModel = LyricsActivityAdapter.currentLyrics
 
     private var _displayedPerformer : MutableLiveData<String> = MutableLiveData<String>()
     private var _displayedTitle :MutableLiveData<String> = MutableLiveData<String>()

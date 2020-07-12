@@ -7,25 +7,24 @@ import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.oe.nik.krujzgergely.data.LyricsDatabase
 import com.oe.nik.krujzgergely.models.CrudType
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.repository.LyricsRepository
-import com.oe.nik.krujzgergely.ui.lyrics.LyricsesActivityAdapter
+import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivityAdapter
 import com.oe.nik.krujzgergely.util.sendNotification
 import kotlinx.coroutines.launch
 
 class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(application), Observable
 {
-    val notificationManager = ContextCompat.getSystemService(application,
+    private val notificationManager = ContextCompat.getSystemService(application,
         NotificationManager::class.java) as NotificationManager
 
     private var repository: LyricsRepository
 
-    private var lyricsModel : LyricsModel = LyricsesActivityAdapter.currentLyrics
+    private var lyricsModel : LyricsModel = LyricsActivityAdapter.currentLyrics
 
     private val callbacks: PropertyChangeRegistry by lazy { PropertyChangeRegistry() }
 
@@ -36,7 +35,7 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
     var displayedTitle = MutableLiveData<String>()
 
     @Bindable
-    var displayedLyrics_Text = MutableLiveData<String>()
+    var displayedLyricsText = MutableLiveData<String>()
 
     @Bindable
     var displayedyoutubelink = MutableLiveData<String>()
@@ -67,7 +66,7 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
         lyricsModel.apply {
             performer = displayedPerformer.value!!
             title = displayedTitle.value!!
-            lyrics_text = displayedLyrics_Text.value!!
+            lyrics_text = displayedLyricsText.value!!
             youtubeLink = displayedyoutubelink.value!!
             favourite = toggleButtonFavorite.value!!
         }
@@ -78,11 +77,11 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
         notificationManager.sendNotification(title, message,CrudType.UPDATE,getApplication())
     }
 
-    fun onDisplayPerformerContent() {displayedPerformer.value = lyricsModel.performer }
-    fun onDisplaySongTitleContent() {displayedTitle.value = lyricsModel.title }
-    fun onDisplayLyricsContent() {displayedLyrics_Text.value = lyricsModel.lyrics_text }
-    fun onDisplayYoutubeLinkContent() {displayedyoutubelink.value = lyricsModel.youtubeLink }
-    fun onDisplayFavoriteContent() {toggleButtonFavorite.value = lyricsModel.favourite }
+    private fun onDisplayPerformerContent() {displayedPerformer.value = lyricsModel.performer }
+    private fun onDisplaySongTitleContent() {displayedTitle.value = lyricsModel.title }
+    private fun onDisplayLyricsContent() {displayedLyricsText.value = lyricsModel.lyrics_text }
+    private fun onDisplayYoutubeLinkContent() {displayedyoutubelink.value = lyricsModel.youtubeLink }
+    private fun onDisplayFavoriteContent() {toggleButtonFavorite.value = lyricsModel.favourite }
 
     fun updateLyricsFromLocalDb()
     {

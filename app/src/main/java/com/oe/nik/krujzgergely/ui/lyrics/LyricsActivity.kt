@@ -15,12 +15,12 @@ import com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActiviy
 import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
 
 
-class LyricsesActivity : AppCompatActivity(), IonLyricsSelected {
+class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
 
     private lateinit var lyricsViewModel : LyricsActivityViewModel
 
-    private lateinit var allLyricsActivityAdapter : LyricsesActivityAdapter
-    private lateinit var favoritelyricsActivityAdapter : LyricsesActivityAdapter
+    private lateinit var allLyricsActivityAdapter : LyricsActivityAdapter
+    private lateinit var favoritelyricsActivityAdapter : LyricsActivityAdapter
 
     private lateinit var linearLayoutManager: LinearLayoutManager
 
@@ -30,8 +30,8 @@ class LyricsesActivity : AppCompatActivity(), IonLyricsSelected {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lyricses)
 
-        allLyricsActivityAdapter = LyricsesActivityAdapter(this, mutableListOf())
-        favoritelyricsActivityAdapter = LyricsesActivityAdapter(this, mutableListOf())
+        allLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        favoritelyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
 
         lyricsViewModel = ViewModelProvider(this).get(LyricsActivityViewModel::class.java)
 
@@ -74,7 +74,7 @@ class LyricsesActivity : AppCompatActivity(), IonLyricsSelected {
     }
 
     private fun setRecyclerViewComponents(currentRecyclerView: MultiSnapRecyclerView,typeOfTheRecycler: String,
-                                  lyricsActivityAdapter : LyricsesActivityAdapter)
+                                  lyricsActivityAdapter : LyricsActivityAdapter)
     {
         currentRecyclerView.apply {
             layoutManager = linearLayoutManager

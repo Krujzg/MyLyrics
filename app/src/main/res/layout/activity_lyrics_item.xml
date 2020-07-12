@@ -43,7 +43,7 @@
                     android:paddingRight="10dp"
                     android:text="@{lyricsItemModel.displayedTitle}"
                     android:textIsSelectable="true"
-                    android:textSize="@dimen/ActivityLyricsItemTextSize" />
+                    android:textSize="@dimen/displayedTitleTextSize" />
 
                 <TextView
                     android:id="@+id/youtubelink"
@@ -70,7 +70,7 @@
                     android:paddingRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="@{lyricsItemModel.displayedLyrics_Text}"
-                    android:textSize="@dimen/ActivityLyricsLyricsTextSize"
+                    android:textSize="@dimen/lyricsTextSize"
                     />
 
             </GridLayout>
