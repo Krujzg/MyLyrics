@@ -37,15 +37,21 @@ class LyricsItemActiviy : AppCompatActivity()
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId)
         {
-            R.id.UpdateLyrics -> {
-                startActivity(Intent(this, UpdateLyricsItemActivity::class.java))
-                true
-            }
-            R.id.DeleteLyrics -> {
-                lyricsItemViewModel.deleteLyricsFromLocalDb()
-                startActivity(Intent(this, LyricsActivity::class.java))
-                true
-            }
+            R.id.UpdateLyrics -> startUpdateLyricsItemActivity()
+            R.id.DeleteLyrics -> deleteLyricsFromLocalDbThenReturnToLyricsActivity()
             else -> super.onOptionsItemSelected(item)
         }
+
+    private fun startUpdateLyricsItemActivity() : Boolean
+    {
+        startActivity(Intent(this, UpdateLyricsItemActivity::class.java))
+        return true
+    }
+
+    private fun deleteLyricsFromLocalDbThenReturnToLyricsActivity() : Boolean
+    {
+        lyricsItemViewModel.deleteLyricsFromLocalDb()
+        startActivity(Intent(this, LyricsActivity::class.java))
+        return true
+    }
 }
