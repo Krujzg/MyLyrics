@@ -2,9 +2,11 @@ package com.oe.nik.krujzgergely.ui.lyrics
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -19,6 +21,8 @@ import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
 
 
 class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
+
+    private var doubleBackToExitPressedOnce = false
 
     private lateinit var lyricsViewModel : LyricsActivityViewModel
 
@@ -67,6 +71,20 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
             R.id.SearchField -> searchBetweenAllLyrics(item)
             else -> super.onOptionsItemSelected(item)
         }
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) { finishAffinity() }
+
+        this.doubleBackToExitPressedOnce = true
+
+        delayTimeBetweenTwoBackButtonPress()
+    }
+
+    private fun delayTimeBetweenTwoBackButtonPress()
+    {
+        Toast.makeText(this, "Please again to exit", Toast.LENGTH_SHORT).show()
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+    }
 
     private fun loadLyricsMultiSnapRecyclerView(typeOfTheRecycler: TypeOfTheRecycler)
     {

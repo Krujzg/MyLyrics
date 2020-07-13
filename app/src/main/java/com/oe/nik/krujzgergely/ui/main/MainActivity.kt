@@ -1,5 +1,7 @@
 package com.oe.nik.krujzgergely.ui.main
 
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.app.ActivityOptions
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -13,6 +15,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.oe.nik.krujzgergely.R
