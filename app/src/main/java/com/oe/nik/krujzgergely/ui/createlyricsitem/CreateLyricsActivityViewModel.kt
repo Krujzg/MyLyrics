@@ -4,6 +4,7 @@ import android.app.Application
 import android.app.NotificationManager
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
@@ -23,6 +24,7 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
 {
     private val notificationManager = ContextCompat.getSystemService(application,
         NotificationManager::class.java) as NotificationManager
+
     private var repository: LyricsRepository
 
     private val callbacks: PropertyChangeRegistry by lazy { PropertyChangeRegistry()}
@@ -34,7 +36,7 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
     var displayedTitle = MutableLiveData<String>()
 
     @Bindable
-    var displayedLyrics_Text = MutableLiveData<String>()
+    var displayedLyricsText = MutableLiveData<String>()
 
     @Bindable
     var displayedyoutubelink = MutableLiveData<String>()
@@ -53,27 +55,45 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
 
     fun saveNewLyricsIntoLocalDb()
     {
-        viewModelScope.launch {
-            repository.saveNewLyricsIntoDb(
-                LyricsModel(
-                    performer = displayedPerformer.value!!,
-                    title = displayedTitle.value!!,
-                    song_type = songtype,
-                    times_watched = 0,
-                    favourite = true,
-                    lyrics_text = displayedLyrics_Text.value!!,
-                    youtubeLink = displayedyoutubelink.value!!
+        if(isSaveLyricsButtonClickable())
+        {
+            viewModelScope.launch {
+                repository.saveNewLyricsIntoDb(
+                    LyricsModel(
+                        performer = displayedPerformer.value!!,
+                        title = displayedTitle.value!!,
+                        song_type = songtype,
+                        times_watched = 0,
+                        favourite = true,
+                        lyrics_text = displayedLyricsText.value!!,
+                        youtubeLink = displayedyoutubelink.value!!
+                    )
                 )
-            )
+            }
+            sendNotification("Your new lyrics is:", "${displayedPerformer.value} - ${displayedTitle.value}")
         }
-        sendNotification("You have created a new Lyrics!",
-            "Your new lyrics is: \n${displayedPerformer.value} - ${displayedTitle.value}")
+        else
+        {
+            Toast.makeText(getApplication(),"Some of the fields are not filled",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun isSaveLyricsButtonClickable() : Boolean
+    {
+        return checkIfTheEditTextsValuesAreNullOrEmpty()
+    }
+
+    private fun checkIfTheEditTextsValuesAreNullOrEmpty() : Boolean
+    {
+        return !(displayedPerformer.value.isNullOrEmpty() &&
+                displayedTitle.value.isNullOrEmpty() &&
+                displayedLyricsText.value.isNullOrEmpty() &&
+                displayedyoutubelink.value.isNullOrEmpty())
     }
 
     private fun sendNotification(title :String,message : String)
     {
-        notificationManager.sendNotification(title, message,
-            CrudType.INSERT, getApplication())
+        notificationManager.sendNotification(title, message, CrudType.INSERT, getApplication())
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.add(callback) }

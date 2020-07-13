@@ -11,31 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="12065b66-1df3-4759-9840-132cbbcf47f8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/data/LyricsDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/data/LyricsDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/data/getLyricses.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/data/getLyricses.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/models/enums/TypeOfTheRecycler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/models/enums/TypeOfTheRecycler.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/repository/LyricsRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/repository/LyricsRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/createlyricsitem/CreateLyricsActivityViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/createlyricsitem/CreateLyricsActivityViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyrics/LyricsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyrics/LyricsActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyrics/LyricsActivityViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyrics/LyricsActivityViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_search_white_18dp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_search_white__18dp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/fb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/plus_sign.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyricsItem/LyricsItemActivityViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyricsItem/LyricsItemActivityViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/updatelyricsitem/UpdateLyricsItemViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/updatelyricsitem/UpdateLyricsItemViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_newlyrics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_newlyrics.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyricses.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyricses.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/recycler_item_lyrics_model.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_item_lyrics_model.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/lyrics_activity_menu_options.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/lyrics_activity_menu_options.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/lyrics_item_menu_options.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/lyrics_item_menu_options.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/update_lyrics_activity_menu_options.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/update_lyrics_activity_menu_options.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/lyrics.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lyrics.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,46 +248,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="1052" y="178" key="AndroidCreateXmlResourceDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594626192415" />
-    <state width="486" height="438" key="DebuggerActiveHint" timestamp="1594502175776">
+    <state width="486" height="438" key="DebuggerActiveHint" timestamp="1594628514707">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="486" height="438" key="DebuggerActiveHint/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594502175776" />
+    <state width="486" height="438" key="DebuggerActiveHint/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594628514707" />
     <state x="173" y="167" key="FileChooserDialogImpl" timestamp="1594407402529">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="173" y="167" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594407402528" />
-    <state width="1491" height="113" key="GridCell.Tab.0.bottom" timestamp="1594565828502">
+    <state width="1491" height="113" key="GridCell.Tab.0.bottom" timestamp="1594628623867">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="113" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594565828502" />
-    <state width="1491" height="113" key="GridCell.Tab.0.center" timestamp="1594565828502">
+    <state width="1491" height="113" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594628623867" />
+    <state width="1491" height="113" key="GridCell.Tab.0.center" timestamp="1594628623867">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="113" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594565828501" />
-    <state width="1491" height="113" key="GridCell.Tab.0.left" timestamp="1594565828501">
+    <state width="1491" height="113" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594628623867" />
+    <state width="1491" height="113" key="GridCell.Tab.0.left" timestamp="1594628623866">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="113" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594565828501" />
-    <state width="1491" height="113" key="GridCell.Tab.0.right" timestamp="1594565828502">
+    <state width="1491" height="113" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594628623866" />
+    <state width="1491" height="113" key="GridCell.Tab.0.right" timestamp="1594628623867">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="113" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594565828502" />
-    <state width="1491" height="113" key="GridCell.Tab.1.bottom" timestamp="1594565828502">
+    <state width="1491" height="113" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594628623867" />
+    <state width="1491" height="113" key="GridCell.Tab.1.bottom" timestamp="1594628623868">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="113" key="GridCell.Tab.1.bottom/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594565828502" />
-    <state width="1491" height="113" key="GridCell.Tab.1.center" timestamp="1594565828502">
+    <state width="1491" height="113" key="GridCell.Tab.1.bottom/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594628623868" />
+    <state width="1491" height="113" key="GridCell.Tab.1.center" timestamp="1594628623867">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="113" key="GridCell.Tab.1.center/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594565828502" />
-    <state width="1491" height="113" key="GridCell.Tab.1.left" timestamp="1594565828502">
+    <state width="1491" height="113" key="GridCell.Tab.1.center/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594628623867" />
+    <state width="1491" height="113" key="GridCell.Tab.1.left" timestamp="1594628623867">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="113" key="GridCell.Tab.1.left/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594565828502" />
-    <state width="1491" height="113" key="GridCell.Tab.1.right" timestamp="1594565828502">
+    <state width="1491" height="113" key="GridCell.Tab.1.left/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594628623867" />
+    <state width="1491" height="113" key="GridCell.Tab.1.right" timestamp="1594628623867">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="113" key="GridCell.Tab.1.right/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594565828502" />
+    <state width="1491" height="113" key="GridCell.Tab.1.right/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594628623867" />
     <state x="277" y="55" key="SettingsEditor" timestamp="1594489865556">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -320,10 +300,10 @@
       <screen x="-1920" y="0" width="1536" height="824" />
     </state>
     <state x="-1875" y="0" width="1505" height="808" maximized="true" key="dock-window-2/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594395368211" />
-    <state x="462" y="144" width="683" height="536" key="find.popup" timestamp="1594566206865">
+    <state x="462" y="144" width="683" height="536" key="find.popup" timestamp="1594629192431">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="462" y="144" width="683" height="536" key="find.popup/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594566206865" />
+    <state x="462" y="144" width="683" height="536" key="find.popup/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594629192431" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1594476501809">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -88,8 +88,7 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
     {
         updateLyricsModelLocally()
         viewModelScope.launch { repository.updateInDb(lyricsModel) }
-        sendNotification("You have updated a Lyrics!",
-            "Your updated lyrics was: \n${displayedPerformer.value} - ${displayedTitle.value}")
+        sendNotification("You have edited this Lyrics:", "${displayedPerformer.value} - ${displayedTitle.value}")
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.add(callback) }
