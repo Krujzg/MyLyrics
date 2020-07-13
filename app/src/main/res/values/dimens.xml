@@ -7,4 +7,5 @@
     <dimen name="youtubeLinkTextSize">15sp</dimen>
     <dimen name="displayedTitleTextSize">25sp</dimen>
     <dimen name="lyricsTextSize">18sp</dimen>
+    <dimen name="activityLyricsesTextViewSize">25sp</dimen>
 </resources>

@@ -4,12 +4,13 @@
     <item
         android:id="@+id/SearchField"
         android:title="@string/searchoption"
-        android:icon="@drawable/baseline_search_white__18dp"
+        android:icon="@drawable/baseline_search_white_24"
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="android.widget.SearchView"/>
 
     <item
         android:id="@+id/CreateNewLyrics"
         android:title="@string/create_lyrics"
-        app:showAsAction="never" />
+        android:icon="@drawable/baseline_add_white_24"
+        app:showAsAction="ifRoom" />
 </menu>

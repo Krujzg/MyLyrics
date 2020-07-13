@@ -3,13 +3,13 @@
     <string name="welcome_button_text">Start</string>
 
     <string name="selected_item">Selected item:</string>
-    <string name="NewPerformer">Add new Performer</string>
-    <string name="NewTitleHint">Add new Title</string>
-    <string name="YoutubeLinkHint">Add new Youtubelink</string>
-    <string name="NewLyricsTextHint">Add new lyrics</string>
-    <string name="CreateButtonText">Create new lyrics</string>
-    <string name="AllLyricsText">All Lyricses</string>
-    <string name="FavoriteLyricsText">Favorite Lyricses</string>
+    <string name="NewPerformer">Performer</string>
+    <string name="NewTitleHint">Title</string>
+    <string name="YoutubeLinkHint">Youtube link</string>
+    <string name="NewLyricsTextHint">Lyrics</string>
+    <string name="CreateButtonText">Save lyrics</string>
+    <string name="AllLyricsText">All</string>
+    <string name="FavoriteLyricsText">Your Favorites</string>
     <string name="update_lyrics">Update lyrics</string>
     <string name="delete_lyrics">Delete lyrics</string>
     <string name="create_lyrics">Create lyrics</string>
@@ -20,10 +20,18 @@
     <string name="notification_title">MyLyrics</string>
     <string name="mylyrics_notification_channel_description">MyLyrics</string>
     <string name="searchoption">Search</string>
-    <string name="MenuLabel">Menu</string>
+    <string name="MenuLabel">Home</string>
     <string name="LyricsLabel">Lyrics</string>
-    <string name="CreateLabel">Create</string>
-    <string name="UpdateLabel">Update</string>
+    <string name="CreateLabel">New lyrics</string>
+    <string name="UpdateLabel">Edit</string>
+    <string name="JazzLyricsText">Jazz</string>
+    <string name="HipHopLyricsText">Hip Hop</string>
+    <string name="RockLyricsText">Rock</string>
+    <string name="MetalLyricsText">Metal</string>
+    <string name="PunkLyricsText">Punk</string>
+    <string name="PopLyricsText">Pop</string>
+    <string name="CountryLyricsText">Country</string>
+    <string name="OperaLyricsText">Opera</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>

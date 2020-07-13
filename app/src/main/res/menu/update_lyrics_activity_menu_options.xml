@@ -4,10 +4,14 @@
     <item
         android:id="@+id/Save"
         android:title="@string/save_lyrics"
-        app:showAsAction="never" />
+        android:icon="@drawable/baseline_save_white_24"
+        android:iconTint="@color/green"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/Cancel"
         android:title="@string/cancel_update"
-        app:showAsAction="never" />
+        android:icon="@drawable/baseline_clear_white_24"
+        android:iconTint="@color/red"
+        app:showAsAction="ifRoom" />
 </menu>

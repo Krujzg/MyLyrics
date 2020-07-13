@@ -4,9 +4,12 @@
     <item
         android:id="@+id/UpdateLyrics"
         android:title="@string/update_lyrics"
-        app:showAsAction="never" />
+        android:icon="@drawable/baseline_create_white_24"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/DeleteLyrics"
         android:title="@string/delete_lyrics"
-        app:showAsAction="never" />
+        android:icon="@drawable/baseline_delete_white_24"
+        android:iconTint="@color/red"
+        app:showAsAction="ifRoom" />
 </menu>

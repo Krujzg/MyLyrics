@@ -23,4 +23,20 @@ class LyricsActivityViewModel(application: Application) : AndroidViewModel(appli
     fun getAllLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getAllLyricsFromLocalDB() }
 
     fun getFavoriteLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getFavouriteLyricsFromLocalDB() }
+
+    fun getJazzLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getJazzLyricsFromLocalDB() }
+
+    fun getHipHopLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getHipHopLyricsFromLocalDB() }
+
+    fun getRockLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getRockLyricsFromLocalDB() }
+
+    fun getMetalLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getMetalLyricsFromLocalDB() }
+
+    fun getPunkLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getPunkLyricsFromLocalDB() }
+
+    fun getPopLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getPopLyricsFromLocalDB() }
+
+    fun getCountryLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getCountryLyricsFromLocalDB() }
+
+    fun getOperaLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getOperaLyricsFromLocalDB() }
 }

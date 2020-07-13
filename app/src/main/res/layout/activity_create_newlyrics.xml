@@ -64,7 +64,7 @@
             <EditText
                 android:id="@+id/newlyrics_text"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="300dp"
                 android:layout_row="4"
                 android:layout_column="0"
                 android:text="@={createLyricsModel.displayedLyrics_Text}"
@@ -78,11 +78,12 @@
                 android:layout_width="200dp"
                 android:layout_height="53dp"
                 android:background="@drawable/button"
-                android:text="@string/CreateButtonText"
+                android:text= "@string/CreateButtonText"
                 android:textColor="@color/white"
                 android:layout_row="5"
                 android:layout_gravity="center"
-                android:onClick="@{() -> createLyricsModel.saveNewLyricsIntoLocalDb()}" />
+                android:onClick="@{() -> createLyricsModel.saveNewLyricsIntoLocalDb()}"
+                android:clickable="@{() -> createLyricsModel.}"/>
 
         </GridLayout>
     </ScrollView>

@@ -17,7 +17,7 @@
             android:layout_margin="10dp"
             android:text="@string/AllLyricsText"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="@dimen/activityLyricsesTextViewSize"
             android:textColor="@color/white"/>
 
         <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
@@ -28,7 +28,8 @@
             android:orientation="horizontal"
             app:msrv_gravity="start"
             app:msrv_ms_per_inch="100"
-            app:msrv_snap_count="1" />
+            app:msrv_snap_count="2"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
             android:layout_margin="10dp"
             android:text="@string/FavoriteLyricsText"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="@dimen/activityLyricsesTextViewSize"
             android:textColor="@color/white"/>
 
         <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
@@ -47,7 +48,159 @@
             android:orientation="horizontal"
             app:msrv_gravity="start"
             app:msrv_ms_per_inch="100"
-            app:msrv_snap_count="1" />
+            app:msrv_snap_count="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/JazzLyricsText"
+            android:textStyle="bold"
+            android:textSize="@dimen/activityLyricsesTextViewSize"
+            android:textColor="@color/white"/>
+
+        <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+            android:id="@+id/jazz_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            app:msrv_gravity="start"
+            app:msrv_ms_per_inch="100"
+            app:msrv_snap_count="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/HipHopLyricsText"
+            android:textStyle="bold"
+            android:textSize="@dimen/activityLyricsesTextViewSize"
+            android:textColor="@color/white"/>
+
+        <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+            android:id="@+id/hiphop_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            app:msrv_gravity="start"
+            app:msrv_ms_per_inch="100"
+            app:msrv_snap_count="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/RockLyricsText"
+            android:textStyle="bold"
+            android:textSize="@dimen/activityLyricsesTextViewSize"
+            android:textColor="@color/white"/>
+
+        <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+            android:id="@+id/rock_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            app:msrv_gravity="start"
+            app:msrv_ms_per_inch="100"
+            app:msrv_snap_count="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/MetalLyricsText"
+            android:textStyle="bold"
+            android:textSize="@dimen/activityLyricsesTextViewSize"
+            android:textColor="@color/white"/>
+
+        <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+            android:id="@+id/metal_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            app:msrv_gravity="start"
+            app:msrv_ms_per_inch="100"
+            app:msrv_snap_count="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/PunkLyricsText"
+            android:textStyle="bold"
+            android:textSize="@dimen/activityLyricsesTextViewSize"
+            android:textColor="@color/white"/>
+
+        <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+            android:id="@+id/punk_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            app:msrv_gravity="start"
+            app:msrv_ms_per_inch="100"
+            app:msrv_snap_count="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/PopLyricsText"
+            android:textStyle="bold"
+            android:textSize="@dimen/activityLyricsesTextViewSize"
+            android:textColor="@color/white"/>
+
+        <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+            android:id="@+id/pop_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            app:msrv_gravity="start"
+            app:msrv_ms_per_inch="100"
+            app:msrv_snap_count="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/CountryLyricsText"
+            android:textStyle="bold"
+            android:textSize="@dimen/activityLyricsesTextViewSize"
+            android:textColor="@color/white"/>
+
+        <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+            android:id="@+id/country_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            app:msrv_gravity="start"
+            app:msrv_ms_per_inch="100"
+            app:msrv_snap_count="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/OperaLyricsText"
+            android:textStyle="bold"
+            android:textSize="@dimen/activityLyricsesTextViewSize"
+            android:textColor="@color/white"/>
+
+        <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+            android:id="@+id/opera_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            app:msrv_gravity="start"
+            app:msrv_ms_per_inch="100"
+            app:msrv_snap_count="2" />
 
     </LinearLayout>
 </ScrollView>

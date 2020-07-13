@@ -7,7 +7,7 @@ import com.oe.nik.krujzgergely.models.enums.SongTypes
 JAZZ -> 0, HIPHOP -> 1, ROCK -> 2, METAL -> 3, PUNK -> 4, POP -> 5, COUNTRY -> 6, CLASSICAL -> 7
  */
 
-// Not used anymore. There is a json file in raw instead.
+// Not relevant anymore. There is a json file in raw instead of this file
 fun getLyrics()= listOf<LyricsModel>(
 
     LyricsModel(

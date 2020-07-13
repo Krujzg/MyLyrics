@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 
 class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel(application), Observable
 {
-    val notificationManager = ContextCompat.getSystemService(application,
+    private val notificationManager = ContextCompat.getSystemService(application,
         NotificationManager::class.java) as NotificationManager
     private var repository: LyricsRepository
 
@@ -39,7 +39,7 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
     @Bindable
     var displayedyoutubelink = MutableLiveData<String>()
 
-    var songtype  : String = "JAZZ"
+    private var songtype  : String = "JAZZ"
 
     init
     {
