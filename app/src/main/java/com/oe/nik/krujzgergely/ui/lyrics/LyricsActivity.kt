@@ -72,19 +72,23 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
             else -> super.onOptionsItemSelected(item)
         }
 
-    override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) { finishAffinity() }
-
-        this.doubleBackToExitPressedOnce = true
-
-        delayTimeBetweenTwoBackButtonPress()
+    override fun onBackPressed()
+    {
+        when(doubleBackToExitPressedOnce)
+        {
+            true -> finishAffinity()
+            false -> delayTimeBetweenTwoBackButtonPress()
+        }
     }
 
     private fun delayTimeBetweenTwoBackButtonPress()
     {
-        Toast.makeText(this, "Please again to exit", Toast.LENGTH_SHORT).show()
+        this.doubleBackToExitPressedOnce = true
+        showMessageBox()
         Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
+
+    private fun showMessageBox() { Toast.makeText(this, "Please again to exit", Toast.LENGTH_SHORT).show() }
 
     private fun loadLyricsMultiSnapRecyclerView(typeOfTheRecycler: TypeOfTheRecycler)
     {
