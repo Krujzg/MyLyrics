@@ -25,12 +25,12 @@ class GoogleLogin(var application: Application)
     var mGoogleSignInClient : GoogleSignInClient
     companion object
     {
-        lateinit var googleAccount : GoogleSignInAccount
+        var googleAccount : GoogleSignInAccount? = null
     }
 
     init {
 
-        var token = "820173271126-5euu594fvgojr9iuefu3qtstbb16tjqu.apps.googleusercontent.com"
+        val token = "820173271126-5euu594fvgojr9iuefu3qtstbb16tjqu.apps.googleusercontent.com"
         googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .requestIdToken(token)

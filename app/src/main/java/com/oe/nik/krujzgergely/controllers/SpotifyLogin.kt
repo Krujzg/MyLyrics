@@ -1,14 +1,11 @@
 package com.oe.nik.krujzgergely.controllers
 
 import android.app.Application
-import android.content.Intent
-import android.widget.Button
+import android.net.Uri
+import android.util.Log
 import com.oe.nik.krujzgergely.models.SpotifyAccount
-import com.oe.nik.krujzgergely.models.enums.LoginType
-import com.oe.nik.krujzgergely.ui.main.MainActivity
-import com.oe.nik.krujzgergely.util.SpotifyAccountBuilder
-import com.oe.nik.krujzgergely.util.SpotifyConstants
-import com.spotify.sdk.android.authentication.AuthenticationClient
+import com.oe.nik.krujzgergely.models.builder.SpotifyAccountBuilder
+import com.oe.nik.krujzgergely.services.SpotifyService
 import com.spotify.sdk.android.authentication.AuthenticationRequest
 import com.spotify.sdk.android.authentication.AuthenticationResponse
 import kotlinx.coroutines.Dispatchers
@@ -17,97 +14,81 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
+import java.net.HttpCookie.parse
 import java.net.URL
+import java.util.logging.Level.parse
 import javax.net.ssl.HttpsURLConnection
 
-class SpotifyLogin(var application: Application)
+class SpotifyLogin(application: Application)
 {
-    private val getUserProfileURLforSpotifyNativeAuthUtil = "https://api.spotify.com/v1/me"
-    lateinit var jsonObjectSpotify : JSONObject
-    lateinit var spotifyId : String
-    lateinit var spotifyDisplayName : String
-    lateinit var spotifyEmail : String
-    lateinit var spotifyAvatarArray : JSONArray
-    lateinit var spotifyAvatarURL : String
-    lateinit var spotifyAccountBuilder: SpotifyAccountBuilder
 
+    lateinit var spotifyAccountBuilder: SpotifyAccountBuilder
+    var id = ""
+    var displayName = ""
+    var email = ""
+    lateinit var avatarArray : JSONArray
+    var avatarURL : String = ""
+    var accessToken = ""
     companion object
     {
-        lateinit var spotifyAccount : SpotifyAccount
+        var spotifyAccount :SpotifyAccount? = null
     }
 
-    fun startSpotifyLoginActivity(activity: MainActivity)
-    {
-        val request = getAuthenticationRequest(AuthenticationResponse.Type.TOKEN)
-        AuthenticationClient.openLoginActivity(activity, SpotifyConstants.AUTH_TOKEN_REQUEST_CODE, request)
-    }
+    fun fetchSpotifyUserProfile(token: String?) {
+        Log.d("Status: ", "Please Wait...")
+        if (token == null) {
+            Log.i("Status: ", "Something went wrong - No Access Token found")
+            return
+        }
 
-    fun bootSpotifyLogin(resultCode: Int, data: Intent?)
-    {
-        val response = AuthenticationClient.getResponse(resultCode, data)
-        val accessToken: String? = response.accessToken
-        fetchUserProfile(accessToken)
-    }
+        val getUserProfileURL = "https://api.spotify.com/v1/me"
 
-    private fun getAuthenticationRequest(type: AuthenticationResponse.Type): AuthenticationRequest {
-        return AuthenticationRequest.Builder(SpotifyConstants.CLIENT_ID, type, SpotifyConstants.REDIRECT_URI)
-            .setShowDialog(false)
-            .setScopes(arrayOf("user-read-email"))
-            .build()
-    }
-
-    private fun fetchUserProfile(token: String?)
-    {
-        if (checkIfTokenIsNullOrEmpty(token)) { return }
-
-        GlobalScope.launch(Dispatchers.Default)
-        {
-            val url = URL(getUserProfileURLforSpotifyNativeAuthUtil)
-            val httpsURLConnection = withContext(Dispatchers.IO) { url.openConnection() as HttpsURLConnection }
-
+        GlobalScope.launch(Dispatchers.Default) {
+            val url = URL(getUserProfileURL)
+            val httpsURLConnection = withContext(Dispatchers.IO) {url.openConnection() as HttpsURLConnection }
             httpsURLConnection.apply {
                 requestMethod = "GET"
                 setRequestProperty("Authorization", "Bearer $token")
                 doInput = true
                 doOutput = false
             }
-            val inputSteam = httpsURLConnection.inputStream
 
-            val response = inputSteam.bufferedReader().use { it.readText() }
+            val response = httpsURLConnection.inputStream.bufferedReader().use { it.readText() }
+            withContext(Dispatchers.Main) {
+                val jsonObject = JSONObject(response)
 
-            withContext(Dispatchers.Main) { getSpotifyAccountData(response) }
+                id = jsonObject.getString("id")
+                Log.d("Spotify Id :", id)
+
+                displayName = jsonObject.getString("display_name")
+                Log.d("Spotify Display Name :", displayName)
+
+                email = jsonObject.getString("email")
+                Log.d("Spotify Email :", email)
+
+                avatarArray = jsonObject.getJSONArray("images")
+                avatarURL = ""
+                if (avatarArray.length() > 0) {
+                    avatarURL = avatarArray.getJSONObject(0).getString("url")
+                    Log.d("Spotify Avatar : ", avatarURL)
+                }
+                buildSpotifyAccount()
+
+                Log.d("Spotify AccessToken :", token)
+                accessToken = token
+            }
         }
-    }
-
-    private fun getSpotifyAccountData(response : String)
-    {
-        jsonObjectSpotify = JSONObject(response)
-        spotifyId = jsonObjectSpotify.getString("id")
-        spotifyDisplayName = jsonObjectSpotify.getString("display_name")
-        spotifyEmail = jsonObjectSpotify.getString("email")
-        spotifyAvatarArray = jsonObjectSpotify.getJSONArray("images")
-
-        if (isSpotifyAvatarArrayLengthIsGreaterThenZero())
-        {
-            spotifyAvatarURL = spotifyAvatarArray.getJSONObject(0).getString("url")
-        }
-
-        buildSpotifyAccount()
     }
 
     private fun buildSpotifyAccount()
     {
         spotifyAccountBuilder = SpotifyAccountBuilder()
-        spotifyAccount = spotifyAccountBuilder.apply {
-            setSpotifyId(spotifyId)
-            setSpotifyDisplayName(spotifyDisplayName)
-            setSpotifyEmail(spotifyEmail)
-            setSpotifyAvatarUrl(spotifyAvatarURL)
-            setSpotifyAvataraRRAY(spotifyAvatarArray)}
+        spotifyAccount = spotifyAccountBuilder
+            .setId(id)
+            .setName(displayName)
+            .setEmail(email)
+            .setAvatarArray(avatarArray)
+            .setAvatarURL(avatarURL)
             .getSpotifyAccountBuilder()
     }
-
-    private fun isSpotifyAvatarArrayLengthIsGreaterThenZero() : Boolean = spotifyAvatarArray.length() > 0
-
-    private fun checkIfTokenIsNullOrEmpty(token: String?) : Boolean = token.isNullOrEmpty()
 }

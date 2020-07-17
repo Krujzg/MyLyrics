@@ -30,6 +30,15 @@ android {
         enabledForTests = true
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     // You can fix the No such manifest file: ./AndroidManifest.xml error, by updating your gradle file.
     // Always show the result of every unit test when running via command line, even if it passes.
     testOptions.unitTests {
@@ -101,6 +110,10 @@ dependencies {
     implementation 'com.spotify.android:auth:1.1.0'
     //FireBaseAuth
     //implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
+
+    //spotifySDK
+    implementation project(':spotify-app-remote-release-0.7.0')
+
 
 
     // Testing code should not be included in the main code.

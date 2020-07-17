@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
@@ -71,23 +72,22 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
         inflater.inflate(R.menu.lyrics_activity_menu_options, menu)
 
         val googleAccount = GoogleLogin.googleAccount
-        //val spotifyAccount = SpotifyLogin.spotifyAccount
+        val spotifyAccount = SpotifyLogin.spotifyAccount
 
         when(googleAccount)
         {
-            null -> convertSpotifyAvatarArrayToBitmap()
-            else -> setGoogleProfileIconIntoOptionMenuItem(menu)
+            null -> setProfilePictureIntoOptionMenuItemIcon(menu, Uri.parse(SpotifyLogin.spotifyAccount!!.AvatarURL))
+            else -> setProfilePictureIntoOptionMenuItemIcon(menu, GoogleLogin.googleAccount!!.photoUrl)
         }
-        
+
         return true
     }
 
-    private fun setGoogleProfileIconIntoOptionMenuItem(menu: Menu?)
+    private fun setProfilePictureIntoOptionMenuItemIcon(menu: Menu?, photoUrl : Uri?)
     {
-        val googleProfileURL = GoogleLogin.googleAccount.photoUrl
         val settingsItem = menu!!.findItem(R.id.ProfilePicture)
 
-        Glide.with(this).asBitmap().load(googleProfileURL).into(object : SimpleTarget<Bitmap?>(100,100)
+        Glide.with(this).asBitmap().load(photoUrl).into(object : SimpleTarget<Bitmap?>(100,100)
         {
             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?)
             {
@@ -95,15 +95,6 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
             }
         })
     }
-
-    private fun convertSpotifyAvatarArrayToBitmap() : Bitmap
-    {
-        val spotifyAvatarArray = SpotifyLogin.spotifyAccount.AvatarArray
-        val bitmap = BitmapFactory.decodeByteArray(objectToBytArray(spotifyAvatarArray),0 ,spotifyAvatarArray.length())
-        return bitmap
-    }
-
-    private fun objectToBytArray(ob: Any): ByteArray? = ob.toString().toByteArray()
 
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId)
