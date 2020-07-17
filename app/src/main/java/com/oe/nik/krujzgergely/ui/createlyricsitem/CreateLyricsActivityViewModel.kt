@@ -85,9 +85,9 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
 
     private fun checkIfTheEditTextsValuesAreNullOrEmpty() : Boolean
     {
-        return !(displayedPerformer.value.isNullOrEmpty() &&
-                displayedTitle.value.isNullOrEmpty() &&
-                displayedLyricsText.value.isNullOrEmpty() &&
+        return !(displayedPerformer.value.isNullOrEmpty() ||
+                displayedTitle.value.isNullOrEmpty() ||
+                displayedLyricsText.value.isNullOrEmpty() ||
                 displayedyoutubelink.value.isNullOrEmpty())
     }
 

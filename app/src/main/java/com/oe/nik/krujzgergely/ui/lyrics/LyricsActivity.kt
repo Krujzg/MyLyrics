@@ -1,6 +1,9 @@
 package com.oe.nik.krujzgergely.ui.lyrics
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
@@ -12,7 +15,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import com.oe.nik.krujzgergely.R
+import com.oe.nik.krujzgergely.controllers.GoogleLogin
+import com.oe.nik.krujzgergely.controllers.SpotifyLogin
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.models.enums.TypeOfTheRecycler
 import com.oe.nik.krujzgergely.ui.createlyricsitem.CreateLyricsActivity
@@ -61,8 +69,41 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.lyrics_activity_menu_options, menu)
+
+        val googleAccount = GoogleLogin.googleAccount
+        //val spotifyAccount = SpotifyLogin.spotifyAccount
+
+        when(googleAccount)
+        {
+            null -> convertSpotifyAvatarArrayToBitmap()
+            else -> setGoogleProfileIconIntoOptionMenuItem(menu)
+        }
+        
         return true
     }
+
+    private fun setGoogleProfileIconIntoOptionMenuItem(menu: Menu?)
+    {
+        val googleProfileURL = GoogleLogin.googleAccount.photoUrl
+        val settingsItem = menu!!.findItem(R.id.ProfilePicture)
+
+        Glide.with(this).asBitmap().load(googleProfileURL).into(object : SimpleTarget<Bitmap?>(100,100)
+        {
+            override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?)
+            {
+                settingsItem.icon = BitmapDrawable(resources, resource)
+            }
+        })
+    }
+
+    private fun convertSpotifyAvatarArrayToBitmap() : Bitmap
+    {
+        val spotifyAvatarArray = SpotifyLogin.spotifyAccount.AvatarArray
+        val bitmap = BitmapFactory.decodeByteArray(objectToBytArray(spotifyAvatarArray),0 ,spotifyAvatarArray.length())
+        return bitmap
+    }
+
+    private fun objectToBytArray(ob: Any): ByteArray? = ob.toString().toByteArray()
 
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId)
@@ -88,23 +129,23 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
         Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 
-    private fun showMessageBox() { Toast.makeText(this, "Please again to exit", Toast.LENGTH_SHORT).show() }
+    private fun showMessageBox() { Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show() }
 
     private fun loadLyricsMultiSnapRecyclerView(typeOfTheRecycler: TypeOfTheRecycler)
     {
         linearLayoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
         when(typeOfTheRecycler)
         {
-            TypeOfTheRecycler.ALL -> startLoadingTheLyrics(R.id.all_recycler_view,typeOfTheRecycler)
+            TypeOfTheRecycler.ALL      -> startLoadingTheLyrics(R.id.all_recycler_view,typeOfTheRecycler)
             TypeOfTheRecycler.FAVORITE -> startLoadingTheLyrics(R.id.favourite_recycler_view,typeOfTheRecycler)
-            TypeOfTheRecycler.JAZZ -> startLoadingTheLyrics(R.id.jazz_recycler_view,typeOfTheRecycler)
-            TypeOfTheRecycler.HIPHOP -> startLoadingTheLyrics(R.id.hiphop_recycler_view,typeOfTheRecycler)
-            TypeOfTheRecycler.ROCK -> startLoadingTheLyrics(R.id.rock_recycler_view,typeOfTheRecycler)
-            TypeOfTheRecycler.METAL -> startLoadingTheLyrics(R.id.metal_recycler_view,typeOfTheRecycler)
-            TypeOfTheRecycler.PUNK -> startLoadingTheLyrics(R.id.punk_recycler_view,typeOfTheRecycler)
-            TypeOfTheRecycler.POP -> startLoadingTheLyrics(R.id.pop_recycler_view,typeOfTheRecycler)
-            TypeOfTheRecycler.COUNTRY -> startLoadingTheLyrics(R.id.country_recycler_view,typeOfTheRecycler)
-            TypeOfTheRecycler.OPERA -> startLoadingTheLyrics(R.id.opera_recycler_view,typeOfTheRecycler)
+            TypeOfTheRecycler.JAZZ     -> startLoadingTheLyrics(R.id.jazz_recycler_view,typeOfTheRecycler)
+            TypeOfTheRecycler.HIPHOP   -> startLoadingTheLyrics(R.id.hiphop_recycler_view,typeOfTheRecycler)
+            TypeOfTheRecycler.ROCK     -> startLoadingTheLyrics(R.id.rock_recycler_view,typeOfTheRecycler)
+            TypeOfTheRecycler.METAL    -> startLoadingTheLyrics(R.id.metal_recycler_view,typeOfTheRecycler)
+            TypeOfTheRecycler.PUNK     -> startLoadingTheLyrics(R.id.punk_recycler_view,typeOfTheRecycler)
+            TypeOfTheRecycler.POP      -> startLoadingTheLyrics(R.id.pop_recycler_view,typeOfTheRecycler)
+            TypeOfTheRecycler.COUNTRY  -> startLoadingTheLyrics(R.id.country_recycler_view,typeOfTheRecycler)
+            TypeOfTheRecycler.OPERA    -> startLoadingTheLyrics(R.id.opera_recycler_view,typeOfTheRecycler)
         }
     }
 
@@ -114,16 +155,16 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
 
         when(typeOfTheRecycler)
         {
-            TypeOfTheRecycler.ALL -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,allLyricsActivityAdapter)
+            TypeOfTheRecycler.ALL      -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,allLyricsActivityAdapter)
             TypeOfTheRecycler.FAVORITE -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,favoriteLyricsActivityAdapter)
-            TypeOfTheRecycler.JAZZ -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,jazzLyricsActivityAdapter)
-            TypeOfTheRecycler.HIPHOP -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,hiphopLyricsActivityAdapter)
-            TypeOfTheRecycler.ROCK -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,rockLyricsActivityAdapter)
-            TypeOfTheRecycler.METAL -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,metalLyricsActivityAdapter)
-            TypeOfTheRecycler.PUNK -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,punkLyricsActivityAdapter)
-            TypeOfTheRecycler.POP -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,popLyricsActivityAdapter)
-            TypeOfTheRecycler.COUNTRY -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,countryLyricsActivityAdapter)
-            TypeOfTheRecycler.OPERA -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,operaLyricsActivityAdapter)
+            TypeOfTheRecycler.JAZZ     -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,jazzLyricsActivityAdapter)
+            TypeOfTheRecycler.HIPHOP   -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,hiphopLyricsActivityAdapter)
+            TypeOfTheRecycler.ROCK     -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,rockLyricsActivityAdapter)
+            TypeOfTheRecycler.METAL    -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,metalLyricsActivityAdapter)
+            TypeOfTheRecycler.PUNK     -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,punkLyricsActivityAdapter)
+            TypeOfTheRecycler.POP      -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,popLyricsActivityAdapter)
+            TypeOfTheRecycler.COUNTRY  -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,countryLyricsActivityAdapter)
+            TypeOfTheRecycler.OPERA    -> setRecyclerViewComponents(lyricsRecyclerView,typeOfTheRecycler,operaLyricsActivityAdapter)
         }
 
     }
@@ -143,16 +184,16 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
     {
         val currentLyricsLiveData  : LiveData<List<LyricsModel>> = when(typeOfTheRecycler)
         {
-            TypeOfTheRecycler.ALL -> lyricsViewModel.getAllLyricsFromLocalDB()
+            TypeOfTheRecycler.ALL      -> lyricsViewModel.getAllLyricsFromLocalDB()
             TypeOfTheRecycler.FAVORITE -> lyricsViewModel.getFavoriteLyricsFromLocalDB()
-            TypeOfTheRecycler.JAZZ -> lyricsViewModel.getJazzLyricsFromLocalDB()
-            TypeOfTheRecycler.HIPHOP -> lyricsViewModel.getHipHopLyricsFromLocalDB()
-            TypeOfTheRecycler.ROCK -> lyricsViewModel.getRockLyricsFromLocalDB()
-            TypeOfTheRecycler.METAL -> lyricsViewModel.getMetalLyricsFromLocalDB()
-            TypeOfTheRecycler.PUNK -> lyricsViewModel.getPunkLyricsFromLocalDB()
-            TypeOfTheRecycler.POP -> lyricsViewModel.getPopLyricsFromLocalDB()
-            TypeOfTheRecycler.COUNTRY -> lyricsViewModel.getCountryLyricsFromLocalDB()
-            TypeOfTheRecycler.OPERA -> lyricsViewModel.getOperaLyricsFromLocalDB()
+            TypeOfTheRecycler.JAZZ     -> lyricsViewModel.getJazzLyricsFromLocalDB()
+            TypeOfTheRecycler.HIPHOP   -> lyricsViewModel.getHipHopLyricsFromLocalDB()
+            TypeOfTheRecycler.ROCK     -> lyricsViewModel.getRockLyricsFromLocalDB()
+            TypeOfTheRecycler.METAL    -> lyricsViewModel.getMetalLyricsFromLocalDB()
+            TypeOfTheRecycler.PUNK     -> lyricsViewModel.getPunkLyricsFromLocalDB()
+            TypeOfTheRecycler.POP      -> lyricsViewModel.getPopLyricsFromLocalDB()
+            TypeOfTheRecycler.COUNTRY  -> lyricsViewModel.getCountryLyricsFromLocalDB()
+            TypeOfTheRecycler.OPERA    -> lyricsViewModel.getOperaLyricsFromLocalDB()
         }
         getLyricsFromDb(currentLyricsLiveData,lyricsActivityAdapter)
     }
@@ -169,6 +210,7 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
         popLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
         countryLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
         operaLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+
     }
 
     private fun searchBetweenAllLyrics(item: MenuItem) : Boolean

@@ -32,6 +32,13 @@
     <string name="PopLyricsText">Pop</string>
     <string name="CountryLyricsText">Country</string>
     <string name="OperaLyricsText">Opera</string>
+    <string name="firstpicture">FirstPicture</string>
+    <string name="secondpicture">secondpicture</string>
+    <string name="thirdpicture">thirdpicture</string>
+    <string name="fourthpicture">fourthpicture</string>
+    <string name="fifthpicture">fifthpicture</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name= "googleAccountWebCliendID">820173271126-5euu594fvgojr9iuefu3qtstbb16tjqu.apps.googleusercontent.com</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>

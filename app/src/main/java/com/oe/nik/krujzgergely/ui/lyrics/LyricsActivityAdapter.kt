@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.databinding.RecyclerItemLyricsModelBinding
 import com.oe.nik.krujzgergely.models.LyricsModel
+import com.oe.nik.krujzgergely.ui.main.MainActivity
 import java.util.*
 
 class LyricsActivityAdapter(private var context: Context, private var LyricsList : MutableList<LyricsModel>)

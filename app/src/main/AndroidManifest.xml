@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Widget.Actionbar">
         <activity android:name="com.oe.nik.krujzgergely.ui.main.MainActivity"
+            android:label="MyLyrics"
             android:screenOrientation="portrait"
             android:icon="@mipmap/ic_launcher">
             <intent-filter>

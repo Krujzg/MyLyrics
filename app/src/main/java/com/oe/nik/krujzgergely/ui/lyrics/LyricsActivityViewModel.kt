@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.oe.nik.krujzgergely.data.LyricsDatabase
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.repository.LyricsRepository
+import com.oe.nik.krujzgergely.ui.main.MainActivity
 
 class LyricsActivityViewModel(application: Application) : AndroidViewModel(application)
 {

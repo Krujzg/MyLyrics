@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "820173271126",
+    "firebase_url": "https://mylyrics-1fe87.firebaseio.com",
+    "project_id": "mylyrics-1fe87",
+    "storage_bucket": "mylyrics-1fe87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820173271126:android:cf829439c3a98fb202cbf7",
+        "android_client_info": {
+          "package_name": "com.oe.nik.krujzgergely"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "820173271126-k9qoebu17r8hj4clbtqdjb8gsi6v6hqb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oe.nik.krujzgergely",
+            "certificate_hash": "32f5fc64f45803efa35c3cbcdf28c90ea5aeb23c"
+          }
+        },
+        {
+          "client_id": "820173271126-5euu594fvgojr9iuefu3qtstbb16tjqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtEGu_9docu67qmUtt8fYlSREfj-56uAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "820173271126-5euu594fvgojr9iuefu3qtstbb16tjqu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

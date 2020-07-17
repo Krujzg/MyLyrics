@@ -1,63 +1,65 @@
 package com.oe.nik.krujzgergely.ui.main
 
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
-import android.app.ActivityOptions
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.TaskInfo
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.view.View
-import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.motion.widget.MotionLayout
 import com.oe.nik.krujzgergely.R
+import com.oe.nik.krujzgergely.controllers.GoogleLogin
+import com.oe.nik.krujzgergely.controllers.SpotifyLogin
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.withContext
+import com.oe.nik.krujzgergely.util.SpotifyConstants
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var signInButtonGoogle : Button
+    lateinit var signInButtonSpotify : Button
+    lateinit var spotifyLogin: SpotifyLogin
+    lateinit var googleLogin: GoogleLogin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_main)
 
-        doAnimatonAutomatically()
+        signInButtonGoogle  = findViewById(R.id.signInButton)
+        signInButtonSpotify = findViewById<Button>(R.id.spotify_login_btn)
+        signInButtonGoogle.setOnClickListener{ signInWithGoogle() }
+
+        signInButtonSpotify.setOnClickListener { spotifyLogin.startSpotifyLoginActivity(this) }
+
+        spotifyLogin =  SpotifyLogin(application)
+        googleLogin = GoogleLogin(application)
 
         createNotificationChannel(getString(R.string.mylyrics_notification_channel_id),getString(R.string.mylyrics_notification_channel_name))
     }
 
-    private fun doAnimatonAutomatically()
+    private fun signInWithGoogle()
     {
-        findViewById<MotionLayout>(R.id.motion_base).transitionToEnd()
-        delayStartActivityTillAnimationEnds()
+        val signInIntent = googleLogin.mGoogleSignInClient.signInIntent
+        startActivityForResult(signInIntent, googleLogin.GOOGLE_REQUEST_CODE)
     }
 
-    private fun delayStartActivityTillAnimationEnds()
-    {
-        val runnableFunction = Runnable { startLyricsActivity() }
-        val delayHandler = Handler()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-        delayHandler.postDelayed(runnableFunction,3000)
+        when(requestCode)
+        {
+            googleLogin.GOOGLE_REQUEST_CODE ->   googleLogin.startGoogleLogin(data)
+            SpotifyConstants.AUTH_TOKEN_REQUEST_CODE -> spotifyLogin.bootSpotifyLogin(resultCode,data)
+        }
+        startLyricsActivity()
     }
 
-    private fun startLyricsActivity()
-    {
-        startActivity(Intent(this, LyricsActivity::class.java))
-    }
+    private fun startLyricsActivity() { startActivity(Intent(this, LyricsActivity::class.java)) }
 
-    private fun createNotificationChannel(channelId: String, channelName: String)
-    {
+    private fun createNotificationChannel(channelId: String, channelName: String) {
+
         if (checkIfCurrentVersionOfAPIIsGreaterThenOrEqualsWithAPI26())
         {
             val notificationChannel = NotificationChannel(channelId,channelName, NotificationManager.IMPORTANCE_HIGH)
@@ -65,7 +67,6 @@ class MainActivity : AppCompatActivity() {
                 setShowBadge(true)
                 enableLights(true)
                 lightColor = Color.RED
-                enableVibration(true)
                 enableVibration(true)
                 description = getString(R.string.mylyrics_notification_channel_description) }
 

@@ -13,4 +13,10 @@
         android:title="@string/create_lyrics"
         android:icon="@drawable/baseline_add_white_24"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/ProfilePicture"
+        android:title="@string/profile_picture"
+        android:icon="@drawable/button"
+        app:showAsAction="always" />
 </menu>
