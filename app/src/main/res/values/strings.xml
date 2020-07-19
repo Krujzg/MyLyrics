@@ -41,6 +41,8 @@
     <string name= "googleAccountWebCliendID">820173271126-5euu594fvgojr9iuefu3qtstbb16tjqu.apps.googleusercontent.com</string>
     <string name="recycler_option_edit">Edit</string>
     <string name="recycleritem_delete">Delete</string>
+    <string name="spotify_link">Spotify Link</string>
+    <string name="recyclerItem_Delete_Option">Delete</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>

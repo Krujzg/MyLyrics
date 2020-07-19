@@ -29,7 +29,10 @@ data class LyricsModel(
     var favourite: Boolean = false,
 
     @ColumnInfo(name="youtubeLink")
-    var youtubeLink: String = "")
+    var youtubeLink: String = "",
+
+    @ColumnInfo(name="spotifyLink")
+    var spotifyLink: String = "")
 
 
 

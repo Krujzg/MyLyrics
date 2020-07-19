@@ -41,6 +41,9 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
     var displayedyoutubelink = MutableLiveData<String>()
 
     @Bindable
+    var displayedspotifylink = MutableLiveData<String>()
+
+    @Bindable
     var toggleButtonFavorite = MutableLiveData<Boolean>()
 
     init
@@ -59,6 +62,7 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
         onDisplayLyricsContent()
         onDisplayYoutubeLinkContent()
         onDisplayFavoriteContent()
+        onDisplaySpotifyLinkContent()
     }
 
     private fun updateLyricsModelLocally()
@@ -68,20 +72,21 @@ class UpdateLyricsItemViewModel (application: Application) : AndroidViewModel(ap
             title = displayedTitle.value!!
             lyrics_text = displayedLyricsText.value!!
             youtubeLink = displayedyoutubelink.value!!
+            spotifyLink = displayedspotifylink.value!!
             favourite = toggleButtonFavorite.value!!
         }
     }
 
     private fun sendNotification(title :String,message : String)
     {
-        notificationManager.sendNotification(title, message,
-            CrudType.UPDATE,getApplication())
+        notificationManager.sendNotification(title, message, CrudType.UPDATE,getApplication())
     }
 
     private fun onDisplayPerformerContent() {displayedPerformer.value = lyricsModel.performer }
     private fun onDisplaySongTitleContent() {displayedTitle.value = lyricsModel.title }
     private fun onDisplayLyricsContent() {displayedLyricsText.value = lyricsModel.lyrics_text }
     private fun onDisplayYoutubeLinkContent() {displayedyoutubelink.value = lyricsModel.youtubeLink }
+    private fun onDisplaySpotifyLinkContent() {displayedspotifylink.value = lyricsModel.spotifyLink }
     private fun onDisplayFavoriteContent() {toggleButtonFavorite.value = lyricsModel.favourite }
 
     fun updateLyricsFromLocalDb()

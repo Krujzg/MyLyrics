@@ -41,6 +41,9 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
     @Bindable
     var displayedyoutubelink = MutableLiveData<String>()
 
+    @Bindable
+    var displayedspotifylink = MutableLiveData<String>()
+
     private var songtype  : String = "JAZZ"
 
     init
@@ -66,29 +69,25 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
                         times_watched = 0,
                         favourite = true,
                         lyrics_text = displayedLyricsText.value!!,
-                        youtubeLink = displayedyoutubelink.value!!
+                        youtubeLink = displayedyoutubelink.value!!,
+                        spotifyLink = displayedspotifylink.value!!
                     )
                 )
             }
             sendNotification("Your new lyrics is:", "${displayedPerformer.value} - ${displayedTitle.value}")
         }
-        else
-        {
-            Toast.makeText(getApplication(),"Some of the fields are not filled",Toast.LENGTH_SHORT).show()
-        }
+        else { Toast.makeText(getApplication(),"Some of the fields are not filled",Toast.LENGTH_SHORT).show() }
     }
 
-    private fun isSaveLyricsButtonClickable() : Boolean
-    {
-        return checkIfTheEditTextsValuesAreNullOrEmpty()
-    }
+    private fun isSaveLyricsButtonClickable() : Boolean = checkIfTheEditTextsValuesAreNullOrEmpty()
 
     private fun checkIfTheEditTextsValuesAreNullOrEmpty() : Boolean
     {
         return !(displayedPerformer.value.isNullOrEmpty() ||
                 displayedTitle.value.isNullOrEmpty() ||
                 displayedLyricsText.value.isNullOrEmpty() ||
-                displayedyoutubelink.value.isNullOrEmpty())
+                displayedyoutubelink.value.isNullOrEmpty() ||
+                displayedspotifylink.value.isNullOrEmpty())
     }
 
     private fun sendNotification(title :String,message : String)

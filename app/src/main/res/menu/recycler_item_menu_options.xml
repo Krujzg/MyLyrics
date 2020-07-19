@@ -8,7 +8,7 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/DeleteLyricsOption"
-        android:title="@string/delete_lyrics"
+        android:title="@string/recyclerItem_Delete_Option"
         android:icon="@drawable/baseline_delete_white_24"
         android:iconTint="@color/red"
         app:showAsAction="ifRoom" />

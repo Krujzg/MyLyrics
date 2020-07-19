@@ -1,9 +1,13 @@
 package com.oe.nik.krujzgergely.ui.lyricsItem
 
+import android.content.ComponentName
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -12,19 +16,31 @@ import com.oe.nik.krujzgergely.databinding.ActivityLyricsItemBinding
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity
 
+
 class LyricsItemActiviy : AppCompatActivity()
 {
     lateinit var lyricsItemViewModel : LyricsItemActivityViewModel
+    lateinit var youtubePlayButton : Button
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lyrics_item)
 
         lyricsItemViewModel  = ViewModelProvider(this).get(LyricsItemActivityViewModel::class.java)
+        youtubePlayButton =  findViewById<Button>(R.id.youtubePlayButton)
 
         DataBindingUtil.setContentView<ActivityLyricsItemBinding>(this,R.layout.activity_lyrics_item).apply {
             this.lifecycleOwner = this@LyricsItemActiviy
             this.lyricsItemModel = lyricsItemViewModel
+        }
+        youtubePlayButton.setOnClickListener{
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(lyricsItemViewModel.YoutubeLink.value!!))
+
+            intent.component = ComponentName("com.google.android.youtube", "com.google.android.youtube.PlayerActivity")
+
+            val manager: PackageManager = packageManager
+            val infos = manager.queryIntentActivities(intent, 0)
+            if (infos.size > 0) { startActivity(intent) }
         }
     }
 

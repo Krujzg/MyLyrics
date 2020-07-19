@@ -6,7 +6,8 @@
     "song_type": "HIPHOP",
     "times_watched": 0,
     "favourite": true,
-    "youtubeLink": "https://www.youtube.com/watch?v=1LtPWUk5ibU"
+    "youtubeLink": "https://www.youtube.com/watch?v=1LtPWUk5ibU",
+    "spotifyLink": "spotify:track:7qqy4aXn9bgvUcQmVILsf9"
   },
   {
     "performer": "De:Nash",
@@ -15,7 +16,8 @@
     "song_type": "HIPHOP",
     "times_watched": 0,
     "favourite": true,
-    "youtubeLink": "https://www.youtube.com/watch?v=MOIH3dBPx88"
+    "youtubeLink": "https://www.youtube.com/watch?v=MOIH3dBPx88",
+    "spotifyLink": "spotify:track:0DJPbyO9RrmJwsGOkouVHM"
   },
   {
     "performer": "Eminem",
@@ -24,7 +26,8 @@
     "song_type": "HIPHOP",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=9XvXF1LrWgA"
+    "youtubeLink": "https://www.youtube.com/watch?v=9XvXF1LrWgA",
+    "spotifyLink": "spotify:track:7FIWs0pqAYbP91WWM0vlTQ"
   },
   {
     "performer": "Eminem",
@@ -33,7 +36,8 @@
     "song_type": "HIPHOP",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=XbGs_qK2PQA"
+    "youtubeLink": "https://www.youtube.com/watch?v=XbGs_qK2PQA",
+    "spotifyLink": "spotify:track:6or1bKJiZ06IlK0vFvY75k"
   },
   {
     "performer": "Eminem",
@@ -42,7 +46,8 @@
     "song_type": "HIPHOP",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=eJO5HU_7_1w"
+    "youtubeLink": "https://www.youtube.com/watch?v=eJO5HU_7_1w",
+    "spotifyLink": "spotify:track:3yfqSUWxFvZELEM4PmlwIR"
   },
   {
     "performer": "Louis Armstrong",
@@ -51,7 +56,8 @@
     "song_type": "JAZZ",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=CWzrABouyeE"
+    "youtubeLink": "https://www.youtube.com/watch?v=CWzrABouyeE",
+    "spotifyLink": "spotify:track:1qCQTy0fTXerET4x8VHyr9"
   },
   {
     "performer": "Louis Armstrong",
@@ -60,7 +66,8 @@
     "song_type": "JAZZ",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=CWzrABouyeE"
+    "youtubeLink": "https://www.youtube.com/watch?v=CWzrABouyeE",
+    "spotifyLink": "spotify:track:5IIybI1oiOCY3DRUrpQ7zA"
   },
   {
     "performer": "Frank Sinatra",
@@ -69,7 +76,8 @@
     "song_type": "JAZZ",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=ZEcqHA7dbwM"
+    "youtubeLink": "https://www.youtube.com/watch?v=ZEcqHA7dbwM",
+    "spotifyLink": "spotify:track:2dR5WkrpwylTuT3jRWNufa"
   },
   {
     "performer": "Frank Sinatra",
@@ -78,7 +86,8 @@
     "song_type": "JAZZ",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=TnlPtaPxXfc"
+    "youtubeLink": "https://www.youtube.com/watch?v=TnlPtaPxXfc",
+    "spotifyLink": "spotify:track:4FmCUATNIarCQh72JYdvnm"
   },
   {
     "performer": "Frank Sinatra",
@@ -87,7 +96,8 @@
     "song_type": "JAZZ",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=qQzdAsjWGPg"
+    "youtubeLink": "https://www.youtube.com/watch?v=qQzdAsjWGPg",
+    "spotifyLink": "spotify:track:3spdoTYpuCpmq19tuD0bOe"
   },
   {
     "performer": "AC DC",
@@ -96,7 +106,8 @@
     "song_type": "ROCK",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=l482T0yNkeo"
+    "youtubeLink": "https://www.youtube.com/watch?v=l482T0yNkeo",
+    "spotifyLink": "spotify:track:2zYzyRzz6pRmhPzyfMEC8s"
   },
   {
     "performer": "The Rolling Stones",
@@ -105,7 +116,8 @@
     "song_type": "ROCK",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=nrIPxlFzDi0"
+    "youtubeLink": "https://www.youtube.com/watch?v=nrIPxlFzDi0",
+    "spotifyLink": "spotify:track:2PzU4IB8Dr6mxV3lHuaG34"
   },
   {
     "performer": "The Beatles",
@@ -114,7 +126,8 @@
     "song_type": "ROCK",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=A_MjCqQoLLA&list=PL9-cZf_sidpmv6_SRsb4Q9GI50ATHrBnM"
+    "youtubeLink": "https://www.youtube.com/watch?v=A_MjCqQoLLA&list=PL9-cZf_sidpmv6_SRsb4Q9GI50ATHrBnM",
+    "spotifyLink": "spotify:track:1eT2CjXwFXNx6oY5ydvzKU"
   },
   {
     "performer": "Led Zeppelin",
@@ -123,7 +136,8 @@
     "song_type": "ROCK",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=Nnu1E5Kslig"
+    "youtubeLink": "https://www.youtube.com/watch?v=Nnu1E5Kslig",
+    "spotifyLink": "spotify:track:5CQ30WqJwcep0pYcV4AMNc"
   },
   {
     "performer": "Queen",
@@ -132,7 +146,8 @@
     "song_type": "ROCK",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=fJ9rUzIMcZQ"
+    "youtubeLink": "https://www.youtube.com/watch?v=fJ9rUzIMcZQ",
+    "spotifyLink": "spotify:track:4u7EnebtmKWzUH433cf5Qv"
   },
   {
     "performer": "Papa Roach",
@@ -141,7 +156,8 @@
     "song_type": "METAL",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=j0lSpNtjPM8"
+    "youtubeLink": "https://www.youtube.com/watch?v=j0lSpNtjPM8",
+    "spotifyLink": "spotify:track:5W8YXBz9MTIDyrpYaCg2Ky"
   },
   {
     "performer": "Slipknot",
@@ -150,7 +166,8 @@
     "song_type": "METAL",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=qw2LU1yS7aw"
+    "youtubeLink": "https://www.youtube.com/watch?v=qw2LU1yS7aw",
+    "spotifyLink": "spotify:track:6wqJeItl3Vc3az4ZicSQAB"
   },
   {
     "performer": "Linkin Park",
@@ -159,7 +176,8 @@
     "song_type": "METAL",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=kXYiU_JCYtU"
+    "youtubeLink": "https://www.youtube.com/watch?v=kXYiU_JCYtU",
+    "spotifyLink": "spotify:track:2nLtzopw4rPReszdYBJU6h"
   },
   {
     "performer": "System Of A Down",
@@ -168,7 +186,8 @@
     "song_type": "METAL",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=iywaBOMvYLI"
+    "youtubeLink": "https://www.youtube.com/watch?v=iywaBOMvYLI",
+    "spotifyLink": "spotify:track:0snQkGI5qnAmohLE7jTsTn"
   },
   {
     "performer": "Limp Bizkit",
@@ -177,7 +196,8 @@
     "song_type": "METAL",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=RYnFIRc0k6E&list=PLsMILDNKDKSGWY4qxvSN7mvYVPgSPjaY-"
+    "youtubeLink": "https://www.youtube.com/watch?v=RYnFIRc0k6E&list=PLsMILDNKDKSGWY4qxvSN7mvYVPgSPjaY-",
+    "spotifyLink": "spotify:track:3IV4swNduIRunHREK80owz"
   },
   {
     "performer": "Nirvana",
@@ -186,7 +206,8 @@
     "song_type": "PUNK",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=hTWKbfoikeg"
+    "youtubeLink": "https://www.youtube.com/watch?v=hTWKbfoikeg",
+    "spotifyLink": "spotify:track:1f3yAtsJtY87CTmM8RLnxf"
   },
   {
     "performer": "The Sex Pistols",
@@ -195,7 +216,8 @@
     "song_type": "PUNK",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=cBojbjoMttI"
+    "youtubeLink": "https://www.youtube.com/watch?v=cBojbjoMttI",
+    "spotifyLink": "spotify:track:74EF3QE9twDF2LRByd2ATx"
   },
   {
     "performer": "The Damned",
@@ -204,7 +226,8 @@
     "song_type": "PUNK",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=TUxFQ5QBiYk"
+    "youtubeLink": "https://www.youtube.com/watch?v=TUxFQ5QBiYk",
+    "spotifyLink": "spotify:track:55TeO50ytH96i93yihdNJE"
   },
   {
     "performer": "Anti-Pasti",
@@ -213,7 +236,8 @@
     "song_type": "PUNK",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=wDf1Cykxtcw"
+    "youtubeLink": "https://www.youtube.com/watch?v=wDf1Cykxtcw",
+    "spotifyLink": "spotify:track:2EnTM3i5dJ33hjEFmP4TCL"
   },
   {
     "performer": "Sex Pistols",
@@ -222,7 +246,8 @@
     "song_type": "PUNK",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=yqrAPOZxgzU"
+    "youtubeLink": "https://www.youtube.com/watch?v=yqrAPOZxgzU",
+    "spotifyLink": "spotify:track:2mHchPRtQWet3iIS3jANr1"
   },
   {
     "performer": "Prince & The Revolution",
@@ -231,7 +256,8 @@
     "song_type": "POP",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=UG3VcCAlUgE"
+    "youtubeLink": "https://www.youtube.com/watch?v=UG3VcCAlUgE",
+    "spotifyLink": "spotify:track:51H2y6YrNNXcy3dfc3qSbA"
   },
   {
     "performer": "The Police",
@@ -240,7 +266,8 @@
     "song_type": "POP",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=OMOGaugKpzs"
+    "youtubeLink": "https://www.youtube.com/watch?v=OMOGaugKpzs",
+    "spotifyLink": "spotify:track:1JSTJqkT5qHq8MDJnJbRE1"
   },
   {
     "performer": "Ben E. King",
@@ -249,7 +276,8 @@
     "song_type": "POP",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=dTd2ylacYNU"
+    "youtubeLink": "https://www.youtube.com/watch?v=dTd2ylacYNU",
+    "spotifyLink": "spotify:track:3SdTKo2uVsxFblQjpScoHy"
   },
   {
     "performer": "Radiohead ",
@@ -258,7 +286,8 @@
     "song_type": "POP",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=XFkzRNyygfk"
+    "youtubeLink": "https://www.youtube.com/watch?v=XFkzRNyygfk",
+    "spotifyLink": "spotify:track:6b2oQwSGFkzsMtQruIWm2p"
   },
   {
     "performer": "Pink Floyd",
@@ -267,7 +296,8 @@
     "song_type": "POP",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=YR5ApYxkU-U"
+    "youtubeLink": "https://www.youtube.com/watch?v=YR5ApYxkU-U",
+    "spotifyLink": ""
   },
   {
     "performer": "Johnny Cash",
@@ -276,7 +306,8 @@
     "song_type": "COUNTRY",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=Lq0fUa0vW_E"
+    "youtubeLink": "https://www.youtube.com/watch?v=Lq0fUa0vW_E",
+    "spotifyLink": "spotify:track:2G628O5BT230zwpipWql7l"
   },
   {
     "performer": "Maren Morris",
@@ -285,7 +316,8 @@
     "song_type": "COUNTRY",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=gvPMVKUI9go"
+    "youtubeLink": "https://www.youtube.com/watch?v=gvPMVKUI9go",
+    "spotifyLink": "spotify:track:7yFhA2fUsL2oIMWlw5DaHQ"
   },
   {
     "performer": "Gabby Barrett",
@@ -294,7 +326,8 @@
     "song_type": "COUNTRY",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=qcCH6JpcK5w"
+    "youtubeLink": "https://www.youtube.com/watch?v=qcCH6JpcK5w",
+    "spotifyLink": "spotify:track:23T0OX7QOiIUFShSzbJ5Uo"
   },
   {
     "performer": "Luke Bryan",
@@ -303,7 +336,8 @@
     "song_type": "COUNTRY",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=YEq-cvq_cK4"
+    "youtubeLink": "https://www.youtube.com/watch?v=YEq-cvq_cK4",
+    "spotifyLink": "spotify:track:6NhS5LwYbJ6xD7BGvlWRJO"
   },
   {
     "performer": "Sam Hunt",
@@ -312,7 +346,8 @@
     "song_type": "COUNTRY",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=Wxhv_HsEIl4"
+    "youtubeLink": "https://www.youtube.com/watch?v=Wxhv_HsEIl4",
+    "spotifyLink": "spotify:track:73nVXVgoqOuZfdbtONnWVE"
   },
   {
     "performer": "Simándy József",
@@ -321,7 +356,8 @@
     "song_type": "OPERA",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=r2sWQgCW7Wc"
+    "youtubeLink": "https://www.youtube.com/watch?v=r2sWQgCW7Wc",
+    "spotifyLink": "spotify:track:7tGNe7cZZBx2tLYzZnQzl4"
   },
   {
     "performer": "André Rieu & Amira Willighagen",
@@ -330,7 +366,8 @@
     "song_type": "OPERA",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=s9PQ7qPkluM&feature=emb_title"
+    "youtubeLink": "https://www.youtube.com/watch?v=s9PQ7qPkluM&feature=emb_title",
+    "spotifyLink": "spotify:track:1oi7QvpgDkBFTROce7LkB8"
   },
   {
     "performer": "The Three Tenors",
@@ -339,7 +376,8 @@
     "song_type": "OPERA",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=Aj-sXm-vhMQ&feature=emb_title"
+    "youtubeLink": "https://www.youtube.com/watch?v=Aj-sXm-vhMQ&feature=emb_title",
+    "spotifyLink": "spotify:track:2CACso0N7JssbeKSdN4Drl"
   },
   {
     "performer": "Carmen",
@@ -348,7 +386,8 @@
     "song_type": "OPERA",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=KJ_HHRJf0xg&feature=emb_title"
+    "youtubeLink": "https://www.youtube.com/watch?v=KJ_HHRJf0xg&feature=emb_title",
+    "spotifyLink": "spotify:track:73SspxaPunDh3aCojPH0gJ"
   },
   {
     "performer": "Andrea Bocelli & Angela Gheorghiu",
@@ -357,6 +396,7 @@
     "song_type": "OPERA",
     "times_watched": 0,
     "favourite": false,
-    "youtubeLink": "https://www.youtube.com/watch?v=G3YuDSl9lik&feature=emb_title"
+    "youtubeLink": "https://www.youtube.com/watch?v=G3YuDSl9lik&feature=emb_title",
+    "spotifyLink": "spotify:track:2uywAmOhGEHYUK8uIyD3JD"
   }
 ]

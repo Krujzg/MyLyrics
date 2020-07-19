@@ -2,16 +2,25 @@ package com.oe.nik.krujzgergely.ui.lyricsItem
 
 import android.app.Application
 import android.app.NotificationManager
+import android.content.Intent
+import android.net.Uri
+import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.*
+import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.oe.nik.krujzgergely.controllers.GoogleLogin
 import com.oe.nik.krujzgergely.data.LyricsDatabase
 import com.oe.nik.krujzgergely.models.LyricsModel
-import com.oe.nik.krujzgergely.repository.LyricsRepository
-import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivityAdapter
-import kotlinx.coroutines.launch
-import androidx.lifecycle.viewModelScope
 import com.oe.nik.krujzgergely.models.enums.CrudType
+import com.oe.nik.krujzgergely.repository.LyricsRepository
+import com.oe.nik.krujzgergely.services.SpotifyService
+import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivityAdapter
 import com.oe.nik.krujzgergely.util.sendNotification
+import kotlinx.coroutines.launch
+
 
 class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(application)
 {
@@ -25,7 +34,10 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
     private var _displayedPerformer : MutableLiveData<String> = MutableLiveData<String>()
     private var _displayedTitle :MutableLiveData<String> = MutableLiveData<String>()
     private var _displayedLyricsText : MutableLiveData<String> = MutableLiveData<String>()
-    private var _displayedYoutubeLink : MutableLiveData<String> = MutableLiveData<String>()
+    private var _YoutubeLink : MutableLiveData<String> = MutableLiveData<String>()
+    private var _SpotifyLink : MutableLiveData<String> = MutableLiveData<String>()
+    private var _IsYoutubeButtonVisible : Int = View.INVISIBLE
+    private var _IsSpotifyButtonVisible : Int = View.INVISIBLE
 
     val displayedPerformer: LiveData<String>
         get() = _displayedPerformer
@@ -36,8 +48,17 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
     val displayedLyricsText: LiveData<String>
         get() = _displayedLyricsText
 
-    val displayedYoutubeLink: LiveData<String>
-        get() = _displayedYoutubeLink
+    val YoutubeLink: LiveData<String>
+        get() = _YoutubeLink
+
+    val SpotifyLink: LiveData<String>
+        get() = _SpotifyLink
+
+    val isYoutubeButtonVisible: Int
+        get() = _IsYoutubeButtonVisible
+
+    val isSpotifyButtonVisible: Int
+        get() = _IsSpotifyButtonVisible
 
     init
     {
@@ -46,6 +67,7 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
             .lyricsDao()
         this.repository = LyricsRepository(lyricsDao)
         onDisplayContents()
+        setYoutubeOrSpotifyButtonVisible()
     }
 
     private fun onDisplayContents()
@@ -53,13 +75,42 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
         onDisplayPerformerContent()
         onDisplaySongTitleContent()
         onDisplayLyricsContent()
-        onDisplayYoutubeLinkContent()
+        getYoutubeLinkContent()
+        getSpotifyLinkContent()
     }
+
+    fun setYoutubeOrSpotifyButtonVisible()
+    {
+        when(checkWhichAccountIsLoggedIn())
+        {
+            1 ->
+            {
+                _IsYoutubeButtonVisible = View.VISIBLE
+                _IsSpotifyButtonVisible = View.INVISIBLE
+            }
+            else ->
+            {
+                _IsYoutubeButtonVisible = View.INVISIBLE
+                _IsSpotifyButtonVisible = View.VISIBLE
+            }
+        }
+    }
+
+    fun playSpotifyLink() { SpotifyService.play(SpotifyLink.value!!) }
+
+
+    private fun checkWhichAccountIsLoggedIn() : Int =
+        when(GoogleLogin.googleAccount == null)
+        {
+            true -> 0 // spotifyaccount
+            false -> 1 // googleaccount
+        }
 
     private fun onDisplayPerformerContent() {_displayedPerformer.value = lyricsModel.performer }
     private fun onDisplaySongTitleContent() {_displayedTitle.value = lyricsModel.title }
     private fun onDisplayLyricsContent() {_displayedLyricsText.value = lyricsModel.lyrics_text }
-    private fun onDisplayYoutubeLinkContent() {_displayedYoutubeLink.value = lyricsModel.youtubeLink }
+    private fun getYoutubeLinkContent() {_YoutubeLink.value = lyricsModel.youtubeLink }
+    private fun getSpotifyLinkContent() {_SpotifyLink.value = lyricsModel.spotifyLink }
 
     private fun sendNotification(title :String,message : String)
     {
