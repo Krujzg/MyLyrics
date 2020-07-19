@@ -2,6 +2,7 @@ package com.oe.nik.krujzgergely.ui.createlyricsitem
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.databinding.ActivityCreateNewlyricsBinding
+import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 
 class CreateLyricsActivity : AppCompatActivity()
 {

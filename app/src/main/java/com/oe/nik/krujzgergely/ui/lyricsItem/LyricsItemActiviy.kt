@@ -54,4 +54,9 @@ class LyricsItemActiviy : AppCompatActivity()
         startActivity(Intent(this, LyricsActivity::class.java))
         return true
     }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, LyricsActivity::class.java))
+        overridePendingTransition( R.xml.slide_in_down ,R.xml.slide_out_down )
+    }
 }

@@ -247,7 +247,15 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
         }
     }
 
-    override fun onLyricsSelected() { startActivity( Intent(this, LyricsItemActiviy::class.java)) }
-    override fun onUpdateOptionsClicked() { startActivity( Intent(this, UpdateLyricsItemActivity::class.java)) }
+    override fun onLyricsSelected()
+    {
+        startActivity( Intent(this, LyricsItemActiviy::class.java))
+        overridePendingTransition( R.xml.slide_in_up, R.xml.slide_out_up )
+    }
+    override fun onUpdateOptionsClicked()
+    {
+        startActivity( Intent(this, UpdateLyricsItemActivity::class.java))
+        overridePendingTransition( R.xml.slide_in_up, R.xml.slide_out_up )
+    }
     override fun onDeleteOptionsClicked(lyricsModel: LyricsModel) { lyricsViewModel.deleteLyricsFromLocalDB(lyricsModel)   }
 }
