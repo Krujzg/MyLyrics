@@ -2,7 +2,6 @@ package com.oe.nik.krujzgergely.ui.lyrics
 
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -25,7 +24,7 @@ import com.oe.nik.krujzgergely.controllers.SpotifyLogin
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.models.enums.TypeOfTheRecycler
 import com.oe.nik.krujzgergely.ui.createlyricsitem.CreateLyricsActivity
-import com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActiviy
+import com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActivity
 import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity
 import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
 
@@ -249,7 +248,7 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
 
     override fun onLyricsSelected()
     {
-        startActivity( Intent(this, LyricsItemActiviy::class.java))
+        startActivity( Intent(this, LyricsItemActivity::class.java))
         overridePendingTransition( R.xml.slide_in_up, R.xml.slide_out_up )
     }
     override fun onUpdateOptionsClicked()

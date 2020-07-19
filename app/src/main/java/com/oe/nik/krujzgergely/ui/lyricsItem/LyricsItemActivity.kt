@@ -1,47 +1,42 @@
 package com.oe.nik.krujzgergely.ui.lyricsItem
 
-import android.content.ComponentName
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.databinding.ActivityLyricsItemBinding
+import com.oe.nik.krujzgergely.generated.callback.OnItemSelected
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity
+import kotlinx.android.synthetic.main.activity_lyrics_item.*
 
 
-class LyricsItemActiviy : AppCompatActivity()
+class LyricsItemActivity : AppCompatActivity()
 {
     lateinit var lyricsItemViewModel : LyricsItemActivityViewModel
-    lateinit var youtubePlayButton : Button
+    //lateinit var youtubePlayButton : Button
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lyrics_item)
 
         lyricsItemViewModel  = ViewModelProvider(this).get(LyricsItemActivityViewModel::class.java)
-        youtubePlayButton =  findViewById<Button>(R.id.youtubePlayButton)
 
         DataBindingUtil.setContentView<ActivityLyricsItemBinding>(this,R.layout.activity_lyrics_item).apply {
-            this.lifecycleOwner = this@LyricsItemActiviy
+            this.lifecycleOwner = this@LyricsItemActivity
             this.lyricsItemModel = lyricsItemViewModel
         }
-        youtubePlayButton.setOnClickListener{
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(lyricsItemViewModel.YoutubeLink.value!!))
 
-            intent.component = ComponentName("com.google.android.youtube", "com.google.android.youtube.PlayerActivity")
-
-            val manager: PackageManager = packageManager
-            val infos = manager.queryIntentActivities(intent, 0)
-            if (infos.size > 0) { startActivity(intent) }
-        }
+        playYoutubeButton.setOnClickListener{openAndPlayCurrentYoutubeSong()}
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -71,8 +66,17 @@ class LyricsItemActiviy : AppCompatActivity()
         return true
     }
 
+    private fun openAndPlayCurrentYoutubeSong()
+    {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(lyricsItemViewModel.YoutubeLink.value!!)
+        intent.setPackage("com.google.android.youtube")
+        startActivity(intent)
+    }
+
     override fun onBackPressed() {
         startActivity(Intent(this, LyricsActivity::class.java))
         overridePendingTransition( R.xml.slide_in_down ,R.xml.slide_out_down )
     }
+
 }
