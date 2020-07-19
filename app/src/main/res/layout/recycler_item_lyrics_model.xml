@@ -7,7 +7,7 @@
             name="lyricsModel"
             type="com.oe.nik.krujzgergely.models.LyricsModel" />
     </data>
-    <LinearLayout
+    <RelativeLayout
             android:layout_width="133dp"
             android:layout_height="240dp"
             android:layout_margin="8dp"
@@ -35,6 +35,14 @@
                     android:layout_height="400px"
                     android:layout_row="0"
                     android:layout_column="0" />
+
+                <TextView
+                    android:id="@+id/textViewOptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="120dp"
+                    android:text="&#8942;"
+                    android:textAppearance="?android:textAppearanceLarge" />
 
                 <TextView
                     android:id="@+id/performer"
@@ -66,5 +74,5 @@
                     app:layout_constraintTop_toBottomOf="@+id/performer" />
             </GridLayout>
         </androidx.cardview.widget.CardView>
-    </LinearLayout>
+    </RelativeLayout>
 </layout>

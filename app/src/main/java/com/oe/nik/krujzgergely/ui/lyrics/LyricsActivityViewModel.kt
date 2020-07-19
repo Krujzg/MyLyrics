@@ -8,6 +8,7 @@ import com.oe.nik.krujzgergely.data.LyricsDatabase
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.repository.LyricsRepository
 import com.oe.nik.krujzgergely.ui.main.MainActivity
+import kotlinx.coroutines.launch
 
 class LyricsActivityViewModel(application: Application) : AndroidViewModel(application)
 {
@@ -40,4 +41,6 @@ class LyricsActivityViewModel(application: Application) : AndroidViewModel(appli
     fun getCountryLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getCountryLyricsFromLocalDB() }
 
     fun getOperaLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getOperaLyricsFromLocalDB() }
+
+    fun deleteLyricsFromLocalDB(lyricsModel: LyricsModel) { viewModelScope.launch{ lyricsRepository.deleteFromDb(lyricsModel)} }
 }

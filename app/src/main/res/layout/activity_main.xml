@@ -12,12 +12,11 @@
     <Button
         android:id="@+id/signInButton"
         android:layout_width="251dp"
-        android:layout_height="55dp"
+        android:layout_height="40dp"
         android:layout_centerInParent="true"
         android:layout_marginEnd="75dp"
         android:background="@drawable/google_button"
-        android:drawableStart="@drawable/googlelogo50x50"
-        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/google_icon"
         android:padding="8dp"
         android:text="Log in with Google"
         android:textAllCaps="false"
@@ -32,12 +31,11 @@
     <Button
         android:id="@+id/spotify_login_btn"
         android:layout_width="251dp"
-        android:layout_height="55dp"
+        android:layout_height="40dp"
         android:layout_centerInParent="true"
         android:layout_marginEnd="75dp"
         android:background="@drawable/spotify_button"
-        android:drawableStart="@drawable/blackspotify50x50"
-        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/spotifyblack25x25"
         android:padding="8dp"
         android:text="Log in with Spotify"
         android:textAllCaps="false"
@@ -47,7 +45,7 @@
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.68" />
+        app:layout_constraintVertical_bias="0.646" />
 
     <ProgressBar
         android:id="@+id/progressBar"

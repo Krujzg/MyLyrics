@@ -39,6 +39,8 @@
     <string name="fifthpicture">fifthpicture</string>
     <string name="profile_picture">Profile Picture</string>
     <string name= "googleAccountWebCliendID">820173271126-5euu594fvgojr9iuefu3qtstbb16tjqu.apps.googleusercontent.com</string>
+    <string name="recycler_option_edit">Edit</string>
+    <string name="recycleritem_delete">Delete</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>

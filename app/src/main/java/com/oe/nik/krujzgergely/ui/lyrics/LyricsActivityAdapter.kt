@@ -1,16 +1,18 @@
 package com.oe.nik.krujzgergely.ui.lyrics
 
 import android.content.Context
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.os.Build
+import android.view.*
 import android.widget.ImageView
+import android.widget.PopupMenu
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.databinding.RecyclerItemLyricsModelBinding
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.ui.main.MainActivity
+import org.w3c.dom.Text
 import java.util.*
 
 class LyricsActivityAdapter(private var context: Context, private var LyricsList : MutableList<LyricsModel>)
@@ -36,7 +38,11 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
 
     override fun getItemCount(): Int = LyricsList.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) { holder.setData(LyricsList[position]) }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int)
+    {
+        holder.setData(LyricsList[position])
+        holder.setOptionsMenu(LyricsList[position])
+    }
 
     fun swapData(lyricsList: List<LyricsModel>)
     {
@@ -72,13 +78,6 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
         }
     }
 
-    private fun lowerCaseStringData(data : String) : String { return data.toLowerCase(Locale.getDefault()) }
-
-    private fun checkIfPerformerOrTitleContainsSearchedText(performer : String, title : String, searchedData: String) : Boolean
-    {
-        return (performer.contains(searchedData) || title.contains(searchedData))
-    }
-
     fun noItemFoundInLyricsListWhenSearched()
     {
         LyricsList.clear()
@@ -86,10 +85,25 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private var view: View, private val recyclerItemLyricsModelBinding: RecyclerItemLyricsModelBinding)
-        : RecyclerView.ViewHolder(view)
+    private fun lowerCaseStringData(data : String) : String { return data.toLowerCase(Locale.getDefault()) }
+
+    private fun checkIfPerformerOrTitleContainsSearchedText(performer : String, title : String, searchedData: String) : Boolean
     {
+        return (performer.contains(searchedData) || title.contains(searchedData))
+    }
+
+    inner class ViewHolder(private var view: View, private val recyclerItemLyricsModelBinding: RecyclerItemLyricsModelBinding)
+        : RecyclerView.ViewHolder(view), PopupMenu.OnMenuItemClickListener, View.OnClickListener {
+
         private val songTypeImageview: ImageView = view.findViewById<ImageView>(R.id.song_image)
+        private val optionsMenu = view.findViewById<TextView>(R.id.textViewOptions)
+        private var currentLyricsModel : LyricsModel? = null
+
+        fun setOptionsMenu(lyricsModel: LyricsModel?)
+        {
+            currentLyricsModel = lyricsModel
+            optionsMenu.setOnClickListener(this)
+        }
 
         fun setData(lyricsModel: LyricsModel?)
         {
@@ -116,6 +130,37 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
                 "POP" -> Glide.with(context).load(R.drawable.pop).into(song_imageview)
                 "COUNTRY" -> Glide.with(context).load(R.drawable.country).into(song_imageview)
                 else -> Glide.with(context).load(R.drawable.opera).into(song_imageview)
+            }
+        }
+
+        override fun onClick(v: View?)
+        {
+            val popupMenu = PopupMenu(view.context,view)
+            popupMenu.inflate(R.menu.recycler_item_menu_options)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                popupMenu.setForceShowIcon(true)
+            }
+            popupMenu.show()
+            popupMenu.setOnMenuItemClickListener(this)
+        }
+
+        override fun onMenuItemClick(item: MenuItem?): Boolean
+        {
+            when(item!!.itemId)
+            {
+                R.id.UpdateLyricsOption ->
+                {
+                    currentLyrics = currentLyricsModel!!
+                    listener.onUpdateOptionsClicked()
+                    return true
+                }
+                R.id.DeleteLyricsOption ->
+                {
+                    currentLyrics = currentLyricsModel!!
+                    listener.onDeleteOptionsClicked(currentLyrics)
+                    return true
+                }
+                else -> return false
             }
         }
     }

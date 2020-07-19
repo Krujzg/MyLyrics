@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/UpdateLyricsOption"
+        android:title="@string/recycler_option_edit"
+        android:icon="@drawable/baseline_create_white_24"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/DeleteLyricsOption"
+        android:title="@string/delete_lyrics"
+        android:icon="@drawable/baseline_delete_white_24"
+        android:iconTint="@color/red"
+        app:showAsAction="ifRoom" />
+
+</menu>

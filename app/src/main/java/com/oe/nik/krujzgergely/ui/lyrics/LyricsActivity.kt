@@ -26,6 +26,7 @@ import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.models.enums.TypeOfTheRecycler
 import com.oe.nik.krujzgergely.ui.createlyricsitem.CreateLyricsActivity
 import com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActiviy
+import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity
 import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
 
 
@@ -247,4 +248,6 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
     }
 
     override fun onLyricsSelected() { startActivity( Intent(this, LyricsItemActiviy::class.java)) }
+    override fun onUpdateOptionsClicked() { startActivity( Intent(this, UpdateLyricsItemActivity::class.java)) }
+    override fun onDeleteOptionsClicked(lyricsModel: LyricsModel) { lyricsViewModel.deleteLyricsFromLocalDB(lyricsModel)   }
 }
