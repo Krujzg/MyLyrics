@@ -1,18 +1,25 @@
 package com.oe.nik.krujzgergely.ui.lyrics
 
 import android.app.Application
+import android.app.NotificationManager
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.oe.nik.krujzgergely.data.LyricsDatabase
 import com.oe.nik.krujzgergely.models.LyricsModel
+import com.oe.nik.krujzgergely.models.enums.CrudType
 import com.oe.nik.krujzgergely.repository.LyricsRepository
 import com.oe.nik.krujzgergely.ui.main.MainActivity
+import com.oe.nik.krujzgergely.util.sendNotification
 import kotlinx.coroutines.launch
 
 class LyricsActivityViewModel(application: Application) : AndroidViewModel(application)
 {
     private val lyricsRepository: LyricsRepository
+
+    private val notificationManager = ContextCompat.getSystemService(application,
+        NotificationManager::class.java) as NotificationManager
 
     init
     {
@@ -20,6 +27,10 @@ class LyricsActivityViewModel(application: Application) : AndroidViewModel(appli
             .getDatabase(application,viewModelScope,application.resources)
             .lyricsDao()
         lyricsRepository = LyricsRepository(lyricsDao)
+    }
+    private fun sendNotification(title :String,message : String)
+    {
+        notificationManager.sendNotification(title, message, CrudType.DELETE, getApplication())
     }
 
     fun getAllLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getAllLyricsFromLocalDB() }
@@ -42,5 +53,13 @@ class LyricsActivityViewModel(application: Application) : AndroidViewModel(appli
 
     fun getOperaLyricsFromLocalDB() : LiveData<List<LyricsModel>> { return lyricsRepository.getOperaLyricsFromLocalDB() }
 
-    fun deleteLyricsFromLocalDB(lyricsModel: LyricsModel) { viewModelScope.launch{ lyricsRepository.deleteFromDb(lyricsModel)} }
+    fun deleteLyricsFromLocalDB(lyricsModel: LyricsModel)
+    {
+        val performer = lyricsModel.performer
+        val title = lyricsModel.title
+        viewModelScope.launch{
+            lyricsRepository.deleteFromDb(lyricsModel)
+        }
+        sendNotification("You have deleted this Lyrics:", "$performer - $title")
+    }
 }
