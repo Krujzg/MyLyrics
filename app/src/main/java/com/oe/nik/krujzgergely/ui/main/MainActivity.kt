@@ -8,34 +8,23 @@ import android.graphics.BlendModeColorFilter
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
-import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import com.oe.nik.krujzgergely.R
-import com.oe.nik.krujzgergely.controllers.GoogleLogin
-import com.oe.nik.krujzgergely.controllers.SpotifyLogin
+import com.oe.nik.krujzgergely.controllers.logincontroller.GoogleLogin
+import com.oe.nik.krujzgergely.controllers.logincontroller.SpotifyLogin
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 import com.oe.nik.krujzgergely.services.SpotifyService
 import com.oe.nik.krujzgergely.services.SpotifyService.getAuthenticationRequest
 import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationResponse
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import java.net.URL
-import javax.net.ssl.HttpsURLConnection
 
 class MainActivity : AppCompatActivity() {
 
@@ -54,8 +43,14 @@ class MainActivity : AppCompatActivity() {
         signInButtonSpotify = findViewById(R.id.spotify_login_btn)
         signInButtonGoogle.setOnClickListener{ signInWithGoogle() }
 
-        googleLogin = GoogleLogin(application)
-        spotifyLogin = SpotifyLogin(application)
+        googleLogin =
+            GoogleLogin(
+                application
+            )
+        spotifyLogin =
+            SpotifyLogin(
+                application
+            )
 
         signInWithSpotifyButtonClickListener()
     }

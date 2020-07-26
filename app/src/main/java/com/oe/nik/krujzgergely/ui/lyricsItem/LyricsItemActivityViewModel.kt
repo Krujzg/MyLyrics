@@ -2,16 +2,11 @@ package com.oe.nik.krujzgergely.ui.lyricsItem
 
 import android.app.Application
 import android.app.NotificationManager
-import android.content.Intent
-import android.net.Uri
-import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.oe.nik.krujzgergely.controllers.GoogleLogin
 import com.oe.nik.krujzgergely.data.LyricsDatabase
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.models.enums.CrudType

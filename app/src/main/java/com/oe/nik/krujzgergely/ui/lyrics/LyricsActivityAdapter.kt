@@ -12,8 +12,6 @@ import com.bumptech.glide.Glide
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.databinding.RecyclerItemLyricsModelBinding
 import com.oe.nik.krujzgergely.models.LyricsModel
-import com.oe.nik.krujzgergely.ui.main.MainActivity
-import org.w3c.dom.Text
 import java.util.*
 
 class LyricsActivityAdapter(private var context: Context, private var LyricsList : MutableList<LyricsModel>)
@@ -25,11 +23,11 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
 
     private val layoutinflater : LayoutInflater = LayoutInflater.from(context)
 
-    private lateinit var listener: IonLyricsSelected
+    private lateinit var listener: IonLyricsClickEvent
 
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): ViewHolder
     {
-        when(context) {is IonLyricsSelected -> listener = context as IonLyricsSelected }
+        when(context) {is IonLyricsClickEvent -> listener = context as IonLyricsClickEvent }
 
         val recyclerItemLyricsModelBinding =
             RecyclerItemLyricsModelBinding.inflate(layoutinflater, parent, false)

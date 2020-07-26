@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.oe.nik.krujzgergely.R
-import com.oe.nik.krujzgergely.controllers.GoogleLogin
+import com.oe.nik.krujzgergely.controllers.logincontroller.GoogleLogin
 import com.oe.nik.krujzgergely.databinding.ActivityLyricsItemBinding
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity

@@ -1,22 +1,16 @@
-package com.oe.nik.krujzgergely.controllers
+package com.oe.nik.krujzgergely.controllers.logincontroller
 
 import android.app.Application
-import android.net.Uri
 import android.util.Log
 import com.oe.nik.krujzgergely.models.SpotifyAccount
 import com.oe.nik.krujzgergely.models.builder.SpotifyAccountBuilder
-import com.oe.nik.krujzgergely.services.SpotifyService
-import com.spotify.sdk.android.authentication.AuthenticationRequest
-import com.spotify.sdk.android.authentication.AuthenticationResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
-import java.net.HttpCookie.parse
 import java.net.URL
-import java.util.logging.Level.parse
 import javax.net.ssl.HttpsURLConnection
 
 class SpotifyLogin(application: Application)

@@ -18,8 +18,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.oe.nik.krujzgergely.R
-import com.oe.nik.krujzgergely.controllers.GoogleLogin
-import com.oe.nik.krujzgergely.controllers.SpotifyLogin
+import com.oe.nik.krujzgergely.controllers.logincontroller.GoogleLogin
+import com.oe.nik.krujzgergely.controllers.logincontroller.SpotifyLogin
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.models.enums.TypeOfTheRecycler
 import com.oe.nik.krujzgergely.ui.createlyricsitem.CreateLyricsActivity
@@ -28,7 +28,7 @@ import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity
 import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
 
 
-class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
+class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
 
     private var doubleBackToExitPressedOnce = false
 

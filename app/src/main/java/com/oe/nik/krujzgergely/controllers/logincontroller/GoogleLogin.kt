@@ -1,4 +1,4 @@
-package com.oe.nik.krujzgergely.controllers
+package com.oe.nik.krujzgergely.controllers.logincontroller
 
 import android.app.Application
 import android.content.Intent
@@ -8,15 +8,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.oe.nik.krujzgergely.R
-import com.oe.nik.krujzgergely.ui.main.MainActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.net.URI
-import java.net.URL
-import javax.net.ssl.HttpsURLConnection
 
 class GoogleLogin(var application: Application)
 {
