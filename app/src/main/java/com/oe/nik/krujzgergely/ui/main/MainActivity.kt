@@ -3,7 +3,11 @@ package com.oe.nik.krujzgergely.ui.main
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
+import android.graphics.BlendMode
+import android.graphics.BlendModeColorFilter
 import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.drawable.Drawable
 import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
@@ -16,6 +20,7 @@ import android.widget.Button
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.res.ResourcesCompat
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.controllers.GoogleLogin
 import com.oe.nik.krujzgergely.controllers.SpotifyLogin
@@ -52,7 +57,14 @@ class MainActivity : AppCompatActivity() {
         googleLogin = GoogleLogin(application)
         spotifyLogin = SpotifyLogin(application)
 
+        signInWithSpotifyButtonClickListener()
+    }
+
+    private fun signInWithSpotifyButtonClickListener()
+    {
+
         signInButtonSpotify.setOnClickListener {
+            startSpotifyProgressBar()
             SpotifyService.connect(this)
             val request = getAuthenticationRequest(AuthenticationResponse.Type.TOKEN)
             AuthenticationClient.openLoginActivity(this, SpotifyService.AUTH_TOKEN_REQUEST_CODE, request)
@@ -61,20 +73,30 @@ class MainActivity : AppCompatActivity() {
 
     private fun startGoogleProgressBar()
     {
-        val progressBarGoogle = findViewById<ProgressBar>(R.id.progressBarGoogle).apply {
-            visibility = View.VISIBLE
-        }
+        val progressBarGoogle = findViewById<ProgressBar>(R.id.progressBarGoogle).apply { visibility = View.VISIBLE }
+
+        setColorFilter(progressBarGoogle.indeterminateDrawable, ResourcesCompat.getColor(resources, R.color.youtubeRed, null))
     }
 
     private fun startSpotifyProgressBar()
     {
-        val progressBarGoogle = findViewById<ProgressBar>(R.id.progressBarSpotify).apply {
-            visibility = View.VISIBLE
+        val progressBarSpotify = findViewById<ProgressBar>(R.id.progressBarSpotify).apply { visibility = View.VISIBLE }
+
+        setColorFilter(progressBarSpotify.indeterminateDrawable, ResourcesCompat.getColor(resources, R.color.spotifygreen, null))
+    }
+
+    private fun setColorFilter(drawable: Drawable, color: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            drawable.colorFilter = BlendModeColorFilter(color, BlendMode.SRC_ATOP)
+        } else {
+            @Suppress("DEPRECATION")
+            drawable.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
         }
     }
 
     private fun signInWithGoogle()
     {
+        startGoogleProgressBar()
         val signInIntent = googleLogin.mGoogleSignInClient.signInIntent
         startActivityForResult(signInIntent, googleLogin.GOOGLE_REQUEST_CODE)
     }
@@ -87,20 +109,13 @@ class MainActivity : AppCompatActivity() {
 
         when(requestCode)
         {
-            googleLogin.GOOGLE_REQUEST_CODE ->
-            {
-                startGoogleProgressBar()
-                googleLogin.startGoogleLogin(data)
-            }
-            SpotifyService.AUTH_TOKEN_REQUEST_CODE ->
-            {
-                startSpotifyProgressBar()
-                spotifyLogin.fetchSpotifyUserProfile(accessToken)
-            }
+            googleLogin.GOOGLE_REQUEST_CODE -> googleLogin.startGoogleLogin(data)
+            SpotifyService.AUTH_TOKEN_REQUEST_CODE -> spotifyLogin.fetchSpotifyUserProfile(accessToken)
+
         }
         //This needs to be added because spotifybuilder does not have time to build
         val handler = Handler()
-        handler.postDelayed({startLyricsActivity()}, 1000)
+        handler.postDelayed({startLyricsActivity()}, 1500)
     }
 
     private fun startLyricsActivity() { startActivity(Intent(this, LyricsActivity::class.java)) }

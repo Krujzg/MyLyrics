@@ -8,8 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.SearchView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -71,10 +70,7 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
         val inflater = menuInflater
         inflater.inflate(R.menu.lyrics_activity_menu_options, menu)
 
-        val googleAccount = GoogleLogin.googleAccount
-        val spotifyAccount = SpotifyLogin.spotifyAccount
-
-        when(googleAccount)
+        when(GoogleLogin.googleAccount)
         {
             null -> setProfilePictureIntoOptionMenuItemIcon(menu, Uri.parse(SpotifyLogin.spotifyAccount!!.AvatarURL))
             else -> setProfilePictureIntoOptionMenuItemIcon(menu, GoogleLogin.googleAccount!!.photoUrl)
@@ -96,8 +92,7 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
         })
     }
 
-    override fun onOptionsItemSelected(item: MenuItem) =
-        when (item.itemId)
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId)
         {
             R.id.CreateNewLyrics -> startCreateLyricsActivity()
             R.id.SearchField -> searchBetweenAllLyrics(item)
@@ -116,11 +111,11 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
     private fun delayTimeBetweenTwoBackButtonPress()
     {
         this.doubleBackToExitPressedOnce = true
-        showMessageBox()
+        showMessageBoxWhenPressingBackTwice()
         Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 
-    private fun showMessageBox() { Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show() }
+    private fun showMessageBoxWhenPressingBackTwice() { Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show() }
 
     private fun loadLyricsMultiSnapRecyclerView(typeOfTheRecycler: TypeOfTheRecycler)
     {
@@ -207,17 +202,19 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
     private fun searchBetweenAllLyrics(item: MenuItem) : Boolean
     {
         val searchView = item.actionView as SearchView
-        
+
+        searchView.apply{
+            isIconifiedByDefault = false
+            onActionViewExpanded()
+            queryHint = "Search lyrics"
+        }
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener
         {
             override fun onQueryTextSubmit(query: String?): Boolean { return true }
-
-            override fun onQueryTextChange(searchText: String?): Boolean
-            {
-                searchIfTheSearchFieldIsNotEmpty(searchText!!)
-                return true
-            }
+            override fun onQueryTextChange(searchText: String?): Boolean { searchIfTheSearchFieldIsNotEmpty(searchText!!);return true }
         })
+
         return true
     }
 
@@ -241,7 +238,7 @@ class LyricsActivity : AppCompatActivity(), IonLyricsSelected {
     {
         when(searchText.isNotEmpty())
         {
-            true -> allLyricsActivityAdapter.getSearchedDataFromTheList(searchText)
+            true  -> allLyricsActivityAdapter.getSearchedDataFromTheList(searchText)
             false -> allLyricsActivityAdapter.noItemFoundInLyricsListWhenSearched()
         }
     }
