@@ -23,7 +23,10 @@
             card_view:cardCornerRadius="0dp"
             card_view:cardBackgroundColor="@color/black">
 
+
+
             <GridLayout
+                android:id="@+id/recycleritemlyricsmodelgridlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:columnCount="1"
@@ -35,14 +38,6 @@
                     android:layout_height="400px"
                     android:layout_row="0"
                     android:layout_column="0" />
-
-                <TextView
-                    android:id="@+id/textViewOptions"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="120dp"
-                    android:text="&#8942;"
-                    android:textAppearance="?android:textAppearanceLarge" />
 
                 <TextView
                     android:id="@+id/performer"
@@ -72,7 +67,18 @@
                     app:layout_constraintEnd_toEndOf="@+id/performer"
                     app:layout_constraintStart_toEndOf="@+id/performer"
                     app:layout_constraintTop_toBottomOf="@+id/performer" />
+
             </GridLayout>
+
+            <TextView
+                android:id="@+id/textViewOptions"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="140dp"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:text="&#8942;"
+                android:textAppearance="?android:textAppearanceLarge" />
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </layout>

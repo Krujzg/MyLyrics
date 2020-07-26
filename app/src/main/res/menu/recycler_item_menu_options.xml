@@ -5,12 +5,12 @@
         android:id="@+id/UpdateLyricsOption"
         android:title="@string/recycler_option_edit"
         android:icon="@drawable/baseline_create_white_24"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/DeleteLyricsOption"
         android:title="@string/recyclerItem_Delete_Option"
         android:icon="@drawable/baseline_delete_white_24"
         android:iconTint="@color/red"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
 </menu>

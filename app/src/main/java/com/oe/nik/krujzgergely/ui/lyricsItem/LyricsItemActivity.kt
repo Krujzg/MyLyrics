@@ -2,20 +2,17 @@ package com.oe.nik.krujzgergely.ui.lyricsItem
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.oe.nik.krujzgergely.R
+import com.oe.nik.krujzgergely.controllers.GoogleLogin
 import com.oe.nik.krujzgergely.databinding.ActivityLyricsItemBinding
-import com.oe.nik.krujzgergely.generated.callback.OnItemSelected
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity
 import kotlinx.android.synthetic.main.activity_lyrics_item.*
@@ -35,23 +32,56 @@ class LyricsItemActivity : AppCompatActivity()
             this.lifecycleOwner = this@LyricsItemActivity
             this.lyricsItemModel = lyricsItemViewModel
         }
-
-        if (playYoutubeButton.isVisible) { playYoutubeButton.setOnClickListener{openAndPlayCurrentYoutubeSong()} }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.lyrics_item_menu_options, menu)
+
+        val googleLogin = GoogleLogin.googleAccount
+
+        when(googleLogin)
+        {
+            null ->  inflater.inflate(R.menu.lyrics_item_menu_spotify_options, menu)
+            else ->  inflater.inflate(R.menu.lyrics_item_menu_youtube_options, menu)
+        }
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem) =
+    override fun onOptionsItemSelected(item: MenuItem): Boolean
+    {
+        val googleLogin = GoogleLogin.googleAccount
+
+        when(googleLogin)
+        {
+            null -> setSpotifyMenuOptionsActions(item)
+            else -> setYoutubeMenuOptionsActions(item)
+        }
+
+        return true
+    }
+
+    private fun setSpotifyMenuOptionsActions(item : MenuItem)
+    {
         when (item.itemId)
         {
+            R.id.PlaySpotify -> lyricsItemViewModel.playSpotifyLink()
+            R.id.Pause -> lyricsItemViewModel.pauseSpotifyLink()
             R.id.UpdateLyrics -> startUpdateLyricsItemActivity()
             R.id.DeleteLyrics -> deleteLyricsFromLocalDbThenReturnToLyricsActivity()
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun setYoutubeMenuOptionsActions(item : MenuItem)
+    {
+        when (item.itemId)
+        {
+            R.id.PlayYoutube -> openAndPlayCurrentYoutubeSong()
+            R.id.UpdateLyrics -> startUpdateLyricsItemActivity()
+            R.id.DeleteLyrics -> deleteLyricsFromLocalDbThenReturnToLyricsActivity()
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
     private fun startUpdateLyricsItemActivity() : Boolean
     {
@@ -69,8 +99,10 @@ class LyricsItemActivity : AppCompatActivity()
     private fun openAndPlayCurrentYoutubeSong()
     {
         val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(lyricsItemViewModel.YoutubeLink.value!!)
-        intent.setPackage("com.google.android.youtube")
+        intent.apply {
+            data = Uri.parse(lyricsItemViewModel.YoutubeLink.value!!)
+            setPackage("com.google.android.youtube")
+        }
         startActivity(intent)
     }
 

@@ -36,8 +36,6 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
     private var _displayedLyricsText : MutableLiveData<String> = MutableLiveData<String>()
     private var _YoutubeLink : MutableLiveData<String> = MutableLiveData<String>()
     private var _SpotifyLink : MutableLiveData<String> = MutableLiveData<String>()
-    private var _IsYoutubeButtonVisible : Int = View.INVISIBLE
-    private var _IsSpotifyButtonVisible : Int = View.INVISIBLE
 
     val displayedPerformer: LiveData<String>
         get() = _displayedPerformer
@@ -54,12 +52,6 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
     val SpotifyLink: LiveData<String>
         get() = _SpotifyLink
 
-    val isYoutubeButtonVisible: Int
-        get() = _IsYoutubeButtonVisible
-
-    val isSpotifyButtonVisible: Int
-        get() = _IsSpotifyButtonVisible
-
     init
     {
         val lyricsDao= LyricsDatabase
@@ -67,7 +59,6 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
             .lyricsDao()
         this.repository = LyricsRepository(lyricsDao)
         onDisplayContents()
-        setYoutubeOrSpotifyButtonVisible()
     }
 
     private fun onDisplayContents()
@@ -79,32 +70,9 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
         getSpotifyLinkContent()
     }
 
-    fun setYoutubeOrSpotifyButtonVisible()
-    {
-        when(checkWhichAccountIsLoggedIn())
-        {
-            1 ->
-            {
-                _IsYoutubeButtonVisible = View.VISIBLE
-                _IsSpotifyButtonVisible = View.INVISIBLE
-            }
-            else ->
-            {
-                _IsYoutubeButtonVisible = View.INVISIBLE
-                _IsSpotifyButtonVisible = View.VISIBLE
-            }
-        }
-    }
-
     fun playSpotifyLink() { SpotifyService.play(SpotifyLink.value!!) }
 
-
-    private fun checkWhichAccountIsLoggedIn() : Int =
-        when(GoogleLogin.googleAccount == null)
-        {
-            true -> 0 // spotifyaccount
-            false -> 1 // googleaccount
-        }
+    fun pauseSpotifyLink() { SpotifyService.pause() }
 
     private fun onDisplayPerformerContent() {_displayedPerformer.value = lyricsModel.performer }
     private fun onDisplaySongTitleContent() {_displayedTitle.value = lyricsModel.title }

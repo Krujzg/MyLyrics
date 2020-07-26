@@ -3,6 +3,7 @@ package com.oe.nik.krujzgergely.ui.lyrics
 import android.content.Context
 import android.os.Build
 import android.view.*
+import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
@@ -96,6 +97,7 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
         : RecyclerView.ViewHolder(view), PopupMenu.OnMenuItemClickListener, View.OnClickListener {
 
         private val songTypeImageview: ImageView = view.findViewById<ImageView>(R.id.song_image)
+        private val recycleritemlyricsmodelgridlayout : GridLayout = view.findViewById(R.id.recycleritemlyricsmodelgridlayout)
         private val optionsMenu = view.findViewById<TextView>(R.id.textViewOptions)
         private var currentLyricsModel : LyricsModel? = null
 
@@ -107,7 +109,7 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
 
         fun setData(lyricsModel: LyricsModel?)
         {
-            view.setOnClickListener {
+            recycleritemlyricsmodelgridlayout.setOnClickListener {
 
             currentLyrics = lyricsModel!!
 

@@ -10,7 +10,7 @@
     <string name="CreateButtonText">Save lyrics</string>
     <string name="AllLyricsText">All</string>
     <string name="FavoriteLyricsText">Your Favorites</string>
-    <string name="update_lyrics">Update lyrics</string>
+    <string name="update_lyrics">Edit</string>
     <string name="delete_lyrics">Delete lyrics</string>
     <string name="create_lyrics">Create lyrics</string>
     <string name="save_lyrics">Save</string>
@@ -43,6 +43,9 @@
     <string name="recycleritem_delete">Delete</string>
     <string name="spotify_link">Spotify Link</string>
     <string name="recyclerItem_Delete_Option">Delete</string>
+    <string name="play_spotify">Play on spotify</string>
+    <string name="pause_spotify">Pause</string>
+    <string name="play_youtube">Play on youtube</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>
