@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.oe.nik.krujzgergely.R
@@ -23,7 +24,6 @@ import kotlinx.android.synthetic.main.activity_lyrics_item.*
 class LyricsItemActivity : AppCompatActivity()
 {
     lateinit var lyricsItemViewModel : LyricsItemActivityViewModel
-    //lateinit var youtubePlayButton : Button
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,7 @@ class LyricsItemActivity : AppCompatActivity()
             this.lyricsItemModel = lyricsItemViewModel
         }
 
-        playYoutubeButton.setOnClickListener{openAndPlayCurrentYoutubeSong()}
+        if (playYoutubeButton.isVisible) { playYoutubeButton.setOnClickListener{openAndPlayCurrentYoutubeSong()} }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -78,5 +78,4 @@ class LyricsItemActivity : AppCompatActivity()
         startActivity(Intent(this, LyricsActivity::class.java))
         overridePendingTransition( R.xml.slide_in_down ,R.xml.slide_out_down )
     }
-
 }

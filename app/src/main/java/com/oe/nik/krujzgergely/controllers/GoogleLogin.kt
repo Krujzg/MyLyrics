@@ -40,6 +40,7 @@ class GoogleLogin(var application: Application)
 
     fun startGoogleLogin(data: Intent?)
     {
+
         val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
         handleSignInResult(task)
     }

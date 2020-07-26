@@ -59,9 +59,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun startProgressBar()
+    private fun startGoogleProgressBar()
     {
-        val progressBar = findViewById<ProgressBar>(R.id.progressBar).apply {
+        val progressBarGoogle = findViewById<ProgressBar>(R.id.progressBarGoogle).apply {
+            visibility = View.VISIBLE
+        }
+    }
+
+    private fun startSpotifyProgressBar()
+    {
+        val progressBarGoogle = findViewById<ProgressBar>(R.id.progressBarSpotify).apply {
             visibility = View.VISIBLE
         }
     }
@@ -75,14 +82,21 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        startProgressBar()
         val response = AuthenticationClient.getResponse(resultCode, data)
         val accessToken: String? = response.accessToken
 
         when(requestCode)
         {
-            googleLogin.GOOGLE_REQUEST_CODE ->   googleLogin.startGoogleLogin(data)
-            SpotifyService.AUTH_TOKEN_REQUEST_CODE -> spotifyLogin.fetchSpotifyUserProfile(accessToken)
+            googleLogin.GOOGLE_REQUEST_CODE ->
+            {
+                startGoogleProgressBar()
+                googleLogin.startGoogleLogin(data)
+            }
+            SpotifyService.AUTH_TOKEN_REQUEST_CODE ->
+            {
+                startSpotifyProgressBar()
+                spotifyLogin.fetchSpotifyUserProfile(accessToken)
+            }
         }
         //This needs to be added because spotifybuilder does not have time to build
         val handler = Handler()
