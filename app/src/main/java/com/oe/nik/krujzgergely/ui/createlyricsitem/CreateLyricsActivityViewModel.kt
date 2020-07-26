@@ -44,6 +44,9 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
     @Bindable
     var displayedspotifylink = MutableLiveData<String>()
 
+    @Bindable
+    var displayedyoutubeMusiclink = MutableLiveData<String>()
+
     private var songtype  : String = "JAZZ"
 
     init
@@ -70,7 +73,8 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
                         favourite = true,
                         lyrics_text = displayedLyricsText.value!!,
                         youtubeLink = displayedyoutubelink.value!!,
-                        spotifyLink = displayedspotifylink.value!!
+                        spotifyLink = displayedspotifylink.value!!,
+                        youtubeMusicLink = displayedyoutubeMusiclink.value!!
                     )
                 )
             }
@@ -87,7 +91,8 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
                 displayedTitle.value.isNullOrEmpty() ||
                 displayedLyricsText.value.isNullOrEmpty() ||
                 displayedyoutubelink.value.isNullOrEmpty() ||
-                displayedspotifylink.value.isNullOrEmpty())
+                displayedspotifylink.value.isNullOrEmpty() ||
+                displayedyoutubeMusiclink.value.isNullOrEmpty())
     }
 
     private fun sendNotification(title :String,message : String)

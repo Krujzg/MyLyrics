@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:columnCount="1"
-                android:rowCount="7">
+                android:rowCount="8">
 
                 <EditText
                     android:id="@+id/newperformer"
@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:layout_row="0"
                     android:layout_column="0"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="70dp"
                     android:hint="@string/NewPerformer"
                     android:text="@={createLyricsModel.displayedPerformer}"
                     android:textColor="@color/white"
@@ -56,10 +56,21 @@
                     android:textSize="@dimen/CreateLyricsTextSize" />
 
                 <EditText
-                    android:id="@+id/newspotifylink"
+                    android:id="@+id/newyoutubeMusiclink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_row="3"
+                    android:layout_column="0"
+                    android:hint="@string/youtubeMusic_link"
+                    android:text="@={createLyricsModel.displayedyoutubeMusiclink}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/CreateLyricsTextSize" />
+
+                <EditText
+                    android:id="@+id/newspotifylink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
                     android:layout_column="0"
                     android:hint="@string/spotify_link"
                     android:text="@={createLyricsModel.displayedspotifylink}"
@@ -70,7 +81,7 @@
                     android:id="@+id/newtype"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_row="4"
+                    android:layout_row="5"
                     android:layout_column="0"
                     android:backgroundTint="@color/white"
                     android:entries="@array/SongTypes"
@@ -80,8 +91,8 @@
                 <EditText
                     android:id="@+id/newlyrics_text"
                     android:layout_width="match_parent"
-                    android:layout_height="252dp"
-                    android:layout_row="5"
+                    android:layout_height="wrap_content"
+                    android:layout_row="6"
                     android:layout_column="0"
                     android:autofillHints="Add new lyrics"
                     android:gravity="top"
@@ -93,7 +104,7 @@
                     android:id="@+id/btn_create"
                     android:layout_width="200dp"
                     android:layout_height="53dp"
-                    android:layout_row="6"
+                    android:layout_row="7"
                     android:layout_gravity="center"
                     android:background="@drawable/button"
                     android:onClick="@{() -> createLyricsModel.saveNewLyricsIntoLocalDb()}"

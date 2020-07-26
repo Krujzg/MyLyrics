@@ -47,6 +47,7 @@
     <string name="pause_spotify">Pause</string>
     <string name="play_youtube">Play on youtube</string>
     <string name="play_youtubemusic">Play on youtube music</string>
+    <string name="youtubeMusic_link">Youtube Music Link</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>
