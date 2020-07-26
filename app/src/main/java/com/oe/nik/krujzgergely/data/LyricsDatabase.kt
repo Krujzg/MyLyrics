@@ -13,7 +13,7 @@ import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.models.LyricsModel
 import kotlinx.coroutines.*
 
-@Database(entities = [LyricsModel::class], version = 6, exportSchema = false)
+@Database(entities = [LyricsModel::class], version = 8, exportSchema = false)
 abstract class LyricsDatabase : RoomDatabase()
 {
     abstract fun lyricsDao(): LyricsDao
@@ -32,6 +32,7 @@ abstract class LyricsDatabase : RoomDatabase()
             {
                 val instance =  Room.databaseBuilder(context.applicationContext,LyricsDatabase::class.java,"lyrics_database")
                     .addMigrations(MIGRATION_5_6)
+                    .addMigrations(MIGRATION_6_7)
                     .addCallback(LyricsDatabaseCallback(coroutineScope,resources))
                     //.fallbackToDestructiveMigration()
                     .build()
@@ -44,6 +45,12 @@ abstract class LyricsDatabase : RoomDatabase()
         val MIGRATION_5_6 = object : Migration(5, 6) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL("ALTER TABLE lyrics_table ADD COLUMN spotifyLink TEXT")
+            }
+        }
+
+        val MIGRATION_6_7 = object : Migration(6, 8) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE lyrics_table ADD COLUMN youtubeMusicLink TEXT DEFAULT 1 NOT NULL")
             }
         }
     }

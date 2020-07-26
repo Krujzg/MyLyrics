@@ -2,12 +2,10 @@ package com.oe.nik.krujzgergely.ui.lyricsItem
 
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.oe.nik.krujzgergely.R
@@ -15,7 +13,6 @@ import com.oe.nik.krujzgergely.controllers.GoogleLogin
 import com.oe.nik.krujzgergely.databinding.ActivityLyricsItemBinding
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity
-import kotlinx.android.synthetic.main.activity_lyrics_item.*
 
 
 class LyricsItemActivity : AppCompatActivity()
@@ -42,7 +39,7 @@ class LyricsItemActivity : AppCompatActivity()
         when(googleLogin)
         {
             null ->  inflater.inflate(R.menu.lyrics_item_menu_spotify_options, menu)
-            else ->  inflater.inflate(R.menu.lyrics_item_menu_youtube_options, menu)
+            else ->  inflater.inflate(R.menu.lyrics_item_menu_google_options, menu)
         }
         return true
     }
@@ -77,6 +74,7 @@ class LyricsItemActivity : AppCompatActivity()
         when (item.itemId)
         {
             R.id.PlayYoutube -> openAndPlayCurrentYoutubeSong()
+            R.id.PlayYoutubeMusic -> openAndPlayCurrentYoutubeMusicSong()
             R.id.UpdateLyrics -> startUpdateLyricsItemActivity()
             R.id.DeleteLyrics -> deleteLyricsFromLocalDbThenReturnToLyricsActivity()
             else -> super.onOptionsItemSelected(item)
@@ -102,6 +100,16 @@ class LyricsItemActivity : AppCompatActivity()
         intent.apply {
             data = Uri.parse(lyricsItemViewModel.YoutubeLink.value!!)
             setPackage("com.google.android.youtube")
+        }
+        startActivity(intent)
+    }
+
+    private fun openAndPlayCurrentYoutubeMusicSong()
+    {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.apply {
+            data = Uri.parse(lyricsItemViewModel.YoutubeMusicLink.value!!)
+            setPackage("com.google.android.apps.youtube.music")
         }
         startActivity(intent)
     }

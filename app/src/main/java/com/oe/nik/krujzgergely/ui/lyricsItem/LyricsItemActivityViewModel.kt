@@ -36,6 +36,7 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
     private var _displayedLyricsText : MutableLiveData<String> = MutableLiveData<String>()
     private var _YoutubeLink : MutableLiveData<String> = MutableLiveData<String>()
     private var _SpotifyLink : MutableLiveData<String> = MutableLiveData<String>()
+    private var _YoutubeMusicLink : MutableLiveData<String> = MutableLiveData<String>()
 
     val displayedPerformer: LiveData<String>
         get() = _displayedPerformer
@@ -51,6 +52,9 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
 
     val SpotifyLink: LiveData<String>
         get() = _SpotifyLink
+
+    val YoutubeMusicLink: LiveData<String>
+        get() = _YoutubeMusicLink
 
     init
     {
@@ -68,6 +72,7 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
         onDisplayLyricsContent()
         getYoutubeLinkContent()
         getSpotifyLinkContent()
+        getYoutubeMusicLinkContent()
     }
 
     fun playSpotifyLink() { SpotifyService.play(SpotifyLink.value!!) }
@@ -79,6 +84,7 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
     private fun onDisplayLyricsContent() {_displayedLyricsText.value = lyricsModel.lyrics_text }
     private fun getYoutubeLinkContent() {_YoutubeLink.value = lyricsModel.youtubeLink }
     private fun getSpotifyLinkContent() {_SpotifyLink.value = lyricsModel.spotifyLink }
+    private fun getYoutubeMusicLinkContent() {_YoutubeMusicLink.value = lyricsModel.youtubeMusicLink }
 
     private fun sendNotification(title :String,message : String)
     {

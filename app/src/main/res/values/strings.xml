@@ -46,6 +46,7 @@
     <string name="play_spotify">Play on spotify</string>
     <string name="pause_spotify">Pause</string>
     <string name="play_youtube">Play on youtube</string>
+    <string name="play_youtubemusic">Play on youtube music</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>
