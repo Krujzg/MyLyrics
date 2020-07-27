@@ -1,11 +1,14 @@
 package com.oe.nik.krujzgergely.ui.lyricsItem
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.oe.nik.krujzgergely.R
@@ -31,12 +34,17 @@ class LyricsItemActivity : AppCompatActivity()
         }
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
 
-        val googleLogin = GoogleLogin.googleAccount
+        if (menu is MenuBuilder) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                menu.setOptionalIconsVisible(true)
+            }
+        }
 
-        when(googleLogin)
+        when(GoogleLogin.googleAccount)
         {
             null ->  inflater.inflate(R.menu.lyrics_item_menu_spotify_options, menu)
             else ->  inflater.inflate(R.menu.lyrics_item_menu_google_options, menu)
@@ -46,9 +54,8 @@ class LyricsItemActivity : AppCompatActivity()
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
-        val googleLogin = GoogleLogin.googleAccount
 
-        when(googleLogin)
+        when(GoogleLogin.googleAccount)
         {
             null -> setSpotifyMenuOptionsActions(item)
             else -> setYoutubeMenuOptionsActions(item)

@@ -3,8 +3,10 @@ package com.oe.nik.krujzgergely.repository
 import androidx.lifecycle.LiveData
 import com.oe.nik.krujzgergely.data.LyricsDao
 import com.oe.nik.krujzgergely.models.LyricsModel
+import com.oe.nik.krujzgergely.repository.interfaces.ILyricsRepository
 
-class LyricsRepository(private val lyricsDao: LyricsDao) : ILyricsRepository
+class LyricsRepository(private val lyricsDao: LyricsDao) :
+    ILyricsRepository
 {
     override suspend fun saveNewLyricsIntoDb(newLyrics : LyricsModel) { lyricsDao.insertLyrics(lyricsModel = newLyrics) }
 

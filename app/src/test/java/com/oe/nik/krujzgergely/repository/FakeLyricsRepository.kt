@@ -3,8 +3,10 @@ package com.oe.nik.krujzgergely.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.oe.nik.krujzgergely.models.LyricsModel
+import com.oe.nik.krujzgergely.repository.interfaces.ILyricsRepository
 
-class FakeLyricsRepository(var lyricsList : MutableList<LyricsModel>) : ILyricsRepository
+class FakeLyricsRepository(var lyricsList : MutableList<LyricsModel>) :
+    ILyricsRepository
 {
 
     override suspend fun saveNewLyricsIntoDb(newLyrics: LyricsModel) {

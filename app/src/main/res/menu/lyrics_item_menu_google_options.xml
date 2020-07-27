@@ -5,22 +5,22 @@
     <item
         android:id="@+id/PlayYoutubeMusic"
         android:title="@string/play_youtubemusic"
-        android:icon="@drawable/youtubemusicicon48px"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/youtubemusicicon36px"
+        app:showAsAction="always" />
     <item
         android:id="@+id/PlayYoutube"
         android:title="@string/play_youtube"
         android:icon="@drawable/youtubeicon48px"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/UpdateLyrics"
         android:title="@string/update_lyrics"
         android:icon="@drawable/baseline_create_white_24"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/DeleteLyrics"
         android:title="@string/recycleritem_delete"
         android:icon="@drawable/baseline_delete_white_24"
         android:iconTint="@color/red"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 </menu>

@@ -18,6 +18,8 @@ abstract class LyricsDatabase : RoomDatabase()
 {
     abstract fun lyricsDao(): LyricsDao
 
+    abstract fun lyricsCountDao(): LyricsCountDao
+
     companion object
     {
         @Volatile

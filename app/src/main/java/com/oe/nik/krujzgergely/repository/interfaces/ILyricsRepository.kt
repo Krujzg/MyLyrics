@@ -1,4 +1,4 @@
-package com.oe.nik.krujzgergely.repository
+package com.oe.nik.krujzgergely.repository.interfaces
 
 import androidx.lifecycle.LiveData
 import com.oe.nik.krujzgergely.models.LyricsModel

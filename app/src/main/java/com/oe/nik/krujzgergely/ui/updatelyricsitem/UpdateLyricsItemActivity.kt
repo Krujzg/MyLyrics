@@ -1,10 +1,12 @@
 package com.oe.nik.krujzgergely.ui.updatelyricsitem
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.oe.nik.krujzgergely.R
@@ -27,8 +29,14 @@ class UpdateLyricsItemActivity : AppCompatActivity()
         }
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
+
+        if (menu is MenuBuilder) {
+            menu.setOptionalIconsVisible(true)
+        }
+
         inflater.inflate(R.menu.update_lyrics_activity_menu_options, menu)
         return true
     }

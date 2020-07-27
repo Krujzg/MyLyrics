@@ -1,15 +1,19 @@
 package com.oe.nik.krujzgergely.ui.lyrics
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.*
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -22,10 +26,12 @@ import com.oe.nik.krujzgergely.controllers.logincontroller.GoogleLogin
 import com.oe.nik.krujzgergely.controllers.logincontroller.SpotifyLogin
 import com.oe.nik.krujzgergely.models.LyricsModel
 import com.oe.nik.krujzgergely.models.enums.TypeOfTheRecycler
+import com.oe.nik.krujzgergely.ui.accountInfo.AccountInfoActivity
 import com.oe.nik.krujzgergely.ui.createlyricsitem.CreateLyricsActivity
 import com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActivity
 import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity
 import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+import kotlinx.android.synthetic.main.activity_lyricses.*
 
 
 class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
@@ -66,9 +72,16 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
         loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.OPERA)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.lyrics_activity_menu_options, menu)
+    @SuppressLint("RestrictedApi")
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean
+    {
+        menuInflater.inflate(R.menu.lyrics_activity_menu_options, menu)
+
+        if (menu is MenuBuilder) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                menu.setOptionalIconsVisible(true)
+            }
+        }
 
         when(GoogleLogin.googleAccount)
         {
@@ -81,21 +94,22 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
 
     private fun setProfilePictureIntoOptionMenuItemIcon(menu: Menu?, photoUrl : Uri?)
     {
-        val settingsItem = menu!!.findItem(R.id.ProfilePicture)
+        val profilePictureMenuItem = menu!!.findItem(R.id.ProfilePicture)
 
         Glide.with(this).asBitmap().load(photoUrl).into(object : SimpleTarget<Bitmap?>(100,100)
         {
             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?)
             {
-                settingsItem.icon = BitmapDrawable(resources, resource)
+                profilePictureMenuItem.icon = BitmapDrawable(resources, resource)
             }
         })
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId)
         {
-            R.id.CreateNewLyrics -> startCreateLyricsActivity()
+            R.id.CreateNewLyrics ->  startCreateLyricsActivity()
             R.id.SearchField -> searchBetweenAllLyrics(item)
+            R.id.ProfilePicture -> startAccountInfoActivity()
             else -> super.onOptionsItemSelected(item)
         }
 
@@ -203,6 +217,8 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
     {
         val searchView = item.actionView as SearchView
 
+        val scrollView =  lyricsScrollView
+        scrollView.smoothScrollTo(0,0)
         searchView.apply{
             isIconifiedByDefault = false
             onActionViewExpanded()
@@ -212,7 +228,11 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener
         {
             override fun onQueryTextSubmit(query: String?): Boolean { return true }
-            override fun onQueryTextChange(searchText: String?): Boolean { searchIfTheSearchFieldIsNotEmpty(searchText!!);return true }
+            override fun onQueryTextChange(searchText: String?): Boolean
+            {
+                searchIfTheSearchFieldIsNotEmpty(searchText!!)
+                return true
+            }
         })
 
         return true
@@ -221,6 +241,13 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
     private fun startCreateLyricsActivity() : Boolean
     {
         startActivity(Intent(this,CreateLyricsActivity::class.java))
+        return true
+    }
+
+    private fun startAccountInfoActivity() : Boolean
+    {
+        startActivity(Intent(this,AccountInfoActivity::class.java))
+        overridePendingTransition( R.xml.slide_in_up, R.xml.slide_out_up )
         return true
     }
 

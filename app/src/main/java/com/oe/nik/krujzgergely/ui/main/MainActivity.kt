@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
     private fun signInWithGoogle()
     {
         startGoogleProgressBar()
-        val signInIntent = googleLogin.mGoogleSignInClient.signInIntent
+        val signInIntent = GoogleLogin.mGoogleSignInClient!!.signInIntent
         startActivityForResult(signInIntent, googleLogin.GOOGLE_REQUEST_CODE)
     }
 

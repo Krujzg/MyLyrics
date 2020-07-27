@@ -26,5 +26,6 @@
         <activity android:name="com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActivity" android:label="@string/LyricsLabel" />
         <activity android:name="com.oe.nik.krujzgergely.ui.createlyricsitem.CreateLyricsActivity" android:label="@string/CreateLabel"/>
         <activity android:name="com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity" android:label="@string/UpdateLabel"/>
+        <activity android:name="com.oe.nik.krujzgergely.ui.accountInfo.AccountInfoActivity" android:label="@string/account_info"/>
     </application>
 </manifest>

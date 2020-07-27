@@ -113,8 +113,7 @@ dependencies {
 
     //spotifySDK
     implementation project(':spotify-app-remote-release-0.7.0')
-
-
+    implementation project(':spotify-auth-release-1.2.3')
 
     // Testing code should not be included in the main code.
     // Once https://issuetracker.google.com/128612536 is fixed this can be fixed.

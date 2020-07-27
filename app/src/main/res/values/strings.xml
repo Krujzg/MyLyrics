@@ -48,6 +48,10 @@
     <string name="play_youtube">Play on youtube</string>
     <string name="play_youtubemusic">Play on youtube music</string>
     <string name="youtubeMusic_link">Youtube Music Link</string>
+    <string name="FavoriteString">Favorite</string>
+    <string name="logout">Logout</string>
+    <string name="your_lyrics_count">Your lyrics count:</string>
+    <string name="account_info">Account info</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>

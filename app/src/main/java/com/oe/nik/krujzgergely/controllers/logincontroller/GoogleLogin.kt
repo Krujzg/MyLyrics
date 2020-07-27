@@ -13,10 +13,11 @@ class GoogleLogin(var application: Application)
 {
     val GOOGLE_REQUEST_CODE = 123
     var googleSignInOptions : GoogleSignInOptions
-    var mGoogleSignInClient : GoogleSignInClient
+
     companion object
     {
         var googleAccount : GoogleSignInAccount? = null
+        var mGoogleSignInClient : GoogleSignInClient? = null
     }
 
     init {
@@ -26,12 +27,11 @@ class GoogleLogin(var application: Application)
             .requestEmail()
             .requestIdToken(token)
             .build()
-        this.mGoogleSignInClient = GoogleSignIn.getClient(application,googleSignInOptions)
+        mGoogleSignInClient = GoogleSignIn.getClient(application,googleSignInOptions)
     }
 
     fun startGoogleLogin(data: Intent?)
     {
-
         val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
         handleSignInResult(task)
     }

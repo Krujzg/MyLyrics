@@ -13,5 +13,8 @@
     <color name="green">#66ff66</color>
     <color name="transparent">#00ff0000</color>
     <color name="spotifygreen">#1DB954</color>
+    <color name="darkgrey">#696969</color>
+
+    <color name="semitransparentdarkgrey">#40FFFFFF</color>
 
 </resources>
