@@ -6,12 +6,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.google.android.gms.auth.api.Auth
 import com.oe.nik.krujzgergely.controllers.logincontroller.GoogleLogin
 import com.oe.nik.krujzgergely.controllers.logincontroller.SpotifyLogin
 import com.oe.nik.krujzgergely.data.LyricsDatabase
 import com.oe.nik.krujzgergely.repository.LyricsCountRepository
-import com.oe.nik.krujzgergely.services.SpotifyService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

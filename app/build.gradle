@@ -71,6 +71,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "com.github.takusemba:multisnaprecyclerview:$multisnaprecycleviewVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+    implementation 'androidx.viewpager:viewpager:1.0.0'
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
 
@@ -114,6 +115,9 @@ dependencies {
     //spotifySDK
     implementation project(':spotify-app-remote-release-0.7.0')
     implementation project(':spotify-auth-release-1.2.3')
+
+    //Appintro
+    implementation 'com.github.AppIntro:AppIntro:6.0.0'
 
     // Testing code should not be included in the main code.
     // Once https://issuetracker.google.com/128612536 is fixed this can be fixed.

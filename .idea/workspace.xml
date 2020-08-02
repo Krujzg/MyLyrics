@@ -10,18 +10,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12065b66-1df3-4759-9840-132cbbcf47f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__artifacts_spotify_auth_release_1_2_3_unspecified_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/spotify-auth-release-1.2.3/spotify-auth-release-1.2.3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/data/LyricsCountDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/repository/LyricsCountRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/repository/interfaces/ILyricsCountRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/util/CustomLogoutProgressDialog.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/google_accountinfo_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/logout_button_white.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_accountinfo.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/progress_logout_dialog_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spotify-auth-release-1.2.3/spotify-auth-release-1.2.3.aar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_AppIntro_AppIntro_6_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_3_72_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_3_72_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/appintro/IntroPagerAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/appintro/MyLyricsAppIntro.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/appintro/PreferenceManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/launcher/LauncherActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/indicator_active.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/indicator_inactive.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_app_intro.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_eight.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_five.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_four.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_nine.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_one.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_seven.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_six.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_three.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_two.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -34,40 +42,34 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_3_71_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_71_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_72_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_3_61_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/controllers/logincontroller/GoogleLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/controllers/logincontroller/GoogleLogin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/data/LyricsDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/data/LyricsDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/repository/ILyricsRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/repository/interfaces/ILyricsRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/repository/LyricsRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/repository/LyricsRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/services/SpotifyService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/services/SpotifyService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/accountInfo/AccountInfoActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/accountInfo/AccountInfoActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/accountInfo/AccountInfoActivityViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/accountInfo/AccountInfoActivityViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyrics/LyricsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyrics/LyricsActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyricsItem/LyricsItemActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyricsItem/LyricsItemActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/updatelyricsitem/UpdateLyricsItemActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/updatelyricsitem/UpdateLyricsItemActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyricses.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyricses.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/lyrics_item_menu_google_options.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/lyrics_item_menu_google_options.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/main/MainActivityViewModel.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/oe/nik/krujzgergely/repository/FakeLyricsRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/oe/nik/krujzgergely/repository/FakeLyricsRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spotify-app-remote-release-0.7.0/build/.transforms/38356dafe9d9e0bfe6e62a4dc4d04317/jetified-spotify-app-remote-release-0.7.0/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spotify-app-remote-release-0.7.0/build/.transforms/38356dafe9d9e0bfe6e62a4dc4d04317/jetified-spotify-app-remote-release-0.7.0/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spotify-app-remote-release-0.7.0/build/.transforms/38356dafe9d9e0bfe6e62a4dc4d04317/jetified-spotify-app-remote-release-0.7.0/proguard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/spotify-app-remote-release-0.7.0/build/.transforms/38356dafe9d9e0bfe6e62a4dc4d04317/jetified-spotify-app-remote-release-0.7.0/proguard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spotify-app-remote-release-0.7.0/build/.transforms/ff65f451f1402f7c0f50409388ea2edd/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/spotify-app-remote-release-0.7.0/build/.transforms/ff65f451f1402f7c0f50409388ea2edd/package-aware-r.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/45a977bb04d091f9a3ad26d52e1f9e20/spotify-auth-release-1.2.3/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/45a977bb04d091f9a3ad26d52e1f9e20/spotify-auth-release-1.2.3/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/45a977bb04d091f9a3ad26d52e1f9e20/spotify-auth-release-1.2.3/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/45a977bb04d091f9a3ad26d52e1f9e20/spotify-auth-release-1.2.3/R.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/45a977bb04d091f9a3ad26d52e1f9e20/spotify-auth-release-1.2.3/res/layout/com_spotify_sdk_login_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/45a977bb04d091f9a3ad26d52e1f9e20/spotify-auth-release-1.2.3/res/layout/com_spotify_sdk_login_activity.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/45a977bb04d091f9a3ad26d52e1f9e20/spotify-auth-release-1.2.3/res/layout/com_spotify_sdk_login_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/45a977bb04d091f9a3ad26d52e1f9e20/spotify-auth-release-1.2.3/res/layout/com_spotify_sdk_login_dialog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/45a977bb04d091f9a3ad26d52e1f9e20/spotify-auth-release-1.2.3/res/values/values.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/45a977bb04d091f9a3ad26d52e1f9e20/spotify-auth-release-1.2.3/res/values/values.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/96ce5124294b2c474bd050faebde2e77/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/spotify-auth-release-1.2.3/build/.transforms/96ce5124294b2c474bd050faebde2e77/package-aware-r.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="WCR0218515003826" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_API_29" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -112,11 +114,11 @@
         <option value="JUnit4 Test Class" />
         <option value="Kotlin Object" />
         <option value="Kotlin Enum" />
-        <option value="Kotlin Interface" />
         <option value="Kotlin File" />
-        <option value="resourceFile" />
-        <option value="layoutResourceFile" />
+        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -141,7 +143,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/test/java/com/oe/nik/krujzgergely" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/spotify-auth-release-1.2.3.aar" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/AppIntro-master" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
     <property name="project.structure.last.edited" value="Build Variants" />
     <property name="project.structure.proportion" value="0.17" />
@@ -331,56 +333,56 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="286" y="144" key="#PSD/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595178935550" />
-    <state x="560" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1595855157262">
+    <state x="560" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1596359743908">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="560" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595855157262" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595002721480">
+    <state x="560" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596359743908" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596360335911">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595002721480" />
-    <state x="543" y="65" width="515" height="694" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1595855395384">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596360335911" />
+    <state x="543" y="65" width="515" height="694" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1596362693288">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="543" y="65" width="515" height="694" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595855395384" />
-    <state x="349" y="167" key="AndroidCreateResourceDirectoryDialog" timestamp="1595865209727">
+    <state x="543" y="65" width="515" height="694" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596362693288" />
+    <state x="349" y="167" key="AndroidCreateResourceDirectoryDialog" timestamp="1596369967276">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="349" y="167" key="AndroidCreateResourceDirectoryDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595865209727" />
-    <state x="555" y="259" width="838" height="485" key="AndroidCreateResourceFileDialog" timestamp="1595865233620">
+    <state x="349" y="167" key="AndroidCreateResourceDirectoryDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596369967276" />
+    <state x="555" y="259" width="838" height="485" key="AndroidCreateResourceFileDialog" timestamp="1596376726794">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1365" y="259" key="AndroidCreateResourceFileDialog/0.0.1536.824/-1920.0.1536.824@-1920.0.1536.824" timestamp="1595173625307" />
-    <state x="555" y="259" width="838" height="485" key="AndroidCreateResourceFileDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595865233620" />
-    <state x="1052" y="178" key="AndroidCreateXmlResourceDialog" timestamp="1595858601233">
+    <state x="555" y="259" width="838" height="485" key="AndroidCreateResourceFileDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596376726794" />
+    <state x="570" y="132" key="AndroidCreateXmlResourceDialog" timestamp="1596372507649">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-868" y="178" key="AndroidCreateXmlResourceDialog/0.0.1536.824/-1920.0.1536.824@-1920.0.1536.824" timestamp="1595857263608" />
-    <state x="1052" y="178" key="AndroidCreateXmlResourceDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595858601233" />
+    <state x="570" y="132" key="AndroidCreateXmlResourceDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596372507649" />
     <state width="526" height="438" key="DebuggerActiveHint" timestamp="1594999460864">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="526" height="438" key="DebuggerActiveHint/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1594999460864" />
-    <state x="173" y="167" key="FileChooserDialogImpl" timestamp="1595866671272">
+    <state x="173" y="167" key="FileChooserDialogImpl" timestamp="1596375695060">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="173" y="167" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595866671272" />
-    <state width="1491" height="503" key="GridCell.Tab.0.bottom" timestamp="1595861180781">
+    <state x="173" y="167" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596375695060" />
+    <state width="1491" height="503" key="GridCell.Tab.0.bottom" timestamp="1596377763691">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="503" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595861180781" />
-    <state width="1491" height="503" key="GridCell.Tab.0.center" timestamp="1595861180780">
+    <state width="1491" height="503" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596377763691" />
+    <state width="1491" height="503" key="GridCell.Tab.0.center" timestamp="1596377763691">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="503" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595861180780" />
-    <state width="1491" height="503" key="GridCell.Tab.0.left" timestamp="1595861180780">
+    <state width="1491" height="503" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596377763691" />
+    <state width="1491" height="503" key="GridCell.Tab.0.left" timestamp="1596377763691">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="503" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595861180780" />
-    <state width="1491" height="503" key="GridCell.Tab.0.right" timestamp="1595861180780">
+    <state width="1491" height="503" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596377763691" />
+    <state width="1491" height="503" key="GridCell.Tab.0.right" timestamp="1596377763691">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="503" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595861180780" />
+    <state width="1491" height="503" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596377763691" />
     <state width="1491" height="327" key="GridCell.Tab.1.bottom" timestamp="1595860820334">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -427,10 +429,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="310" y="-16" width="1234" height="808" maximized="true" key="dock-window-4/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595858774938" />
-    <state x="462" y="144" width="738" height="606" key="find.popup" timestamp="1595865483196">
+    <state x="462" y="144" width="738" height="606" key="find.popup" timestamp="1596377808839">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="462" y="144" width="738" height="606" key="find.popup/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1595865483196" />
+    <state x="462" y="144" width="738" height="606" key="find.popup/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596377808839" />
     <state x="530" y="115" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog" timestamp="1594826949534">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

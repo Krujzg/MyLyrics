@@ -14,7 +14,18 @@
     <color name="transparent">#00ff0000</color>
     <color name="spotifygreen">#1DB954</color>
     <color name="darkgrey">#696969</color>
-
+    <color name="yellow">#FFFF00</color>
     <color name="semitransparentdarkgrey">#40FFFFFF</color>
+
+    <color name="slide_one">#4FC3F7</color>
+    <color name="slide_two">#FF8A65</color>
+    <color name="slide_three">#FA03CC</color>
+    <color name="slide_four">#BA68C8</color>
+
+    <color name="slide_five">#F23B5F</color>
+    <color name="slide_six">#FFC000</color>
+    <color name="slide_seven">#66CCAA</color>
+    <color name="slide_eight">#696969</color>
+    <color name="slide_nine">#2160B7</color>
 
 </resources>

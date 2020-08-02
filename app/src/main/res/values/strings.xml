@@ -52,6 +52,30 @@
     <string name="logout">Logout</string>
     <string name="your_lyrics_count">Your lyrics count:</string>
     <string name="account_info">Account info</string>
+    <string name="slide_one_top_text">Login with Google or Spotify</string>
+    <string name="slide_one_down_text">This is the login page, where you can login with either google or spotify account.</string>
+    <string name="slide_two_top_text">Home page</string>
+    <string name="slide_two_down_text">This is the home page, where you can scroll vertically and horizontally for you lyrics</string>
+    <string name="next">next</string>
+    <string name="skip">Skip</string>
+    <string name="done">Done</string>
+    <string name="mylyrics">MyLyrics</string>
+    <string name="slide_three_top_text">Home page</string>
+    <string name="slide_three_down_text">This is the home page, where you can scroll vertically and horizontally for you lyrics</string>
+    <string name="slide_four_top_text">Tap on Lyrics</string>
+    <string name="slide_four_down_text">You can tap on every element on the home page, and it will bring up the lyrics u tapped on, with the google or spotify options</string>
+    <string name="slide_five_top_text">Youtube options</string>
+    <string name="slide_five_down_text">If you are logged in with google, you can play your song on youtube or youtube music. There is an options menu where you can edit or delete your lyrics</string>
+    <string name="slide_six_top_text">Spotify options</string>
+    <string name="slide_six_down_text">If you are logged in with spotify, you can play or even pause the song . There is an options menu where you can edit or delete your lyrics. (Only for premium users)</string>
+    <string name="slide_seven_top_text">Edit your lyrics</string>
+    <string name="slide_seven_down_text">You can edit your lyrics, and even make it favorite</string>
+    <string name="slide_eight_top_text">Search between your lyrics</string>
+    <string name="slide_nine_top_text">Create your own lyrics</string>
+    <string name="slide_eight_down_text">You can search between your lyrics (both performer or title) at the top , and see the result below it</string>
+    <string name="slide_nine_down_text">If you click on the plus button on the home page, you can create your own lyrics. You can set : title, performer, links, type, and the lyrics</string>
+    <string name="slide_ten_top_text">See your Account info and Logout</string>
+    <string name="slide_ten_down_text">If you click on your profile picture at the right top corner, you can see your Account info page and there you can log out.</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>

@@ -21,6 +21,7 @@ import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity
 class LyricsItemActivity : AppCompatActivity()
 {
     lateinit var lyricsItemViewModel : LyricsItemActivityViewModel
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -94,7 +95,7 @@ class LyricsItemActivity : AppCompatActivity()
         return true
     }
 
-    private fun deleteLyricsFromLocalDbThenReturnToLyricsActivity() : Boolean
+    fun deleteLyricsFromLocalDbThenReturnToLyricsActivity() : Boolean
     {
         lyricsItemViewModel.deleteLyricsFromLocalDb()
         startActivity(Intent(this, LyricsActivity::class.java))
