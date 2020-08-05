@@ -128,9 +128,15 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
     {
         when(doubleBackToExitPressedOnce)
         {
-            true -> finishAffinity()
+            true -> exitTheApp()
             false -> delayTimeBetweenTwoBackButtonPress()
         }
+    }
+
+    private fun exitTheApp()
+    {
+        GoogleLogin.googleAccount = null
+        finishAffinity()
     }
 
     private fun delayTimeBetweenTwoBackButtonPress()

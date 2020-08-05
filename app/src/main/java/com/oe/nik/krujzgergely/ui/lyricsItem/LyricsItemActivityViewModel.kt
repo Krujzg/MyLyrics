@@ -74,11 +74,11 @@ class LyricsItemActivityViewModel(application: Application) : AndroidViewModel(a
 
     fun pauseSpotifyLink() { SpotifyService.pause() }
 
-    private fun onDisplayPerformerContent() {_displayedPerformer.value = lyricsModel.performer }
-    private fun onDisplaySongTitleContent() {_displayedTitle.value = lyricsModel.title }
-    private fun onDisplayLyricsContent() {_displayedLyricsText.value = lyricsModel.lyrics_text }
-    private fun getYoutubeLinkContent() {_YoutubeLink.value = lyricsModel.youtubeLink }
-    private fun getSpotifyLinkContent() {_SpotifyLink.value = lyricsModel.spotifyLink }
+    private fun onDisplayPerformerContent()  {_displayedPerformer.value = lyricsModel.performer }
+    private fun onDisplaySongTitleContent()  {_displayedTitle.value = lyricsModel.title }
+    private fun onDisplayLyricsContent()     {_displayedLyricsText.value = lyricsModel.lyrics_text }
+    private fun getYoutubeLinkContent()      {_YoutubeLink.value = lyricsModel.youtubeLink }
+    private fun getSpotifyLinkContent()      {_SpotifyLink.value = lyricsModel.spotifyLink }
     private fun getYoutubeMusicLinkContent() {_YoutubeMusicLink.value = lyricsModel.youtubeMusicLink }
 
     private fun sendNotification(title :String,message : String)

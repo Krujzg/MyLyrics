@@ -40,19 +40,16 @@ class MainActivity : AppCompatActivity() {
 
         createNotificationChannel(getString(R.string.mylyrics_notification_channel_id),getString(R.string.mylyrics_notification_channel_name))
         signInButtonGoogle  = findViewById(R.id.signInButton)
-        signInButtonSpotify = findViewById(R.id.spotify_login_btn)
         signInButtonGoogle.setOnClickListener{ signInWithGoogle() }
 
-        googleLogin = GoogleLogin(application)
-        spotifyLogin = SpotifyLogin()
-
+        signInButtonSpotify = findViewById(R.id.spotify_login_btn)
         signInWithSpotifyButtonClickListener()
     }
 
     private fun signInWithSpotifyButtonClickListener()
     {
-
         signInButtonSpotify.setOnClickListener {
+            spotifyLogin = SpotifyLogin()
             startSpotifyProgressBar()
             SpotifyService.connect(this)
             val request = getAuthenticationRequest(AuthenticationResponse.Type.TOKEN)
@@ -70,14 +67,17 @@ class MainActivity : AppCompatActivity() {
     private fun startSpotifyProgressBar()
     {
         val progressBarSpotify = findViewById<ProgressBar>(R.id.progressBarSpotify).apply { visibility = View.VISIBLE }
+        val spotifyColor = ResourcesCompat.getColor(resources, R.color.spotifygreen, null)
 
-        setColorFilter(progressBarSpotify.indeterminateDrawable, ResourcesCompat.getColor(resources, R.color.spotifygreen, null))
+        setColorFilter(progressBarSpotify.indeterminateDrawable, spotifyColor)
     }
 
     private fun setColorFilter(drawable: Drawable, color: Int) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (checkIfCurrentVersionOfAPIIsGreaterThenOrEqualsWithAndroidQ())
+        {
             drawable.colorFilter = BlendModeColorFilter(color, BlendMode.SRC_ATOP)
-        } else {
+        }
+        else {
             @Suppress("DEPRECATION")
             drawable.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
         }
@@ -85,6 +85,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun signInWithGoogle()
     {
+        googleLogin = GoogleLogin(application)
         startGoogleProgressBar()
         val signInIntent = GoogleLogin.mGoogleSignInClient!!.signInIntent
         startActivityForResult(signInIntent, googleLogin.GOOGLE_REQUEST_CODE)
@@ -98,13 +99,16 @@ class MainActivity : AppCompatActivity() {
 
         when(requestCode)
         {
-            googleLogin.GOOGLE_REQUEST_CODE -> googleLogin.startGoogleLogin(data)
             SpotifyService.AUTH_TOKEN_REQUEST_CODE -> spotifyLogin.fetchSpotifyUserProfile(accessToken)
-
+            googleLogin.GOOGLE_REQUEST_CODE        -> googleLogin.startGoogleLogin(data)
         }
-        //This needs to be added because spotifybuilder does not have time to build
-        val handler = Handler()
-        handler.postDelayed({startLyricsActivity()}, 1500)
+
+        delayLyricsActivityStartBy1500MilliSecondsToBuildLoginData()
+    }
+
+    private fun delayLyricsActivityStartBy1500MilliSecondsToBuildLoginData()
+    {
+        Handler().postDelayed({startLyricsActivity()}, 1500)
     }
 
     private fun startLyricsActivity() { startActivity(Intent(this, LyricsActivity::class.java)) }
@@ -127,4 +131,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkIfCurrentVersionOfAPIIsGreaterThenOrEqualsWithAPI26() : Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+
+    private fun checkIfCurrentVersionOfAPIIsGreaterThenOrEqualsWithAndroidQ() : Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 }
