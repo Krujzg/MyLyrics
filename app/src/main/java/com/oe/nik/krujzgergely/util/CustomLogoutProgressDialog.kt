@@ -9,64 +9,85 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.controllers.logincontroller.GoogleLogin
 import kotlinx.android.synthetic.main.progress_logout_dialog_view.view.*
 
-class CustomLogoutProgressDialog {
+class CustomLogoutProgressDialog
+{
+    private lateinit var dialog: CustomDialog
+    private lateinit var indeterminateDrawable : Drawable
+    private var colorFromResources : Int = 0
+    private val transparentWhiteColor = "#FFFFFFFF"
 
-    lateinit var dialog: CustomDialog
+    fun showCustomLogoutProgressDialog(context: Context, title: CharSequence?): Dialog
+    {
+        val view = setView(context)
 
-    fun show(context: Context): Dialog {
-        return show(context, null)
-    }
+        setTitleIfItIsNotNull(view,title)
 
-    fun show(context: Context, title: CharSequence?): Dialog {
-        val inflater = (context as Activity).layoutInflater
-        val view = inflater.inflate(R.layout.progress_logout_dialog_view, null)
-        if (title != null) {
-            view.cp_title.text = title
-        }
+        view.customLogoutCardview.setCardBackgroundColor(getColorFromString())
 
-        // Card Color
-        view.cp_cardview.setCardBackgroundColor(Color.parseColor("#FFFFFFFF"))
+        setColorFilterParameters(view, context)
+        setColorFilter(indeterminateDrawable,colorFromResources)
 
-        // Progress Bar Color
-        val colorForProgressBar  = selectYoutubeRedOrSpotifyGreenColorBasedOnwithWhichAccountTheUserLoggedIn()
-        setColorFilter(view.cp_pbar.indeterminateDrawable, ResourcesCompat.getColor(context.resources, colorForProgressBar, null))
+        view.customProgressBarTitle.setTextColor(Color.BLACK)
 
-        // Text Color
-        view.cp_title.setTextColor(Color.BLACK)
+        setDialog(context,view)
 
-        dialog = CustomDialog(context)
-        dialog.setContentView(view)
-        dialog.show()
         return dialog
     }
 
+    private fun setView(context: Context) : View
+    {
+        val inflater = (context as Activity).layoutInflater
+        return inflater.inflate(R.layout.progress_logout_dialog_view, null)
+    }
+
+    private fun setTitleIfItIsNotNull(view : View, title: CharSequence?)
+    {
+        if (checkIfTitleIsNull(title)) { view.customProgressBarTitle.text = title }
+    }
+
+    private fun checkIfTitleIsNull(title : CharSequence?) : Boolean = title != null
+
+    private fun getColorFromString() : Int = Color.parseColor(transparentWhiteColor)
+
+    private fun setColorFilterParameters(view: View,context: Context)
+    {
+        val colorForProgressBar = selectYoutubeRedOrSpotifyGreenColorBasedOnWhichAccountTheUserLoggedIn()
+        colorFromResources = ResourcesCompat.getColor(context.resources, colorForProgressBar, null)
+        indeterminateDrawable = view.customProgressBar.indeterminateDrawable
+    }
+
+    private fun selectYoutubeRedOrSpotifyGreenColorBasedOnWhichAccountTheUserLoggedIn(): Int = when(GoogleLogin.googleAccount)
+    {
+        null -> R.color.spotifygreen
+        else -> R.color.youtubeRed
+    }
+
     private fun setColorFilter(drawable: Drawable, color: Int) =
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (checkIfCurrentSDKVersionIsGreaterOrEqualsWithAndroidQ())
+        {
             drawable.colorFilter = BlendModeColorFilter(color, BlendMode.SRC_ATOP)
-        } else {
+        }
+        else
+        {
             @Suppress("DEPRECATION")
             drawable.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
         }
 
-    private fun selectYoutubeRedOrSpotifyGreenColorBasedOnwithWhichAccountTheUserLoggedIn()
-            : Int = when(GoogleLogin.googleAccount)
-            {
-                null -> R.color.spotifygreen
-                else -> R.color.youtubeRed
-            }
+    private fun checkIfCurrentSDKVersionIsGreaterOrEqualsWithAndroidQ() : Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
-    class CustomDialog(context: Context) : Dialog(context, R.style.CustomDialogTheme) {
-        init {
-            // Set Semi-Transparent Color for Dialog Background
-            //window?.decorView?.rootView?.setBackgroundResource(R.color.semitransparentdarkgrey)
-            window?.decorView?.setOnApplyWindowInsetsListener { _, insets ->
-                insets.consumeSystemWindowInsets()
-            }
+    private fun setDialog(context: Context, view : View)
+    {
+        dialog = CustomDialog(context)
+
+        dialog.apply {
+            setContentView(view)
+            show()
         }
     }
 }

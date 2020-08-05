@@ -8,21 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.google.android.gms.auth.api.Auth
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.controllers.logincontroller.GoogleLogin
 import com.oe.nik.krujzgergely.controllers.logincontroller.SpotifyLogin
 import com.oe.nik.krujzgergely.databinding.ActivityAccountinfoBinding
 import com.oe.nik.krujzgergely.services.SpotifyService
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
-import com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActivity
 import com.oe.nik.krujzgergely.util.CustomLogoutProgressDialog
-import com.spotify.sdk.android.authentication.AuthenticationHandler
 import kotlinx.android.synthetic.main.activity_accountinfo.*
-import kotlin.system.exitProcess
 
 class AccountInfoActivity : AppCompatActivity()
 {
@@ -49,7 +43,7 @@ class AccountInfoActivity : AppCompatActivity()
 
         LogoutButton.setOnClickListener {
 
-            progressDialog.show(this,"Logging out...")
+            progressDialog.showCustomLogoutProgressDialog(this,"Logging out...")
             val handler = Handler()
             handler.postDelayed({ logoutFromCurrentAccount() }, 1500) }
     }

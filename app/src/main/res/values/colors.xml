@@ -28,5 +28,6 @@
     <color name="slide_eight">#696969</color>
     <color name="slide_nine">#2160B7</color>
     <color name="turquoise">#40E0D0</color>
+    <color name="TransparentWhite">"#FFFFFFFF"</color>
 
 </resources>

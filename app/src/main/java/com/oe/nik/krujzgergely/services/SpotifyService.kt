@@ -45,8 +45,6 @@ object SpotifyService
 
     fun play(uri: String) { spotifyAppRemote?.playerApi?.play(uri) }
 
-    fun resume() { spotifyAppRemote?.playerApi?.resume() }
-
     fun pause() { spotifyAppRemote?.playerApi?.pause() }
 
     fun playingState(handler: (PlayingState) -> Unit)
