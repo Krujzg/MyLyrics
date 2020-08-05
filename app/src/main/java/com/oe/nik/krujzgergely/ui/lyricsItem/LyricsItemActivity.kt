@@ -36,26 +36,24 @@ class LyricsItemActivity : AppCompatActivity()
     }
 
     @SuppressLint("RestrictedApi")
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean
+    {
         if (menu is MenuBuilder) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                menu.setOptionalIconsVisible(true)
-            }
+            if (checkIfCurrentSDKVersionIsGreaterOrEqualsWithAndroidQ()) { menu.setOptionalIconsVisible(true) }
         }
 
         when(GoogleLogin.googleAccount)
         {
-            null ->  inflater.inflate(R.menu.lyrics_item_menu_spotify_options, menu)
-            else ->  inflater.inflate(R.menu.lyrics_item_menu_google_options, menu)
+            null ->  menuInflater.inflate(R.menu.lyrics_item_menu_spotify_options, menu)
+            else ->  menuInflater.inflate(R.menu.lyrics_item_menu_google_options, menu)
         }
         return true
     }
 
+    private fun checkIfCurrentSDKVersionIsGreaterOrEqualsWithAndroidQ() : Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
-
         when(GoogleLogin.googleAccount)
         {
             null -> setSpotifyMenuOptionsActions(item)
@@ -69,8 +67,8 @@ class LyricsItemActivity : AppCompatActivity()
     {
         when (item.itemId)
         {
-            R.id.PlaySpotify -> lyricsItemViewModel.playSpotifyLink()
-            R.id.Pause -> lyricsItemViewModel.pauseSpotifyLink()
+            R.id.PlaySpotify  -> lyricsItemViewModel.playSpotifyLink()
+            R.id.Pause        -> lyricsItemViewModel.pauseSpotifyLink()
             R.id.UpdateLyrics -> startUpdateLyricsItemActivity()
             R.id.DeleteLyrics -> deleteLyricsFromLocalDbThenReturnToLyricsActivity()
             else -> super.onOptionsItemSelected(item)
@@ -81,10 +79,10 @@ class LyricsItemActivity : AppCompatActivity()
     {
         when (item.itemId)
         {
-            R.id.PlayYoutube -> openAndPlayCurrentYoutubeSong()
+            R.id.PlayYoutube      -> openAndPlayCurrentYoutubeSong()
             R.id.PlayYoutubeMusic -> openAndPlayCurrentYoutubeMusicSong()
-            R.id.UpdateLyrics -> startUpdateLyricsItemActivity()
-            R.id.DeleteLyrics -> deleteLyricsFromLocalDbThenReturnToLyricsActivity()
+            R.id.UpdateLyrics     -> startUpdateLyricsItemActivity()
+            R.id.DeleteLyrics     -> deleteLyricsFromLocalDbThenReturnToLyricsActivity()
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -95,7 +93,7 @@ class LyricsItemActivity : AppCompatActivity()
         return true
     }
 
-    fun deleteLyricsFromLocalDbThenReturnToLyricsActivity() : Boolean
+    private fun deleteLyricsFromLocalDbThenReturnToLyricsActivity() : Boolean
     {
         lyricsItemViewModel.deleteLyricsFromLocalDb()
         startActivity(Intent(this, LyricsActivity::class.java))

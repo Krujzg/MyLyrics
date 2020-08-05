@@ -57,9 +57,7 @@ class LyricsActivityViewModel(application: Application) : AndroidViewModel(appli
     {
         val performer = lyricsModel.performer
         val title = lyricsModel.title
-        viewModelScope.launch{
-            lyricsRepository.deleteFromDb(lyricsModel)
-        }
+        viewModelScope.launch{ lyricsRepository.deleteFromDb(lyricsModel) }
         sendNotification("You have deleted this Lyrics:", "$performer - $title")
     }
 }
