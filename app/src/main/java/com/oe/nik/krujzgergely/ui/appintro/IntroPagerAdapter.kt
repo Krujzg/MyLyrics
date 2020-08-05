@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.viewpager.widget.PagerAdapter
 
-class IntroPagerAdapter(val context: Context, private val layouts: Array<Int>) : PagerAdapter() {
-
-
-    override fun instantiateItem(@NonNull container: ViewGroup, position: Int): Any {
-
+class IntroPagerAdapter(val context: Context, private val layouts: Array<Int>) : PagerAdapter()
+{
+    override fun instantiateItem(@NonNull container: ViewGroup, position: Int): Any
+    {
         val layoutInflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater;
-
 
         val view = layoutInflater.inflate(layouts[position], container, false);
         container.addView(view);
@@ -23,13 +21,11 @@ class IntroPagerAdapter(val context: Context, private val layouts: Array<Int>) :
 
     override fun getCount(): Int = layouts.size
 
-
     override fun isViewFromObject(view: View, obj: Any): Boolean = view == obj
 
-
-    override fun  destroyItem(container : ViewGroup, position :Int, obj : Any) {
+    override fun  destroyItem(container : ViewGroup, position :Int, obj : Any)
+    {
         val view = obj as View
         container.removeView(view)
     }
-
 }
