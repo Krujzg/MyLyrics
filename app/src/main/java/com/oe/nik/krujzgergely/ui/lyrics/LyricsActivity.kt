@@ -77,20 +77,31 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
     {
         menuInflater.inflate(R.menu.lyrics_activity_menu_options, menu)
 
-        if (menu is MenuBuilder) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (menu is MenuBuilder)
+        {
+            if (checkIfTheCurrentSDKIsGreaterOrEqualsWithAndroidQ())
+            {
                 menu.setOptionalIconsVisible(true)
             }
         }
 
-        when(GoogleLogin.googleAccount)
-        {
-            null -> setProfilePictureIntoOptionMenuItemIcon(menu, Uri.parse(SpotifyLogin.spotifyAccount!!.AvatarURL))
-            else -> setProfilePictureIntoOptionMenuItemIcon(menu, GoogleLogin.googleAccount!!.photoUrl)
-        }
+        val pictureUrl : Uri? = setPictureUrlByTheLoggedInProfile()
+
+        setProfilePictureIntoOptionMenuItemIcon(menu, pictureUrl)
 
         return true
     }
+
+    private fun setPictureUrlByTheLoggedInProfile() : Uri?
+    {
+        return when(GoogleLogin.googleAccount)
+        {
+            null -> Uri.parse(SpotifyLogin.spotifyAccount!!.AvatarURL)
+            else -> GoogleLogin.googleAccount!!.photoUrl
+        }
+    }
+
+    private fun checkIfTheCurrentSDKIsGreaterOrEqualsWithAndroidQ() : Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
     private fun setProfilePictureIntoOptionMenuItemIcon(menu: Menu?, photoUrl : Uri?)
     {
@@ -108,8 +119,8 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId)
         {
             R.id.CreateNewLyrics ->  startCreateLyricsActivity()
-            R.id.SearchField -> searchBetweenAllLyrics(item)
-            R.id.ProfilePicture -> startAccountInfoActivity()
+            R.id.SearchField ->      searchBetweenAllLyrics(item)
+            R.id.ProfilePicture ->   startAccountInfoActivity()
             else -> super.onOptionsItemSelected(item)
         }
 
@@ -195,7 +206,7 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
             TypeOfTheRecycler.COUNTRY  -> lyricsViewModel.getCountryLyricsFromLocalDB()
             TypeOfTheRecycler.OPERA    -> lyricsViewModel.getOperaLyricsFromLocalDB()
         }
-        getLyricsFromDb(currentLyricsLiveData,lyricsActivityAdapter)
+        observeLyricsDataToUi(currentLyricsLiveData,lyricsActivityAdapter)
     }
 
     private fun setAdapters()
@@ -215,15 +226,8 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
 
     private fun searchBetweenAllLyrics(item: MenuItem) : Boolean
     {
-        val searchView = item.actionView as SearchView
-
-        val scrollView =  lyricsScrollView
-        scrollView.smoothScrollTo(0,0)
-        searchView.apply{
-            isIconifiedByDefault = false
-            onActionViewExpanded()
-            queryHint = "Search lyrics"
-        }
+        val searchView= setSearchView(item)
+        scrollToTheTopSmoothly()
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener
         {
@@ -236,6 +240,24 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
         })
 
         return true
+    }
+
+    private fun setSearchView(item: MenuItem) : SearchView
+    {
+        val searchView = item.actionView as SearchView
+
+        searchView.apply{
+            isIconifiedByDefault = false
+            onActionViewExpanded()
+            queryHint = "Search lyrics"
+        }
+        return searchView
+    }
+
+    private fun scrollToTheTopSmoothly()
+    {
+        val scrollView =  lyricsScrollView
+        scrollView.smoothScrollTo(0,0)
     }
 
     private fun startCreateLyricsActivity() : Boolean
@@ -256,7 +278,7 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
         lyricsViewModel = ViewModelProvider(this).get(LyricsActivityViewModel::class.java)
     }
 
-    private fun getLyricsFromDb(lyricsLiveData : LiveData<List<LyricsModel>>, adapter: LyricsActivityAdapter)
+    private fun observeLyricsDataToUi(lyricsLiveData : LiveData<List<LyricsModel>>, adapter: LyricsActivityAdapter)
     {
         lyricsLiveData.observe(this, Observer {lyricsList -> adapter.swapData(lyricsList) })
     }
