@@ -6,9 +6,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.oe.nik.krujzgergely.controllers.logincontroller.GoogleLogin
 import com.oe.nik.krujzgergely.controllers.logincontroller.SpotifyLogin
 import com.oe.nik.krujzgergely.data.LyricsDatabase
+import com.oe.nik.krujzgergely.models.SpotifyAccount
 import com.oe.nik.krujzgergely.repository.LyricsCountRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -102,17 +104,23 @@ class AccountInfoActivityViewModel(application: Application) : AndroidViewModel(
         val spotifyAccount = SpotifyLogin.spotifyAccount
         when(googleAccount)
         {
-            null -> {
-                _displayedAccountCompany.value = "Logged in with Spotify"
-                _displayedName.value  = spotifyAccount!!.name
-                _displayedEmail.value = spotifyAccount.email
-            }
-            else -> {
-                _displayedAccountCompany.value = "Logged in with Google"
-                _displayedName.value  = googleAccount.givenName
-                _displayedEmail.value = googleAccount.email
-            }
+            null -> setSpotifyAccountDataIntoLiveData(spotifyAccount!!)
+            else -> setGoogleAccountDataIntoLiveData(googleAccount)
         }
+    }
+
+    private fun setSpotifyAccountDataIntoLiveData(spotifyAccount : SpotifyAccount)
+    {
+        _displayedAccountCompany.value = "Logged in with Spotify"
+        _displayedName.value  = spotifyAccount.name
+        _displayedEmail.value = spotifyAccount.email
+    }
+
+    private fun setGoogleAccountDataIntoLiveData(googleAccount: GoogleSignInAccount)
+    {
+        _displayedAccountCompany.value = "Logged in with Google"
+        _displayedName.value  = googleAccount.givenName
+        _displayedEmail.value = googleAccount.email
     }
 
     private fun onDisplayAccountInfoData()
