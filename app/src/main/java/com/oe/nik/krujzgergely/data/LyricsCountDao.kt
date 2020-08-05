@@ -2,7 +2,6 @@ package com.oe.nik.krujzgergely.data
 
 import androidx.room.Dao
 import androidx.room.Query
-import java.util.concurrent.atomic.AtomicInteger
 
 @Dao
 interface LyricsCountDao

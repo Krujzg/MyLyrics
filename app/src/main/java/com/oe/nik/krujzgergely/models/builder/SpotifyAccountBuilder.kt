@@ -2,15 +2,14 @@ package com.oe.nik.krujzgergely.models.builder
 
 import com.oe.nik.krujzgergely.models.SpotifyAccount
 import org.json.JSONArray
-import org.json.JSONObject
 
 class SpotifyAccountBuilder
 {
     lateinit var id : String
     lateinit var name : String
     lateinit var email : String
-    lateinit var AvatarArray : JSONArray
-    lateinit var AvatarURL : String
+    lateinit var avatarArray : JSONArray
+    lateinit var avatarURL : String
 
 
     fun setId(id: String) : SpotifyAccountBuilder
@@ -27,12 +26,12 @@ class SpotifyAccountBuilder
 
     fun setAvatarArray(AvatarArray: JSONArray) : SpotifyAccountBuilder
     {
-        this.AvatarArray = AvatarArray
+        this.avatarArray = AvatarArray
         return this
     }
     fun setAvatarURL(AvatarURL: String) : SpotifyAccountBuilder
     {
-        this.AvatarURL = AvatarURL
+        this.avatarURL = AvatarURL
         return this
     }
     fun setName(name: String) : SpotifyAccountBuilder
@@ -41,5 +40,5 @@ class SpotifyAccountBuilder
         return this
     }
 
-    fun getSpotifyAccountBuilder() : SpotifyAccount = SpotifyAccount(id,name,email,AvatarArray,AvatarURL)
+    fun getSpotifyAccountBuilder() : SpotifyAccount = SpotifyAccount(id,name,email,avatarArray,avatarURL)
 }
