@@ -10,26 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12065b66-1df3-4759-9840-132cbbcf47f8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_accountinfo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_accountinfo.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_app_intro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_app_intro.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_newlyrics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_newlyrics.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_launcher.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyrics_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyrics_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyricses.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyricses.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_update_lyricsitem.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_update_lyricsitem.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_eight.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_eight.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_five.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_five.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_four.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_four.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_nine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_nine.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_one.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_one.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_seven.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_seven.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_six.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_six.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_three.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_three.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_two.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_two.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/progress_logout_dialog_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/progress_logout_dialog_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/recycler_item_lyrics_model.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_item_lyrics_model.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/appintro/MyLyricsAppIntro.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/appintro/MyLyricsAppIntro.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
