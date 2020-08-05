@@ -22,8 +22,7 @@ class AccountInfoActivity : AppCompatActivity()
 {
     private val progressDialog = CustomLogoutProgressDialog()
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_accountinfo)
 
@@ -34,24 +33,38 @@ class AccountInfoActivity : AppCompatActivity()
             this.accountInfoModel = accountInfoActivityViewModel
         }
 
-        val photoUrl : Uri? = when (GoogleLogin.googleAccount) {
-            null -> Uri.parse(SpotifyLogin.spotifyAccount!!.AvatarURL)
-            else -> GoogleLogin.googleAccount!!.photoUrl
-        }
+        val photoUrl = getPhotoUrlBasedOnLogin()
 
         setBigProfilePicture(photoUrl!!)
 
+        setLogoutButtonOnClickListener()
+    }
+
+    private fun getPhotoUrlBasedOnLogin() : Uri? = when (GoogleLogin.googleAccount)
+    {
+        null -> Uri.parse(SpotifyLogin.spotifyAccount!!.AvatarURL)
+        else -> GoogleLogin.googleAccount!!.photoUrl
+    }
+
+    private fun setBigProfilePicture(photoUrl : Uri?) { Glide.with(this).load(photoUrl).into(BigProfilePic) }
+
+    private fun setLogoutButtonOnClickListener()
+    {
         LogoutButton.setOnClickListener {
 
             progressDialog.showCustomLogoutProgressDialog(this,"Logging out...")
-            val handler = Handler()
-            handler.postDelayed({ logoutFromCurrentAccount() }, 1500) }
+            delayLogoutBy1500MilliSeconds()
+        }
+    }
+
+    private fun delayLogoutBy1500MilliSeconds()
+    {
+        Handler().postDelayed({ logoutFromCurrentAccount() }, 1500)
     }
 
     private fun logoutFromCurrentAccount()
     {
-        val googleAccount = GoogleLogin.googleAccount
-        when(googleAccount)
+        when(GoogleLogin.googleAccount)
         {
             null -> signOutFromSpotify()
             else -> signOutFromGoogle()
@@ -60,8 +73,8 @@ class AccountInfoActivity : AppCompatActivity()
 
     private fun signOutFromGoogle()
     {
-        GoogleLogin.mGoogleSignInClient!!.signOut().addOnCompleteListener(this, OnCompleteListener {
-
+        GoogleLogin.mGoogleSignInClient!!.signOut().addOnCompleteListener(this, OnCompleteListener
+        {
             GoogleLogin.googleAccount = null
             finishAffinity()
         })
@@ -73,9 +86,8 @@ class AccountInfoActivity : AppCompatActivity()
         finishAffinity()
     }
 
-    private fun setBigProfilePicture(photoUrl : Uri?) { Glide.with(this).load(photoUrl).into(BigProfilePic) }
-
-    override fun onBackPressed() {
+    override fun onBackPressed()
+    {
         startActivity( Intent(this, LyricsActivity::class.java))
         overridePendingTransition( R.xml.slide_in_down, R.xml.slide_out_down )
     }
