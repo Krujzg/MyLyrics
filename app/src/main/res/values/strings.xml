@@ -76,6 +76,7 @@
     <string name="slide_nine_down_text">If you click on the plus button on the home page, you can create your own lyrics. You can set : title, performer, links, type, and the lyrics</string>
     <string name="slide_ten_top_text">See your Account info and Logout</string>
     <string name="slide_ten_down_text">If you click on your profile picture at the top right corner, you can see your Account info page and there you can log out.</string>
+    <string name="recyclerItemLyricsModelTextViewOptionsTextValue">⋮</string>
     <string-array name="songTypes">
         <item>JAZZ</item>
         <item>HIPHOP</item>

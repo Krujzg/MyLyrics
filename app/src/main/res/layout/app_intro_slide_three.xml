@@ -14,8 +14,8 @@
         tools:ignore="UselessParent">
         <TextView
             style="@style/TextIntroSlidersUp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/appIntroSlideTopTextViewMarginTop"
+            android:layout_marginBottom="@dimen/appIntroSlideTopTextViewMarginBottom"
             android:fontFamily="@font/bahnschrift"
             android:text="@string/slide_four_top_text" />
 
@@ -28,7 +28,6 @@
         android:gravity="center_horizontal"
         android:orientation="vertical"
         tools:ignore="UselessParent">
-
 
          <GridLayout
              android:layout_width="wrap_content"
@@ -65,6 +64,5 @@
             android:fontFamily="@font/bahnschrift"
             android:text="@string/slide_four_down_text" />
     </LinearLayout>
-
 
 </RelativeLayout>

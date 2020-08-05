@@ -10,22 +10,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12065b66-1df3-4759-9840-132cbbcf47f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyrics/RecyclerViewIds.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/appintro/AppIntroLayouts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/appintro/AppIntroLayouts.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/appintro/MyLyricsAppIntro.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/appintro/MyLyricsAppIntro.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyrics/LyricsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/oe/nik/krujzgergely/ui/lyrics/LyricsActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_accountinfo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_accountinfo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_app_intro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_app_intro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_newlyrics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_newlyrics.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyrics_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyrics_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyricses.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lyricses.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_update_lyricsitem.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_update_lyricsitem.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_eight.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_eight.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_five.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_five.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_four.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_four.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_nine.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_nine.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_one.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_one.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_seven.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_seven.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_six.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_six.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_three.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_three.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_two.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_intro_slide_two.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/progress_logout_dialog_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/progress_logout_dialog_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/recycler_item_lyrics_model.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_item_lyrics_model.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -317,11 +321,11 @@
     </state>
     <state x="-1365" y="259" key="AndroidCreateResourceFileDialog/0.0.1536.824/-1920.0.1536.824@-1920.0.1536.824" timestamp="1595173625307" />
     <state x="555" y="259" width="838" height="485" key="AndroidCreateResourceFileDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596376726794" />
-    <state x="570" y="132" key="AndroidCreateXmlResourceDialog" timestamp="1596630795567">
+    <state x="849" y="73" key="AndroidCreateXmlResourceDialog" timestamp="1596648983067">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-868" y="178" key="AndroidCreateXmlResourceDialog/0.0.1536.824/-1920.0.1536.824@-1920.0.1536.824" timestamp="1595857263608" />
-    <state x="570" y="132" key="AndroidCreateXmlResourceDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596630795567" />
+    <state x="849" y="73" key="AndroidCreateXmlResourceDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1596648983067" />
     <state width="526" height="438" key="DebuggerActiveHint" timestamp="1594999460864">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

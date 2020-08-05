@@ -29,5 +29,6 @@
     <color name="slide_nine">#2160B7</color>
     <color name="turquoise">#40E0D0</color>
     <color name="TransparentWhite">#FFFFFFFF</color>
+    <color name="transparentBlack">#00000000</color>
 
 </resources>
