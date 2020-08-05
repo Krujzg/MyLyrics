@@ -83,7 +83,7 @@
                 android:baselineAligned="false">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/activityAccountInfoTextLinearLayoutWidth"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -108,7 +108,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/activityAccountInfoTextLinearLayoutWidth"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -133,7 +133,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/activityAccountInfoTextLinearLayoutWidth"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -158,12 +158,12 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/activityAccountInfoTextLinearLayoutWidth"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:layout_marginTop="60dp">
+                    android:layout_marginTop="@dimen/accountInfoActivityTextLinearLayoutMarginTop">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -183,7 +183,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/activityAccountInfoTextLinearLayoutWidth"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -224,7 +224,7 @@
                 android:baselineAligned="false">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/activityAccountInfoTextLinearLayoutWidth"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -248,7 +248,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/activityAccountInfoTextLinearLayoutWidth"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -272,7 +272,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/activityAccountInfoTextLinearLayoutWidth"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -296,7 +296,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/activityAccountInfoTextLinearLayoutWidth"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -320,7 +320,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/activityAccountInfoTextLinearLayoutWidth"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"

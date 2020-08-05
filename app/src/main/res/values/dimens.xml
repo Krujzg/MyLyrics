@@ -67,4 +67,6 @@
     <dimen name="appIntroSlideTopTextViewMarginTop">50dp</dimen>
     <dimen name="appIntroSlideTopTextViewMarginBottom">10dp</dimen>
     <dimen name="appIntroSlideGap">5dp</dimen>
+    <dimen name="activityAccountInfoTextLinearLayoutWidth">0dp</dimen>
+    <dimen name="accountInfoActivityTextLinearLayoutMarginTop">60dp</dimen>
 </resources>
