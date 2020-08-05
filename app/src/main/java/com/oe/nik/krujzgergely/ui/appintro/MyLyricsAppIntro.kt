@@ -33,14 +33,12 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener
         setWindowUiToFullScreenWithTransparentStatusBar()
         introPagerAdapter = IntroPagerAdapter(this, mLayouts)
 
-        welcome_view_pager.apply {
-            adapter = introPagerAdapter
-        }.addOnPageChangeListener(this)
+        welcomeViewPagerApply()
 
         setupIndicators()
         setCurrentIndicator(0)
 
-        skip_button.setOnClickListener { launchMainScreen() }
+        skipButtonOnClickListener()
         nextButtonOnClickListener()
     }
 
@@ -58,6 +56,13 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener
         }
     }
 
+    private fun welcomeViewPagerApply()
+    {
+        welcome_view_pager.apply {
+            adapter = introPagerAdapter
+        }.addOnPageChangeListener(this)
+    }
+
     private fun setupIndicators()
     {
         val indicators = arrayOfNulls<ImageView>(introPagerAdapter.count)
@@ -65,11 +70,11 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener
         layoutParams.setMargins(8,0,8,0)
         for (i in indicators.indices)
         {
-            addIndicatiorToIndicatorContainer(indicators,i,layoutParams)
+            addIndicatorToIndicatorContainer(indicators,i,layoutParams)
         }
     }
 
-    private fun addIndicatiorToIndicatorContainer(indicators: Array<ImageView?>, index : Int, layoutParams: LinearLayout.LayoutParams)
+    private fun addIndicatorToIndicatorContainer(indicators: Array<ImageView?>, index : Int, layoutParams: LinearLayout.LayoutParams)
     {
         indicators[index] = ImageView(applicationContext)
         indicators[index].apply {
@@ -93,6 +98,14 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener
         }
     }
 
+    private fun skipButtonOnClickListener()
+    {
+        skip_button.setOnClickListener {
+            mPreferencesManager?.setFirstTimeLaunched()
+            launchMainScreen()
+        }
+    }
+
     private fun nextButtonOnClickListener()
     {
         next_button.setOnClickListener {
@@ -112,7 +125,6 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener
 
     private fun launchMainScreen()
     {
-        mPreferencesManager?.setFirstTimeLaunched()
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
