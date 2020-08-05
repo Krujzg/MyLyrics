@@ -90,10 +90,10 @@ class AccountInfoActivityViewModel(application: Application) : AndroidViewModel(
             .getDatabase(application,viewModelScope,application.resources)
             .lyricsCountDao()
         this.countLyricsRepository = LyricsCountRepository(lyricsCountDao)
-        viewModelScope.launch { getDataCountsFromTheLocalDB() }
-        val handler = Handler()
-        handler.postDelayed({onDisplayAccountInfoData()}, 400)
 
+        viewModelScope.launch { getDataCountsFromTheLocalDB() }
+
+        delayAccountInfoDisplayBy400MillisecondsToLoadPerfectly()
     }
 
     private fun onDisplayAccountContent()
@@ -154,15 +154,20 @@ class AccountInfoActivityViewModel(application: Application) : AndroidViewModel(
 
     private suspend fun getDataCountsFromTheLocalDB()
     {
-        withContext(Dispatchers.IO) { allLyricsCount = getAllLyricsCountContent()}
+        withContext(Dispatchers.IO) { allLyricsCount      = getAllLyricsCountContent()}
         withContext(Dispatchers.IO) { favoriteLyricsCount = getFavoriteLyricsCountContent()}
-        withContext(Dispatchers.IO) { jazzLyricsCount = getJazzLyricsCountContent()}
-        withContext(Dispatchers.IO) { hipHopLyricsCount = getHipHopLyricsCountContent()}
-        withContext(Dispatchers.IO) { rockLyricsCount = getRockLyricsCountContent()}
-        withContext(Dispatchers.IO) { metalLyricsCount = getMetalLyricsCountContent()}
-        withContext(Dispatchers.IO) { punkLyricsCount = getPunkLyricsCountContent()}
-        withContext(Dispatchers.IO) { popLyricsCount = getPopLyricsCountContent()}
-        withContext(Dispatchers.IO) { countryLyricsCount = getCountryLyricsCountContent()}
-        withContext(Dispatchers.IO) { operaLyricsCount = getOperaLyricsCountContent()}
+        withContext(Dispatchers.IO) { jazzLyricsCount     = getJazzLyricsCountContent()}
+        withContext(Dispatchers.IO) { hipHopLyricsCount   = getHipHopLyricsCountContent()}
+        withContext(Dispatchers.IO) { rockLyricsCount     = getRockLyricsCountContent()}
+        withContext(Dispatchers.IO) { metalLyricsCount    = getMetalLyricsCountContent()}
+        withContext(Dispatchers.IO) { punkLyricsCount     = getPunkLyricsCountContent()}
+        withContext(Dispatchers.IO) { popLyricsCount      = getPopLyricsCountContent()}
+        withContext(Dispatchers.IO) { countryLyricsCount  = getCountryLyricsCountContent()}
+        withContext(Dispatchers.IO) { operaLyricsCount    = getOperaLyricsCountContent()}
+    }
+
+    private fun delayAccountInfoDisplayBy400MillisecondsToLoadPerfectly()
+    {
+        Handler().postDelayed({onDisplayAccountInfoData()}, 400)
     }
 }
