@@ -4,6 +4,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.core.app.NotificationCompat
 import com.oe.nik.krujzgergely.R
@@ -12,12 +13,11 @@ import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 
 private const val NOTIFICATION_ID = 0
 
-
 fun NotificationManager.sendNotification(title: String, messageBody: String, crudType: CrudType, applicationContext: Context) {
 
     val contentIntent = selectNavigationDirection(crudType,applicationContext)
-    val contentPendingIntent = PendingIntent.getActivity(applicationContext, NOTIFICATION_ID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-    val myLyricsLogo = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.myliricslogo)
+    val contentPendingIntent = getContentPendingIntent(applicationContext,contentIntent)
+    val myLyricsLogo = getMyLyricsLogoInBitmap(applicationContext)
 
     val bigPicStyle = NotificationCompat.BigPictureStyle()
         .bigPicture(myLyricsLogo)
@@ -34,6 +34,16 @@ fun NotificationManager.sendNotification(title: String, messageBody: String, cru
         .setPriority(NotificationCompat.PRIORITY_HIGH)
 
     notify(NOTIFICATION_ID, builder.build())
+}
+
+private fun getContentPendingIntent(applicationContext: Context, contentIntent : Intent) : PendingIntent
+{
+    return PendingIntent.getActivity(applicationContext, NOTIFICATION_ID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+}
+
+private fun getMyLyricsLogoInBitmap(applicationContext: Context) : Bitmap
+{
+    return BitmapFactory.decodeResource(applicationContext.resources, R.drawable.myliricslogo)
 }
 
 //In case of refactor
