@@ -21,7 +21,7 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
 
     private var backUpListForTheSearchField = mutableListOf<LyricsModel>()
 
-    private val layoutinflater : LayoutInflater = LayoutInflater.from(context)
+    private val layoutInflater : LayoutInflater = LayoutInflater.from(context)
 
     private lateinit var listener: IonLyricsClickEvent
 
@@ -30,7 +30,7 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
         when(context) {is IonLyricsClickEvent -> listener = context as IonLyricsClickEvent }
 
         val recyclerItemLyricsModelBinding =
-            RecyclerItemLyricsModelBinding.inflate(layoutinflater, parent, false)
+            RecyclerItemLyricsModelBinding.inflate(layoutInflater, parent, false)
 
         return ViewHolder(recyclerItemLyricsModelBinding.root, recyclerItemLyricsModelBinding)
     }
@@ -118,18 +118,18 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
             recyclerItemLyricsModelBinding.lyricsModel = lyricsModel
         }
 
-        fun setImage(song_imageview: ImageView, song_type: String)
+        private fun setImage(song_imageview: ImageView, song_type: String)
         {
             when(song_type)
             {
-                "JAZZ" -> Glide.with(context).load(R.drawable.jazz).into(song_imageview)
-                "HIPHOP" -> Glide.with(context).load(R.drawable.hiphop).into(song_imageview)
-                "ROCK" -> Glide.with(context).load(R.drawable.rock).into(song_imageview)
-                "METAL" -> Glide.with(context).load(R.drawable.metal).into(song_imageview)
-                "PUNK" -> Glide.with(context).load(R.drawable.punk).into(song_imageview)
-                "POP" -> Glide.with(context).load(R.drawable.pop).into(song_imageview)
+                "JAZZ"    -> Glide.with(context).load(R.drawable.jazz).into(song_imageview)
+                "HIPHOP"  -> Glide.with(context).load(R.drawable.hiphop).into(song_imageview)
+                "ROCK"    -> Glide.with(context).load(R.drawable.rock).into(song_imageview)
+                "METAL"   -> Glide.with(context).load(R.drawable.metal).into(song_imageview)
+                "PUNK"    -> Glide.with(context).load(R.drawable.punk).into(song_imageview)
+                "POP"     -> Glide.with(context).load(R.drawable.pop).into(song_imageview)
                 "COUNTRY" -> Glide.with(context).load(R.drawable.country).into(song_imageview)
-                else -> Glide.with(context).load(R.drawable.opera).into(song_imageview)
+                else      -> Glide.with(context).load(R.drawable.opera).into(song_imageview)
             }
         }
 
@@ -137,30 +137,22 @@ class LyricsActivityAdapter(private var context: Context, private var LyricsList
         {
             val popupMenu = PopupMenu(view.context,view)
             popupMenu.inflate(R.menu.recycler_item_menu_options)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                popupMenu.setForceShowIcon(true)
-            }
+
+            if (checkIfCurrentSDKVersionIsGreaterOrEqualsWithAndroidQ()) { popupMenu.setForceShowIcon(true) }
             popupMenu.show()
             popupMenu.setOnMenuItemClickListener(this)
         }
 
+        private fun checkIfCurrentSDKVersionIsGreaterOrEqualsWithAndroidQ() : Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+
         override fun onMenuItemClick(item: MenuItem?): Boolean
         {
-            when(item!!.itemId)
+            currentLyrics = currentLyricsModel!!
+            return when(item!!.itemId)
             {
-                R.id.UpdateLyricsOption ->
-                {
-                    currentLyrics = currentLyricsModel!!
-                    listener.onUpdateOptionsClicked()
-                    return true
-                }
-                R.id.DeleteLyricsOption ->
-                {
-                    currentLyrics = currentLyricsModel!!
-                    listener.onDeleteOptionsClicked(currentLyrics)
-                    return true
-                }
-                else -> return false
+                R.id.UpdateLyricsOption -> { listener.onUpdateOptionsClicked(); true }
+                R.id.DeleteLyricsOption -> { listener.onDeleteOptionsClicked(currentLyrics); true }
+                else -> false
             }
         }
     }
