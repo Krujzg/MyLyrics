@@ -11,12 +11,12 @@
 
     <Button
         android:id="@+id/signInButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/mainActivityButtonSize"
+        android:layout_height="@dimen/mainActivityButtonSize"
         android:layout_centerInParent="true"
         android:background="@drawable/google_button"
         android:drawableStart="@drawable/google_icon"
-        android:padding="8dp"
+        android:padding="@dimen/mainActivityButtonPadding"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,12 +28,12 @@
 
     <Button
         android:id="@+id/spotify_login_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/mainActivityButtonSize"
+        android:layout_height="@dimen/mainActivityButtonSize"
         android:layout_centerInParent="true"
         android:background="@drawable/spotify_login_button"
         android:drawableStart="@drawable/spotifyblack25x25"
-        android:padding="8dp"
+        android:padding="@dimen/mainActivityButtonPadding"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,8 +45,8 @@
 
     <ProgressBar
         android:id="@+id/progressBarGoogle"
-        android:layout_width="60dp"
-        android:layout_height="130dp"
+        android:layout_width="@dimen/mainActivityProgressBarWidth"
+        android:layout_height="@dimen/mainActivityProgressBarHeight"
         android:gravity="center"
         android:indeterminate="false"
         android:progressDrawable="@drawable/progressbar"
@@ -60,8 +60,8 @@
 
     <ProgressBar
         android:id="@+id/progressBarSpotify"
-        android:layout_width="60dp"
-        android:layout_height="130dp"
+        android:layout_width="@dimen/mainActivityProgressBarWidth"
+        android:layout_height="@dimen/mainActivityProgressBarHeight"
         android:gravity="center"
         android:indeterminate="false"
         android:progressDrawable="@drawable/progressbar"

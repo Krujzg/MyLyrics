@@ -4,7 +4,7 @@
     android:id="@+id/cp_bg_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00000000"
+    android:background="@color/transparentBlack"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -12,17 +12,16 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/customLogoutCardview"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:cardBackgroundColor="#00000000"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
+        android:layout_width="@dimen/progressLogoutDialogCardViewSize"
+        android:layout_height="@dimen/progressLogoutDialogCardViewSize"
+        app:cardBackgroundColor="@color/transparentBlack"
+        app:cardCornerRadius="@dimen/progressLogoutDialogCardViewCorderRadius"
+        app:cardElevation="@dimen/progressLogoutDialogCardViewElevation"
+        app:cardMaxElevation="@dimen/progressLogoutDialogCardViewMaxElevation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cp_view"
@@ -34,10 +33,10 @@
             <ProgressBar
                 android:id="@+id/customProgressBar"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="@dimen/progressLogoutDialogProgressBarHeight"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="@dimen/progressLogoutDialogProgressBarMarginTop"
+                android:layout_marginBottom="@dimen/progressLogoutDialogProgressBarMarginBottom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -47,9 +46,9 @@
                 android:id="@+id/customProgressBarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginStart="@dimen/progressLogoutDialogTextViewMarginStart"
+                android:layout_marginEnd="@dimen/progressLogoutDialogTextViewMarginEnd"
+                android:layout_marginBottom="@dimen/progressLogoutDialogTextViewMarginBottom"
                 android:text=""
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
@@ -59,8 +58,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
