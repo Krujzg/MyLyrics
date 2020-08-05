@@ -17,7 +17,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/bahnschrift"
-            android:text="@string/slide_seven_down_text" />
+            android:text="@string/slide_seven_top_text" />
 
     </LinearLayout>
 

@@ -1,7 +1,5 @@
 package com.oe.nik.krujzgergely.controllers.logincontroller
 
-import android.app.Application
-import android.util.Log
 import com.oe.nik.krujzgergely.models.SpotifyAccount
 import com.oe.nik.krujzgergely.models.builder.SpotifyAccountBuilder
 import kotlinx.coroutines.Dispatchers
@@ -13,66 +11,81 @@ import org.json.JSONObject
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
-class SpotifyLogin(application: Application)
+class SpotifyLogin
 {
+    private lateinit var spotifyAccountBuilder: SpotifyAccountBuilder
+    private lateinit var avatarArray : JSONArray
 
-    lateinit var spotifyAccountBuilder: SpotifyAccountBuilder
-    var id = ""
-    var displayName = ""
-    var email = ""
-    lateinit var avatarArray : JSONArray
-    var avatarURL : String = ""
-    var accessToken = ""
-    companion object
+    private var id = ""
+    private var displayName = ""
+    private var email = ""
+    private var avatarURL : String = ""
+    private var accessToken = ""
+    private val userProfileURL = "https://api.spotify.com/v1/me"
+
+    companion object { var spotifyAccount :SpotifyAccount? = null }
+
+    fun fetchSpotifyUserProfile(token: String?)
     {
-        var spotifyAccount :SpotifyAccount? = null
-    }
+        if (token == null) { return }
 
-    fun fetchSpotifyUserProfile(token: String?) {
-        Log.d("Status: ", "Please Wait...")
-        if (token == null) {
-            Log.i("Status: ", "Something went wrong - No Access Token found")
-            return
-        }
+        GlobalScope.launch(Dispatchers.Default)
+        {
 
-        val getUserProfileURL = "https://api.spotify.com/v1/me"
+            val httpsURLConnection = setHTTPSUrlConnection(token)
+            val response = setResponeFromHTTPSUrlConnection(httpsURLConnection)
 
-        GlobalScope.launch(Dispatchers.Default) {
-            val url = URL(getUserProfileURL)
-            val httpsURLConnection = withContext(Dispatchers.IO) {url.openConnection() as HttpsURLConnection }
-            httpsURLConnection.apply {
-                requestMethod = "GET"
-                setRequestProperty("Authorization", "Bearer $token")
-                doInput = true
-                doOutput = false
-            }
-
-            val response = httpsURLConnection.inputStream.bufferedReader().use { it.readText() }
-            withContext(Dispatchers.Main) {
-                val jsonObject = JSONObject(response)
-
-                id = jsonObject.getString("id")
-                Log.d("Spotify Id :", id)
-
-                displayName = jsonObject.getString("display_name")
-                Log.d("Spotify Display Name :", displayName)
-
-                email = jsonObject.getString("email")
-                Log.d("Spotify Email :", email)
-
-                avatarArray = jsonObject.getJSONArray("images")
-                avatarURL = ""
-                if (avatarArray.length() > 0) {
-                    avatarURL = avatarArray.getJSONObject(0).getString("url")
-                    Log.d("Spotify Avatar : ", avatarURL)
-                }
-                buildSpotifyAccount()
-
-                Log.d("Spotify AccessToken :", token)
-                accessToken = token
-            }
+            startSpotifyDataBuildingFromResponse(response,token)
         }
     }
+
+    private suspend fun setHTTPSUrlConnection(token: String?) : HttpsURLConnection
+    {
+        val url = URL(userProfileURL)
+        val httpsURLConnection = withContext(Dispatchers.IO) {url.openConnection() as HttpsURLConnection }
+        httpsURLConnection.apply {
+            requestMethod = "GET"
+            setRequestProperty("Authorization", "Bearer $token")
+            doInput = true
+            doOutput = false
+        }
+
+        return httpsURLConnection
+    }
+
+    private fun setResponeFromHTTPSUrlConnection(httpsURLConnection: HttpsURLConnection) : String
+    {
+        return httpsURLConnection.inputStream.bufferedReader().use { it.readText() }
+    }
+
+    private suspend fun startSpotifyDataBuildingFromResponse(response : String, token : String?)
+    {
+        withContext(Dispatchers.Main)
+        {
+            val jsonObject = JSONObject(response)
+
+            setDataFromJsonObject(jsonObject)
+
+            buildSpotifyAccount()
+
+            accessToken = token!!
+        }
+    }
+
+    private fun setDataFromJsonObject(jsonObject : JSONObject)
+    {
+        id = jsonObject.getString("id")
+        displayName = jsonObject.getString("display_name")
+        email = jsonObject.getString("email")
+        avatarArray = jsonObject.getJSONArray("images")
+
+        if (checkIfAvatarArrayLengthIsBiggerThenZero())
+        {
+            avatarURL = avatarArray.getJSONObject(0).getString("url")
+        }
+    }
+
+    private fun checkIfAvatarArrayLengthIsBiggerThenZero() : Boolean = avatarArray.length() > 0
 
     private fun buildSpotifyAccount()
     {

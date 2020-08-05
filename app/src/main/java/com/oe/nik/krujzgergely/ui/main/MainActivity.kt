@@ -43,14 +43,8 @@ class MainActivity : AppCompatActivity() {
         signInButtonSpotify = findViewById(R.id.spotify_login_btn)
         signInButtonGoogle.setOnClickListener{ signInWithGoogle() }
 
-        googleLogin =
-            GoogleLogin(
-                application
-            )
-        spotifyLogin =
-            SpotifyLogin(
-                application
-            )
+        googleLogin = GoogleLogin(application)
+        spotifyLogin = SpotifyLogin()
 
         signInWithSpotifyButtonClickListener()
     }

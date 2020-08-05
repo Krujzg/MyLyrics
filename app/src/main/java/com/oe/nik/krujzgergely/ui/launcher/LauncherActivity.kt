@@ -15,10 +15,7 @@ import com.oe.nik.krujzgergely.ui.main.MainActivity
 
 class LauncherActivity : AppCompatActivity() {
 
-    companion object {
-        const val SPLASH_TIME = 3000L
-    }
-
+    companion object { const val SPLASH_TIME = 3000L }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,19 +25,16 @@ class LauncherActivity : AppCompatActivity() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             window.statusBarColor = Color.TRANSPARENT
         }
 
-
-        if (PreferencesManager(this).isNotFirstTimeLaunched()) {
-            classes = 2
-        }
+        if (PreferencesManager(this).isNotFirstTimeLaunched()) { classes = 2 }
 
 
 
-        Handler().postDelayed({
+        Handler().postDelayed(
+            {
             if (classes == 1)
                 startActivity(Intent(this, MyLyricsAppIntro::class.java))
             else

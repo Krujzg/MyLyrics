@@ -40,16 +40,15 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener {
         if (mPreferencesManager?.isNotFirstTimeLaunched()!!) { launchMainScreen() }
 
         //checking if the sdk is grate than Lollipop
-        if (Build.VERSION.SDK_INT >= 21) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        if (Build.VERSION.SDK_INT >= 21)
+        {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         }
 
         //changing the color of the status bar to transparent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             window.statusBarColor = Color.TRANSPARENT
         }
 
@@ -89,9 +88,7 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener {
         {
             indicators[i] = ImageView(applicationContext)
             indicators[i].apply {
-                this?.setImageDrawable(
-                    ContextCompat.getDrawable(applicationContext,R.drawable.indicator_inactive)
-                )
+                this?.setImageDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.indicator_inactive))
                 this?.layoutParams = layoutParams
             }
             indicatorsContainer.addView(indicators[i])
@@ -116,10 +113,12 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener {
     }
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-        if (position == mLayouts.size - 1) {
+        if (position == mLayouts.size - 1)
+        {
             next_button.text = getString(R.string.done)
             skip_button.visibility = View.GONE
-        } else {
+        } else
+        {
             next_button.text = getString(R.string.next)
             skip_button.visibility = View.VISIBLE
         }

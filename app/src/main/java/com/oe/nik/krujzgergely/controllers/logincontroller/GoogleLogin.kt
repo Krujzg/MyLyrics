@@ -13,6 +13,7 @@ class GoogleLogin(var application: Application)
 {
     val GOOGLE_REQUEST_CODE = 123
     var googleSignInOptions : GoogleSignInOptions
+    val token = "820173271126-5euu594fvgojr9iuefu3qtstbb16tjqu.apps.googleusercontent.com"
 
     companion object
     {
@@ -22,7 +23,6 @@ class GoogleLogin(var application: Application)
 
     init {
 
-        val token = "820173271126-5euu594fvgojr9iuefu3qtstbb16tjqu.apps.googleusercontent.com"
         googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .requestIdToken(token)

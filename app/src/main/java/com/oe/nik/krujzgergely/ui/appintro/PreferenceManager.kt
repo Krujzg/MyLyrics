@@ -24,9 +24,7 @@ constructor(mContext: Context) {
         mEditor.commit()
     }
 
-    fun removePreference() {
-        mEditor.clear().commit()
-    }
+    fun removePreference() { mEditor.clear().commit() }
 
     companion object {
         private const val TAG = "manager"
