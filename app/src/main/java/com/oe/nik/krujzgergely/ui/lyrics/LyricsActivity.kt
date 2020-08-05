@@ -60,93 +60,36 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
         setAdapters()
         setLyricsActivityViewModel()
 
-        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.ALL)
-        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.FAVORITE)
-        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.JAZZ)
-        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.HIPHOP)
-        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.ROCK)
-        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.METAL)
-        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.PUNK)
-        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.POP)
-        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.COUNTRY)
-        loadLyricsMultiSnapRecyclerView(TypeOfTheRecycler.OPERA)
+        loadAllTypeOfRecycler()
     }
 
-    @SuppressLint("RestrictedApi")
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean
+    private fun setAdapters()
     {
-        menuInflater.inflate(R.menu.lyrics_activity_menu_options, menu)
+        allLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        favoriteLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        jazzLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        hiphopLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        rockLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        metalLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        punkLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        popLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        countryLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        operaLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
 
-        if (menu is MenuBuilder)
-        {
-            if (checkIfTheCurrentSDKIsGreaterOrEqualsWithAndroidQ())
-            {
-                menu.setOptionalIconsVisible(true)
-            }
-        }
-
-        val pictureUrl : Uri? = setPictureUrlByTheLoggedInProfile()
-
-        setProfilePictureIntoOptionMenuItemIcon(menu, pictureUrl)
-
-        return true
     }
 
-    private fun setPictureUrlByTheLoggedInProfile() : Uri?
+    private fun setLyricsActivityViewModel()
     {
-        return when(GoogleLogin.googleAccount)
+        lyricsViewModel = ViewModelProvider(this).get(LyricsActivityViewModel::class.java)
+    }
+
+    private fun loadAllTypeOfRecycler()
+    {
+        for (type  in TypeOfTheRecycler.values())
         {
-            null -> Uri.parse(SpotifyLogin.spotifyAccount!!.AvatarURL)
-            else -> GoogleLogin.googleAccount!!.photoUrl
+            loadLyricsMultiSnapRecyclerView(type)
         }
     }
-
-    private fun checkIfTheCurrentSDKIsGreaterOrEqualsWithAndroidQ() : Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
-
-    private fun setProfilePictureIntoOptionMenuItemIcon(menu: Menu?, photoUrl : Uri?)
-    {
-        val profilePictureMenuItem = menu!!.findItem(R.id.ProfilePicture)
-
-        Glide.with(this).asBitmap().load(photoUrl).into(object : SimpleTarget<Bitmap?>(100,100)
-        {
-            override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?)
-            {
-                profilePictureMenuItem.icon = BitmapDrawable(resources, resource)
-            }
-        })
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId)
-        {
-            R.id.CreateNewLyrics ->  startCreateLyricsActivity()
-            R.id.SearchField ->      searchBetweenAllLyrics(item)
-            R.id.ProfilePicture ->   startAccountInfoActivity()
-            else -> super.onOptionsItemSelected(item)
-        }
-
-    override fun onBackPressed()
-    {
-        when(doubleBackToExitPressedOnce)
-        {
-            true -> exitTheApp()
-            false -> delayTimeBetweenTwoBackButtonPress()
-        }
-    }
-
-    private fun exitTheApp()
-    {
-        GoogleLogin.googleAccount = null
-        finishAffinity()
-    }
-
-    private fun delayTimeBetweenTwoBackButtonPress()
-    {
-        this.doubleBackToExitPressedOnce = true
-        showMessageBoxWhenPressingBackTwice()
-        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
-    }
-
-    private fun showMessageBoxWhenPressingBackTwice() { Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show() }
 
     private fun loadLyricsMultiSnapRecyclerView(typeOfTheRecycler: TypeOfTheRecycler)
     {
@@ -215,19 +158,74 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
         observeLyricsDataToUi(currentLyricsLiveData,lyricsActivityAdapter)
     }
 
-    private fun setAdapters()
+    private fun observeLyricsDataToUi(lyricsLiveData : LiveData<List<LyricsModel>>, adapter: LyricsActivityAdapter)
     {
-        allLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
-        favoriteLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
-        jazzLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
-        hiphopLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
-        rockLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
-        metalLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
-        punkLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
-        popLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
-        countryLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
-        operaLyricsActivityAdapter = LyricsActivityAdapter(this, mutableListOf())
+        lyricsLiveData.observe(this, Observer {lyricsList -> adapter.swapData(lyricsList) })
+    }
 
+    @SuppressLint("RestrictedApi")
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean
+    {
+        menuInflater.inflate(R.menu.lyrics_activity_menu_options, menu)
+
+        if (menu is MenuBuilder)
+        {
+            if (checkIfTheCurrentSDKIsGreaterOrEqualsWithAndroidQ())
+            {
+                menu.setOptionalIconsVisible(true)
+            }
+        }
+
+        val pictureUrl : Uri? = setPictureUrlByTheLoggedInProfile()
+
+        setProfilePictureIntoOptionMenuItemIcon(menu, pictureUrl)
+
+        return true
+    }
+
+    private fun checkIfTheCurrentSDKIsGreaterOrEqualsWithAndroidQ() : Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+
+    private fun setPictureUrlByTheLoggedInProfile() : Uri?
+    {
+        return when(GoogleLogin.googleAccount)
+        {
+            null -> Uri.parse(SpotifyLogin.spotifyAccount!!.AvatarURL)
+            else -> GoogleLogin.googleAccount!!.photoUrl
+        }
+    }
+
+    private fun setProfilePictureIntoOptionMenuItemIcon(menu: Menu?, photoUrl : Uri?)
+    {
+        val profilePictureMenuItem = menu!!.findItem(R.id.ProfilePicture)
+
+        Glide.with(this).asBitmap().load(photoUrl).into(object : SimpleTarget<Bitmap?>(100,100)
+        {
+            override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?)
+            {
+                profilePictureMenuItem.icon = BitmapDrawable(resources, resource)
+            }
+        })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId)
+        {
+            R.id.CreateNewLyrics ->  startCreateLyricsActivity()
+            R.id.SearchField ->      searchBetweenAllLyrics(item)
+            R.id.ProfilePicture ->   startAccountInfoActivity()
+            else -> super.onOptionsItemSelected(item)
+        }
+
+    private fun startCreateLyricsActivity() : Boolean
+    {
+        startActivity(Intent(this,CreateLyricsActivity::class.java))
+        return true
+    }
+
+    private fun startAccountInfoActivity() : Boolean
+    {
+        startActivity(Intent(this,AccountInfoActivity::class.java))
+        overridePendingTransition( R.xml.slide_in_up, R.xml.slide_out_up )
+        return true
     }
 
     private fun searchBetweenAllLyrics(item: MenuItem) : Boolean
@@ -266,29 +264,6 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
         scrollView.smoothScrollTo(0,0)
     }
 
-    private fun startCreateLyricsActivity() : Boolean
-    {
-        startActivity(Intent(this,CreateLyricsActivity::class.java))
-        return true
-    }
-
-    private fun startAccountInfoActivity() : Boolean
-    {
-        startActivity(Intent(this,AccountInfoActivity::class.java))
-        overridePendingTransition( R.xml.slide_in_up, R.xml.slide_out_up )
-        return true
-    }
-
-    private fun setLyricsActivityViewModel()
-    {
-        lyricsViewModel = ViewModelProvider(this).get(LyricsActivityViewModel::class.java)
-    }
-
-    private fun observeLyricsDataToUi(lyricsLiveData : LiveData<List<LyricsModel>>, adapter: LyricsActivityAdapter)
-    {
-        lyricsLiveData.observe(this, Observer {lyricsList -> adapter.swapData(lyricsList) })
-    }
-
     private fun searchIfTheSearchFieldIsNotEmpty(searchText : String)
     {
         when(searchText.isNotEmpty())
@@ -297,6 +272,30 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
             false -> allLyricsActivityAdapter.noItemFoundInLyricsListWhenSearched()
         }
     }
+
+    override fun onBackPressed()
+    {
+        when(doubleBackToExitPressedOnce)
+        {
+            true -> exitTheApp()
+            false -> delayTimeBetweenTwoBackButtonPress()
+        }
+    }
+
+    private fun exitTheApp()
+    {
+        GoogleLogin.googleAccount = null
+        finishAffinity()
+    }
+
+    private fun delayTimeBetweenTwoBackButtonPress()
+    {
+        this.doubleBackToExitPressedOnce = true
+        showMessageBoxWhenPressingBackTwice()
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+    }
+
+    private fun showMessageBoxWhenPressingBackTwice() { Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show() }
 
     override fun onLyricsSelected()
     {

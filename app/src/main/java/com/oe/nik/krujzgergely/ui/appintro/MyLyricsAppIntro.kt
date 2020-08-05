@@ -44,20 +44,10 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener
         nextButtonOnClickListener()
     }
 
-    private fun nextButtonOnClickListener()
+    private fun checkIfTheAppWasNotLaunchedForTheFirstTimeThenIfItsTrueLaunchMainScreen()
     {
-        next_button.setOnClickListener {
-            val currentItemIndex = getCurrentItemIndex()
-            when(checkIfTheCurrentItemIndexIsLowerThanTheLayoutsSize(currentItemIndex))
-            {
-                true -> welcome_view_pager.currentItem = currentItemIndex
-                false -> launchMainScreen()
-            }
-        }
+        if (mPreferencesManager?.isNotFirstTimeLaunched()!!) { launchMainScreen() }
     }
-
-    private fun checkIfTheCurrentItemIndexIsLowerThanTheLayoutsSize(currentItemInTheViewPager : Int) :
-            Boolean = currentItemInTheViewPager < mLayouts.size
 
     private fun setWindowUiToFullScreenWithTransparentStatusBar()
     {
@@ -67,20 +57,6 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener
             statusBarColor = Color.TRANSPARENT
         }
     }
-
-    private fun checkIfTheAppWasNotLaunchedForTheFirstTimeThenIfItsTrueLaunchMainScreen()
-    {
-        if (mPreferencesManager?.isNotFirstTimeLaunched()!!) { launchMainScreen() }
-    }
-
-    private fun launchMainScreen()
-    {
-        mPreferencesManager?.setFirstTimeLaunched()
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
-    }
-
-    private fun getCurrentItemIndex(): Int = welcome_view_pager.currentItem + 1
 
     private fun setupIndicators()
     {
@@ -92,6 +68,7 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener
             addIndicatiorToIndicatorContainer(indicators,i,layoutParams)
         }
     }
+
     private fun addIndicatiorToIndicatorContainer(indicators: Array<ImageView?>, index : Int, layoutParams: LinearLayout.LayoutParams)
     {
         indicators[index] = ImageView(applicationContext)
@@ -116,12 +93,28 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener
         }
     }
 
-    private fun checkIfTheCurrentPositionIsTheLastOne(position: Int) : Boolean = position == mLayouts.size - 1
-
-    private fun setThePageButtonsByThePagePosition(nextButtonText : String, viewVisibility : Int)
+    private fun nextButtonOnClickListener()
     {
-        next_button.text = nextButtonText
-        skip_button.visibility = viewVisibility
+        next_button.setOnClickListener {
+            val currentItemIndex = getCurrentItemIndex()
+            when(checkIfTheCurrentItemIndexIsLowerThanTheLayoutsSize(currentItemIndex))
+            {
+                true -> welcome_view_pager.currentItem = currentItemIndex
+                false -> launchMainScreen()
+            }
+        }
+    }
+
+    private fun getCurrentItemIndex(): Int = welcome_view_pager.currentItem + 1
+
+    private fun checkIfTheCurrentItemIndexIsLowerThanTheLayoutsSize(currentItemInTheViewPager : Int) :
+            Boolean = currentItemInTheViewPager < mLayouts.size
+
+    private fun launchMainScreen()
+    {
+        mPreferencesManager?.setFirstTimeLaunched()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
@@ -131,6 +124,14 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener
             true -> setThePageButtonsByThePagePosition(getString(R.string.done),View.GONE)
             false -> setThePageButtonsByThePagePosition(getString(R.string.next),View.VISIBLE)
         }
+    }
+
+    private fun checkIfTheCurrentPositionIsTheLastOne(position: Int) : Boolean = position == mLayouts.size - 1
+
+    private fun setThePageButtonsByThePagePosition(nextButtonText : String, viewVisibility : Int)
+    {
+        next_button.text = nextButtonText
+        skip_button.visibility = viewVisibility
     }
 
     override fun onPageSelected(position: Int) { setCurrentIndicator(position) }
