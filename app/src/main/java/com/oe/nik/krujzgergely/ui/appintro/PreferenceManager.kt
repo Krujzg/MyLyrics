@@ -6,13 +6,12 @@ import android.content.SharedPreferences
 
 
 class PreferencesManager @SuppressLint("CommitPrefEdits")
-constructor(mContext: Context) {
-
+constructor(mContext: Context)
+{
     private val mPreferences: SharedPreferences
     private val mEditor: SharedPreferences.Editor
 
     fun isNotFirstTimeLaunched()= !mPreferences.getBoolean(FIRST_TIME, true)
-
 
     init {
         mPreferences = mContext.getSharedPreferences(PREFERENCE_CONFIGURATION_NAME, PRIVATE_MODE)
@@ -26,8 +25,8 @@ constructor(mContext: Context) {
 
     fun removePreference() { mEditor.clear().commit() }
 
-    companion object {
-        private const val TAG = "manager"
+    companion object
+    {
         private const val PRIVATE_MODE = 0
         private const val PREFERENCE_CONFIGURATION_NAME = "configuration"
         private const val FIRST_TIME = "isFirstTime"

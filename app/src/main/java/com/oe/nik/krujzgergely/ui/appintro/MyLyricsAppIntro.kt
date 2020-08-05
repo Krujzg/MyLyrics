@@ -2,8 +2,6 @@ package com.oe.nik.krujzgergely.ui.appintro
 
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.Color.blue
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
@@ -13,23 +11,17 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
-import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
-import com.github.appintro.AppIntro
-import com.github.appintro.AppIntroPageTransformerType
 import com.oe.nik.krujzgergely.R
 import com.oe.nik.krujzgergely.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_app_intro.*
 
-class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener {
-
-    //the needed attributes
+class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener
+{
     private var mPreferencesManager: PreferencesManager? = null
-    private val mLayouts: Array<Int> = arrayOf(R.layout.app_intro_slide_one,R.layout.app_intro_slide_two,R.layout.app_intro_slide_three,
-                                               R.layout.app_intro_slide_four,R.layout.app_intro_slide_five,R.layout.app_intro_slide_six,
-                                               R.layout.app_intro_slide_seven, R.layout.app_intro_slide_eight,R.layout.app_intro_slide_nine)
+    private val mLayouts: Array<Int> = getAppIntroLayouts
 
-    private lateinit var adapter : IntroPagerAdapter
+    private lateinit var introPagerAdapter: IntroPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,37 +29,49 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
         mPreferencesManager = PreferencesManager(this)
 
-        if (mPreferencesManager?.isNotFirstTimeLaunched()!!) { launchMainScreen() }
+        checkIfTheAppWasNotLaunchedForTheFirstTimeThenIfItsTrueLaunchMainScreen()
+        setWindowUiToFullScreenWithTransparentStatusBar()
+        introPagerAdapter = IntroPagerAdapter(this, mLayouts)
 
-        //checking if the sdk is grate than Lollipop
-        if (Build.VERSION.SDK_INT >= 21)
-        {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        }
-
-        //changing the color of the status bar to transparent
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-            window.statusBarColor = Color.TRANSPARENT
-        }
-
-        adapter = IntroPagerAdapter(this, mLayouts)
-        welcome_view_pager.adapter = adapter
-        welcome_view_pager.addOnPageChangeListener(this)
+        welcome_view_pager.apply {
+            adapter = introPagerAdapter
+        }.addOnPageChangeListener(this)
 
         setupIndicators()
         setCurrentIndicator(0)
 
-        //when the skip button is Pressed
         skip_button.setOnClickListener { launchMainScreen() }
+        nextButtonOnClickListener()
+    }
 
-        //when the next button is pressed
+    private fun nextButtonOnClickListener()
+    {
         next_button.setOnClickListener {
-            val current = getItem()
-            if (current < mLayouts.size) { welcome_view_pager.currentItem = current }
-            else { launchMainScreen() }
+            val currentItemIndex = getCurrentItemIndex()
+            when(checkIfTheCurrentItemIndexIsLowerThanTheLayoutsSize(currentItemIndex))
+            {
+                true -> welcome_view_pager.currentItem = currentItemIndex
+                false -> launchMainScreen()
+            }
         }
+    }
+
+    private fun checkIfTheCurrentItemIndexIsLowerThanTheLayoutsSize(currentItemInTheViewPager : Int) :
+            Boolean = currentItemInTheViewPager < mLayouts.size
+
+    private fun setWindowUiToFullScreenWithTransparentStatusBar()
+    {
+        window.apply {
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            statusBarColor = Color.TRANSPARENT
+        }
+    }
+
+    private fun checkIfTheAppWasNotLaunchedForTheFirstTimeThenIfItsTrueLaunchMainScreen()
+    {
+        if (mPreferencesManager?.isNotFirstTimeLaunched()!!) { launchMainScreen() }
     }
 
     private fun launchMainScreen()
@@ -77,22 +81,26 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener {
         finish()
     }
 
-    private fun getItem(): Int = welcome_view_pager.currentItem + 1
+    private fun getCurrentItemIndex(): Int = welcome_view_pager.currentItem + 1
 
     private fun setupIndicators()
     {
-        val indicators = arrayOfNulls<ImageView>(adapter.count)
+        val indicators = arrayOfNulls<ImageView>(introPagerAdapter.count)
         val layoutParams : LinearLayout.LayoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
         layoutParams.setMargins(8,0,8,0)
         for (i in indicators.indices)
         {
-            indicators[i] = ImageView(applicationContext)
-            indicators[i].apply {
-                this?.setImageDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.indicator_inactive))
-                this?.layoutParams = layoutParams
-            }
-            indicatorsContainer.addView(indicators[i])
+            addIndicatiorToIndicatorContainer(indicators,i,layoutParams)
         }
+    }
+    private fun addIndicatiorToIndicatorContainer(indicators: Array<ImageView?>, index : Int, layoutParams: LinearLayout.LayoutParams)
+    {
+        indicators[index] = ImageView(applicationContext)
+        indicators[index].apply {
+            this?.setImageDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.indicator_inactive))
+            this?.layoutParams = layoutParams
+        }
+        indicatorsContainer.addView(indicators[index])
     }
 
     private fun setCurrentIndicator(index : Int)
@@ -101,26 +109,28 @@ class MyLyricsAppIntro : AppCompatActivity(), ViewPager.OnPageChangeListener {
         for (i in 0 until childCount)
         {
             val imageView = indicatorsContainer[i] as ImageView
-            if (i == index)
+            when(i)
             {
-                imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.indicator_active))
-            }
-            else
-            {
-                imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.indicator_inactive))
+                index -> imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.indicator_active))
+                else -> imageView.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.indicator_inactive))
             }
         }
     }
 
+    private fun checkIfTheCurrentPositionIsTheLastOne(position: Int) : Boolean = position == mLayouts.size - 1
+
+    private fun setThePageButtonsByThePagePosition(nextButtonText : String, viewVisibility : Int)
+    {
+        next_button.text = nextButtonText
+        skip_button.visibility = viewVisibility
+    }
+
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-        if (position == mLayouts.size - 1)
+
+        when(checkIfTheCurrentPositionIsTheLastOne(position))
         {
-            next_button.text = getString(R.string.done)
-            skip_button.visibility = View.GONE
-        } else
-        {
-            next_button.text = getString(R.string.next)
-            skip_button.visibility = View.VISIBLE
+            true -> setThePageButtonsByThePagePosition(getString(R.string.done),View.GONE)
+            false -> setThePageButtonsByThePagePosition(getString(R.string.next),View.VISIBLE)
         }
     }
 
