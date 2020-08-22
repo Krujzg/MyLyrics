@@ -80,7 +80,7 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
             }
             sendNotification("Your new lyrics is:", "${displayedPerformer.value} - ${displayedTitle.value}")
         }
-        else { Toast.makeText(getApplication(),"Some of the fields are not filled",Toast.LENGTH_SHORT).show() }
+        else { showToast("Some of the fields are not filled") }
     }
 
     private fun isSaveLyricsButtonClickable() : Boolean = checkIfTheEditTextsValuesAreNullOrEmpty()
@@ -103,4 +103,6 @@ class CreateLyricsActivityViewModel(application: Application) : AndroidViewModel
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.add(callback) }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) { callbacks.remove(callback) }
+
+    private fun showToast(message: String){ Toast.makeText(getApplication(), message, Toast.LENGTH_SHORT).show() }
 }

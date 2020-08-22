@@ -16,6 +16,7 @@ import com.oe.nik.krujzgergely.databinding.ActivityAccountinfoBinding
 import com.oe.nik.krujzgergely.services.SpotifyService
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 import com.oe.nik.krujzgergely.util.CustomLogoutProgressDialog
+import com.oe.nik.krujzgergely.util.testutil.EspressoIdlingResource
 import kotlinx.android.synthetic.main.activity_accountinfo.*
 
 class AccountInfoActivity : AppCompatActivity()
@@ -38,6 +39,7 @@ class AccountInfoActivity : AppCompatActivity()
         setBigProfilePicture(photoUrl!!)
 
         setLogoutButtonOnClickListener()
+        EspressoIdlingResource.decrement()
     }
 
     private fun getPhotoUrlBasedOnLogin() : Uri? = when (GoogleLogin.googleAccount)

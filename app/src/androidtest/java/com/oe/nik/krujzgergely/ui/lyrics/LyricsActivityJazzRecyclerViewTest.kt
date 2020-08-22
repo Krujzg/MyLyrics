@@ -1,0 +1,52 @@
+package com.oe.nik.krujzgergely.ui.lyrics
+
+import androidx.test.espresso.action.ViewActions.*
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import com.oe.nik.krujzgergely.R.id.*
+import com.oe.nik.krujzgergely.ui.androidtestutil.checkThatTextIs
+import com.oe.nik.krujzgergely.ui.main.MainActivity
+import com.oe.nik.krujzgergely.ui.androidtestutil.perform
+import com.oe.nik.krujzgergely.ui.androidtestutil.performClickOnTheIndexOfRecyclerViewItem
+import com.oe.nik.krujzgergely.ui.androidtestutil.testrule.EspressoIdlingResourceRule
+import com.oe.nik.krujzgergely.util.testutil.getFakeLyrics
+import org.junit.Rule
+import org.junit.Test
+
+class LyricsActivityJazzRecyclerViewTest
+{
+    @get:Rule
+    val activityRule = ActivityScenarioRule(MainActivity::class.java)
+
+    @get: Rule
+    val espressoIdlingResourceRule = EspressoIdlingResourceRule()
+
+    val LIST_ITEM_IN_TEST = 0
+    val LYRICS_IN_TEST_JAZZ = getFakeLyrics().filter{it.song_type == "JAZZ"}[LIST_ITEM_IN_TEST]
+
+    @Test
+    fun test_isLyricsItemPerformerIsEqualsWithTestDataAfterItHasBeenClickedInTheJAZZRecyclerView()
+    {
+        signInButton perform click()
+        jazz_recycler_view perform scrollTo()
+        jazz_recycler_view performClickOnTheIndexOfRecyclerViewItem LIST_ITEM_IN_TEST
+        performer checkThatTextIs LYRICS_IN_TEST_JAZZ.performer
+    }
+
+    @Test
+    fun test_isLyricsItemTitleIsEqualsWithTestDataAfterItHasBeenClickedInTheJAZZRecyclerView()
+    {
+        signInButton perform click()
+        jazz_recycler_view perform scrollTo()
+        jazz_recycler_view performClickOnTheIndexOfRecyclerViewItem LIST_ITEM_IN_TEST
+        performer checkThatTextIs LYRICS_IN_TEST_JAZZ.title
+    }
+
+    @Test
+    fun test_isLyricsItemLyricsTextIsEqualsWithTestDataAfterItHasBeenClickedInTheJAZZRecyclerView()
+    {
+        signInButton perform click()
+        jazz_recycler_view perform scrollTo()
+        jazz_recycler_view performClickOnTheIndexOfRecyclerViewItem LIST_ITEM_IN_TEST
+        performer checkThatTextIs LYRICS_IN_TEST_JAZZ.title
+    }
+}

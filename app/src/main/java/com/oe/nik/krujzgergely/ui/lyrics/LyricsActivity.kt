@@ -30,6 +30,7 @@ import com.oe.nik.krujzgergely.ui.accountInfo.AccountInfoActivity
 import com.oe.nik.krujzgergely.ui.createlyricsitem.CreateLyricsActivity
 import com.oe.nik.krujzgergely.ui.lyricsItem.LyricsItemActivity
 import com.oe.nik.krujzgergely.ui.updatelyricsitem.UpdateLyricsItemActivity
+import com.oe.nik.krujzgergely.util.testutil.EspressoIdlingResource
 import com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
 import kotlinx.android.synthetic.main.activity_lyricses.*
 
@@ -61,6 +62,7 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
         setLyricsActivityViewModel()
 
         loadAllTypeOfRecycler()
+        EspressoIdlingResource.decrement()
     }
 
     private fun setAdapters()
@@ -223,6 +225,7 @@ class LyricsActivity : AppCompatActivity(), IonLyricsClickEvent {
 
     private fun startAccountInfoActivity() : Boolean
     {
+        EspressoIdlingResource.increment()
         startActivity(Intent(this,AccountInfoActivity::class.java))
         overridePendingTransition( R.xml.slide_in_up, R.xml.slide_out_up )
         return true

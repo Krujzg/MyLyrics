@@ -23,6 +23,7 @@ import com.oe.nik.krujzgergely.controllers.logincontroller.SpotifyLogin
 import com.oe.nik.krujzgergely.ui.lyrics.LyricsActivity
 import com.oe.nik.krujzgergely.services.SpotifyService
 import com.oe.nik.krujzgergely.services.SpotifyService.getAuthenticationRequest
+import com.oe.nik.krujzgergely.util.testutil.EspressoIdlingResource
 import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationResponse
 
@@ -108,10 +109,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun delayLyricsActivityStartBy1500MilliSecondsToBuildLoginData()
     {
+        EspressoIdlingResource.increment()
         Handler().postDelayed({startLyricsActivity()}, 1500)
     }
 
-    private fun startLyricsActivity() { startActivity(Intent(this, LyricsActivity::class.java)) }
+    private fun startLyricsActivity()
+    {
+        startActivity(Intent(this, LyricsActivity::class.java))
+    }
 
     private fun createNotificationChannel(channelId: String, channelName: String) {
 

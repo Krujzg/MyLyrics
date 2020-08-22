@@ -36,11 +36,9 @@ class GoogleLogin(var application: Application)
         handleSignInResult(task)
     }
 
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        try
-        {
-            googleAccount = completedTask.getResult(ApiException::class.java)!!
-        }
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>)
+    {
+        try { googleAccount = completedTask.getResult(ApiException::class.java)!! }
         catch (e: ApiException) { }
     }
 }

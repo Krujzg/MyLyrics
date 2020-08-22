@@ -1,4 +1,4 @@
-package com.oe.nik.krujzgergely.repository
+package com.oe.nik.krujzgergely.util.testutil
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -70,4 +70,6 @@ ext {
     constraintlayoutVersion = '2.0.0-beta3'
     circleimageviewVersion = '2.2.0'
     gsonVersion = '2.8.6'
+    junitAndroidTestVersion = '1.1.0'
+    mockkVersion = "1.9.3"
 }

@@ -1,4 +1,4 @@
-package com.oe.nik.krujzgergely.util
+package com.oe.nik.krujzgergely.util.testutil
 
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData

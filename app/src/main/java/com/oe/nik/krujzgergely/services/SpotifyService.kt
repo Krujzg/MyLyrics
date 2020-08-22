@@ -25,13 +25,10 @@ object SpotifyService
 
     fun connect(context: Context) {
         if (spotifyAppRemote?.isConnected == true) { return }
-        val connectionListener = object : Connector.ConnectionListener {
-            override fun onConnected(spotifyAppRemote: SpotifyAppRemote) {
-                SpotifyService.spotifyAppRemote = spotifyAppRemote
-            }
-            override fun onFailure(throwable: Throwable) {
-                Log.e("SpotifyService", throwable.message, throwable)
-            }
+        val connectionListener = object : Connector.ConnectionListener
+        {
+            override fun onConnected(spotifyAppRemote: SpotifyAppRemote) { SpotifyService.spotifyAppRemote = spotifyAppRemote }
+            override fun onFailure(throwable: Throwable) { Log.e("SpotifyService", throwable.message, throwable) }
         }
         SpotifyAppRemote.connect(context, connectionParams, connectionListener)
     }
@@ -50,12 +47,11 @@ object SpotifyService
     fun playingState(handler: (PlayingState) -> Unit)
     {
         spotifyAppRemote?.playerApi?.playerState?.setResultCallback { result ->
-            if (result.track.uri == null) {
-                handler(PlayingState.STOPPED)
-            } else if (result.isPaused) {
-                handler(PlayingState.PAUSED)
-            } else {
-                handler(PlayingState.PLAYING)
+            when
+            {
+                result.track.uri == null -> { handler(PlayingState.STOPPED) }
+                result.isPaused -> { handler(PlayingState.PAUSED) }
+                else -> { handler(PlayingState.PLAYING) }
             }
         }
     }

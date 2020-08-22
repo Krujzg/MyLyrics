@@ -7,12 +7,14 @@
     </data>
 
 <LinearLayout
+    android:id="@+id/accountinfoLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkgrey"
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/accountinfoRelativelayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/accountInfoActivityRelativeLayoutHeight">
 
@@ -23,6 +25,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/accountinfoDisplayedAccountCompanyTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -40,6 +43,7 @@
                 android:layout_marginTop="@dimen/accountInfoActivityCircleImageViewMarginTop" />
 
             <TextView
+                android:id="@+id/accountinfoDisplayedAccountNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -50,6 +54,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/accountinfoDisplayedAccountEmailTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -66,6 +71,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/accountInfoActivityCardViewMarginTop">
             <TextView
+                android:id="@+id/yourLyricsCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -91,12 +97,14 @@
                     android:layout_marginTop="@dimen/accountInfoActivityInnerLinearLayoutMarginTop">
 
                     <TextView
+                        android:id="@+id/accountinfoAllTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/AllLyricsText"
                         android:textSize="@dimen/accountInfoActivityTitleTextViewTextSize" />
 
                     <TextView
+                        android:id="@+id/accountinfodisplayedCountAllTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/accountInfoDataCountPaddingTop"
@@ -116,12 +124,14 @@
                     android:layout_marginTop="@dimen/accountInfoActivityInnerLinearLayoutMarginTop">
 
                     <TextView
+                        android:id="@+id/accountinfoFavoriteTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/FavoriteString"
                         android:textSize="@dimen/accountInfoActivityTitleTextViewTextSize" />
 
                     <TextView
+                        android:id="@+id/accountinfodisplayedCountFavoriteTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/accountInfoDataCountPaddingTop"
@@ -141,12 +151,14 @@
                     android:layout_marginTop="@dimen/accountInfoActivityInnerLinearLayoutMarginTop">
 
                     <TextView
+                        android:id="@+id/accountinfoJazzTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/JazzLyricsText"
                         android:textSize="@dimen/accountInfoActivityTitleTextViewTextSize" />
 
                     <TextView
+                        android:id="@+id/accountinfodisplayedCountJazzTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
@@ -166,12 +178,14 @@
                     android:layout_marginTop="@dimen/accountInfoActivityTextLinearLayoutMarginTop">
 
                     <TextView
+                        android:id="@+id/accountinfoHipHopTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/HipHopLyricsText"
                         android:textSize="@dimen/accountInfoActivityHipHopTextViewSize" />
 
                     <TextView
+                        android:id="@+id/accountinfodisplayedCountHipHopAllTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/accountInfoDataCountPaddingTop"
@@ -191,12 +205,14 @@
                     android:layout_marginTop="@dimen/accountInfoActivityInnerLinearLayoutMarginTop">
 
                     <TextView
+                        android:id="@+id/accountinfoRockTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/RockLyricsText"
                         android:textSize="@dimen/accountInfoActivityTitleTextViewTextSize" />
 
                     <TextView
+                        android:id="@+id/accountinfodisplayedCountRockTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/accountInfoDataCountPaddingTop"
@@ -231,12 +247,14 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/accountinfoMetalTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/MetalLyricsText"
                         android:textSize="@dimen/accountInfoActivityTitleTextViewTextSize" />
 
                     <TextView
+                        android:id="@+id/accountinfodisplayedCountMetalTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/accountInfoDataCountPaddingTop"
@@ -255,12 +273,14 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/accountinfoPunkTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/PunkLyricsText"
                         android:textSize="@dimen/accountInfoActivityTitleTextViewTextSize" />
 
                     <TextView
+                        android:id="@+id/accountinfodisplayedCountPunkTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/accountInfoDataCountPaddingTop"
@@ -279,12 +299,14 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/accountinfoPopTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/PopLyricsText"
                         android:textSize="@dimen/accountInfoActivityTitleTextViewTextSize" />
 
                     <TextView
+                        android:id="@+id/accountinfodisplayedCountPopTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/accountInfoDataCountPaddingTop"
@@ -303,12 +325,14 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/accountinfoCountryTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/CountryLyricsText"
                         android:textSize="@dimen/accountInfoActivityTitleTextViewTextSize" />
 
                     <TextView
+                        android:id="@+id/accountinfodisplayedCountCountryTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/accountInfoDataCountPaddingTop"
@@ -327,12 +351,14 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/accountinfoOperaTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/OperaLyricsText"
                         android:textSize="@dimen/accountInfoActivityTitleTextViewTextSize" />
 
                     <TextView
+                        android:id="@+id/accountinfodisplayedCountOperaTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/accountInfoDataCountPaddingTop"
