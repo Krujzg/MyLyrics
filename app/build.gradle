@@ -35,15 +35,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+    kotlinOptions {jvmTarget = "1.8"}
 
-    // You can fix the No such manifest file: ./AndroidManifest.xml error, by updating your gradle file.
-    // Always show the result of every unit test when running via command line, even if it passes.
-    testOptions.unitTests {
-        includeAndroidResources = true
-    }
+    testOptions.unitTests {includeAndroidResources = true}
 }
 
 dependencies {
@@ -66,6 +60,12 @@ dependencies {
 
     //coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
+    // testImplementation for pure JVM unit tests
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+
+    // androidTestImplementation for Android instrumentation tests
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
 
     //RecyclerView
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
@@ -91,6 +91,9 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
 
+    //Mockk
+    testImplementation "io.mockk:mockk:$mockkVersion"
+
     // AndroidX Test - JVM testing
     androidTestImplementation "androidx.test:runner:$androidXTestCoreVersion"
     androidTestImplementation "androidx.test:core:$androidXTestCoreVersion"
@@ -106,24 +109,22 @@ dependencies {
     implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
 
     //Test Parameters
-    testImplementation  "pl.pragmatists:JUnitParams:1.1.1"
+    testImplementation "pl.pragmatists:JUnitParams:$testParameters"
 
     // Dependencies for Android instrumented unit tests
     androidTestImplementation "junit:junit:$junitVersion"
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
 
     //GoogleSignIn
-    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    implementation "com.google.android.gms:play-services-auth:$googleSignInVersion"
 
     //spotifyAuth
-    implementation 'com.spotify.android:auth:1.1.0'
-    //FireBaseAuth
-    //implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
+    implementation "com.spotify.android:auth:$spotifyAuthVersion"
 
     //spotifySDK
     implementation project(':spotify-app-remote-release-0.7.0')
     implementation project(':spotify-auth-release-1.2.3')
 
     //Appintro
-    implementation 'com.github.AppIntro:AppIntro:6.0.0'
+    implementation "com.github.AppIntro:AppIntro:$appIntroVersion"
 }
